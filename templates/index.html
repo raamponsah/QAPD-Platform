@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>{% if page_title %}{{ page_title}} {% else %} Dashboard {% endif %}</title>
+    <link rel="icon" type="image/x-icon" href=" {% static 'assets/img/favicon.ico' %} "/>
+    <link href=" {% static 'assets/css/loader.css' %} " rel="stylesheet" type="text/css" />
+    <script src=" {% static 'assets/js/loader.js' %} "></script>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href=" {% static 'bootstrap/css/bootstrap.min.css' %} " rel="stylesheet" type="text/css" />
+    <link href=" {% static 'assets/css/plugins.css' %} " rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+  <link href=" {% static 'plugins/perfect-scrollbar/perfect-scrollbar.css' %} " rel="stylesheet" type="text/css" class="structure" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!--  BEGIN CUSTOM STYLE FILE  -->
+    <link href="{% static 'assets/css/scrollspyNav.css'%}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{%static 'plugins/jquery-step/jquery.steps.css'%}">
+
+  <link rel="stylesheet" type="text/css" href="{% static  'plugins/dropify/dropify.min.css' %}">
+    <link href="{% static 'assets/css/users/account-setting.css'%}" rel="stylesheet" type="text/css" />
+
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href=" {% static 'plugins/apex/apexcharts.css' %} " rel="stylesheet" type="text/css">
+    <link href=" {% static 'assets/css/dashboard/dash_1.css' %} " rel="stylesheet" type="text/css"
+        class="dashboard-analytics" />
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <!-- <link href="{% static 'assets/css/elements/infobox.css' %}" rel="stylesheet" type="text/css" /> -->
+    <link href="{% static 'plugins/notification/snackbar/snackbar.min.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/elements/alert.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css'%}">
+
+    <style>
+        #formValidate .wizard > .content {min-height: 25em;}
+        #example-vertical.wizard > .content {min-height: 24.5em;}
+    </style>
+
+</head>
+<body>
+    <!-- BEGIN LOADER -->
+    <div id="load_screen"> <div class="loader"> <div class="loader-content">
+        <div class="spinner-grow align-self-center"></div>
+    </div></div></div>
+    <!--  END LOADER -->
+
+    <!--  BEGIN NAVBAR  -->
+    <div class="header-container fixed-top ">
+        <header class="header navbar navbar-expand-sm ">
+
+            <ul class="navbar-item theme-brand flex-row  text-center">
+                <li class="nav-item theme-logo">
+{#                    <a href=" {% url 'analytic_dashboard' %}">#}
+{#                        <img src=" {% static 'assets/img/gimpa-logo-90.png' %} " class="navbar-logo" alt="logo">#}
+{#                    </a>#}
+                </li>
+{#                <li class="nav-item theme-text">#}
+{#                    <a href=" {% url 'analytic_dashboard' %}" class="nav-link">Evaluation Service</a>#}
+{#                </li>#}
+            </ul>
+
+            <ul class="navbar-item flex-row ml-md-auto">
+
+                <li class="nav-item dropdown notification-dropdown">
+                    <a href=" {% static 'javascript:void(0);' %} " class="nav-link dropdown-toggle " data-toggle="modal" data-target="#exampleModal" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+</svg>
+                    </a>
+
+                </li>
+
+                <li class="nav-item dropdown user-profile-dropdown">
+                    <a href=" {% static 'javascript:void(0);' %} "  class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="text-light">{{ request.user.email }}</span>
+                        <img src=" https://avatar.oxro.io/avatar.svg?name={{request.user.username}}&background=6ab04c&color=000 " alt="avatar">
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
+                        <div class="">
+
+                            <div class="dropdown-item">
+                                <a class="" href=" {% url 'logout_student' %} "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </header>
+    </div>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN NAVBAR: BREADCRUMBS -->
+    <div class="sub-header-container">
+        <header class="header navbar navbar-expand-sm">
+
+            <a href=" {% static 'javascript:void(0);' %} " class="sidebarCollapse" data-placement="bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+            <ul class="navbar-nav flex-row">
+                <li>
+                    <div class="page-header">
+
+                        <nav class="breadcrumb-one {% if request.user.is_student %} container {% endif %}" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+{#                                <li class="breadcrumb-item"><a href= " {% url 'analytic_dashboard' %}">Dashboard</a></li>#}
+                                <li class="breadcrumb-item active" aria-current="page"><span>{{ page_title }}</span></li>
+                            </ol>
+{% if request.user.is_student %}
+                             <ol class="breadcrumb">
+{#                                <li class="breadcrumb-item"><a href= " {% url 'analytic_dashboard' %}">{{ request.user.student.program }}</a></li>#}
+                                <li class="breadcrumb-item active" aria-current="page"><span>{{ request.user.student.level }} ({{ request.user.student.course_group | title }})</span></li>
+                            </ol>
+                        {% endif %}
+                        </nav>
+
+                    </div>
+                </li>
+            </ul>
+        </header>
+    </div>
+
+
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN MAIN CONTAINER  -->
+    <div class="main-container" id="container">
+
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+        <!--  BEGIN SIDEBAR  -->
+{#       {% include 'includes/sidebar.html' %}#}
+        <!--  END SIDEBAR  -->
+
+        <!--  BEGIN CONTENT AREA  -->
+        <div id="content" class="main-content">
+            <div class="layout-px-spacing">
+
+  <div class="">
+         <div class="alert alert-light-warning mt-4"
+                            role="alert">
+                                <strong>This is for user-testing only. Please don't take your input too seriously.</strong>
+             <p>This process is given to only your class to do the user-testing.</p>
+                            </div>
+     </div>
+
+               {% block content %}
+
+                    {% endblock %}
+
+                    
+
+
+
+
+            <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">User Experience</h6>
+
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">
+                    Please tell us what your experience was like.
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+            <div class="footer-wrapper">
+                <div class="footer-section f-section-1">
+                    <p class="">Copyright © 2022 <a target="_blank" href="https://www.gimpa.edu.gh">GIMPA • </a>All rights reserved.</p>
+                </div>
+{#                <div class="footer-section f-section-2">#}
+{#                    <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>#}
+{#                </div>#}
+            </div>
+        </div>
+        <!--  END CONTENT AREA  -->
+
+    </div>
+    <!-- END MAIN CONTAINER -->
+
+     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src=" {% static 'assets/js/libs/jquery-3.1.1.min.js' %} "></script>
+    <script src=" {% static 'bootstrap/js/popper.min.js' %} "></script>
+    <script src=" {% static 'bootstrap/js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %} "></script>
+    <script src=" {% static 'assets/js/app.js' %} "></script>
+
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });
+    </script>
+     <script src="{% static 'plugins/highlight/highlight.pack.js' %}"></script>
+    <script src=" {% static 'assets/js/custom.js' %} "></script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+    <script src=" {% static 'plugins/apex/apexcharts.min.js' %} "></script>
+    <script src=" {% static 'assets/js/dashboard/dash_1.js' %} "></script>
+
+
+    <script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
+    <script src="{% static 'plugins/jquery-step/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-step/custom-jquery.steps.js' %}"></script>
+{#    <script src=" {% static 'assets/js/sts.js' %} "></script>#}
+     <script src="{% static 'plugins/notification/snackbar/snackbar.min.js' %}"></script>
+     <script src="{% static 'plugins/table/datatable/datatables.js' %}"></script>
+     <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
+    <script src="{%static 'assets/js/components/notification/custom-snackbar.js' %}"></script>
+
+    {%if messages%}
+    {%for message in messages%}
+
+    <script type="text/javascript">
+       let m =  "{{message}}"
+        console.log(m)
+        $('div.dashboard-analytics').ready(function() {
+            // alert("{{message}}")
+       Snackbar.show({
+                text: '{{message}}',
+                pos: 'top-right',
+                actionTextColor: '#fff',
+                backgroundColor: '#1b55e2',
+            });
+        });
+    </script>
+    {%endfor%}
+    {%endif%}
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <script src="{% static 'plugins/dropify/dropify.min.js' %}"></script>
+ <script src="{% static  'plugins/blockui/jquery.blockUI.min.js' %}"></script>
+    <!-- <script src="plugins/tagInput/tags-input.js"></script> -->
+    <script src="{% static 'assets/js/users/account-settings.js' %}"></script>
+</body>
+</html>

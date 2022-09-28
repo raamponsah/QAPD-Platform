@@ -1,0 +1,271 @@
+{%extends 'new-base.html'%} {%load static%}
+{% block content %}
+
+
+<div class="">
+                <div class="row layout-top-spacing" id="cancel-row">
+                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                        <div class="widget-content widget-content-area br-6">
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-sm-6 col-6">
+                    <h5 class="text-primary">Course Facilitator: {{evaluation.facilitator}}</h5>
+                    <h6>Course Summary </h6>
+                    <p>
+                        {{evaluation.description}}
+                         </p>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div >
+            <form method="post" class="content " id="example-basic">
+                    {%csrf_token %}
+            <h3>Curriculum</h3>
+            <section>
+
+                    <div class="mb-4">
+                        {{ evaluation_form.curriculum_feedback_beginning_answer.label }}
+                        {{evaluation_form.curriculum_feedback_beginning_answer}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.curriculum_feedback_course_answer.label }}
+                        {{evaluation_form.curriculum_feedback_course_answer}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.curriculum_feedback_lecture_answer.label }}
+                        {{evaluation_form.curriculum_feedback_lecture_answer}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.curriculum_feedback_procedures_answer.label }}
+                        {{evaluation_form.curriculum_feedback_procedures_answer}}
+                    </div>
+
+                    <div class="mb-4">
+                        {{ evaluation_form.curriculum_feedback_books_answer.label }}
+                        {{evaluation_form.curriculum_feedback_books_answer}}
+                    </div>
+
+
+
+            </section>
+            <h3>Attendance</h3>
+            <section>
+                <p>Wonderful transition effects.</p>
+                <div class="mb-4">
+                        {{ evaluation_form.attendance_schedule.label }}
+                        {{evaluation_form.attendance_schedule}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.attendance_punctuality.label }}
+                        {{evaluation_form.attendance_punctuality}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.attendance_presence.label }}
+                        {{evaluation_form.attendance_presence}}
+                    </div>
+            </section>
+            <h3>Delivery</h3>
+            <section>
+                <p>The next and previousr buttons help you to navigate through your content.</p>
+                <div class="mb-4">
+                        {{ evaluation_form.delivery_enthusiasm.label }}
+                        {{evaluation_form.delivery_enthusiasm}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.delivery_sequence.label }}
+                        {{evaluation_form.delivery_sequence}}
+                    </div>
+
+                     <div class="mb-4">
+                        {{ evaluation_form.delivery_organization.label }}
+                        {{evaluation_form.delivery_organization}}
+                    </div>
+
+                 <div class="mb-4">
+                        {{ evaluation_form.delivery_clarity.label }}
+                        {{evaluation_form.delivery_clarity}}
+                    </div>
+
+                 <div class="mb-4">
+                        {{ evaluation_form.delivery_contents.label }}
+                        {{evaluation_form.delivery_contents}}
+                    </div>
+
+
+                <div class="mb-4">
+                        {{ evaluation_form.delivery_responsiveness.label }}
+                        {{evaluation_form.delivery_responsiveness}}
+                    </div>
+
+
+                <div class="mb-4">
+                        {{ evaluation_form.delivery_achievements.label }}
+                        {{evaluation_form.delivery_achievements}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.delivery_innovation.label }}
+                        {{evaluation_form.delivery_innovation}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.delivery_theory_practices.label }}
+                        {{evaluation_form.delivery_theory_practices}}
+                    </div>
+
+
+
+            </section>
+            <h3>Assignments</h3>
+            <section>
+                <p>The next and previousx buttons help you to navigate through your content.</p>
+                  <div class="mb-4">
+                        {{ evaluation_form.assignments_relevance.label }}
+                        {{evaluation_form.assignments_relevance}}
+                    </div>
+
+
+                <div class="mb-4">
+                        {{ evaluation_form.assignments_promptitude.label }}
+                        {{evaluation_form.assignments_promptitude}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.assignments_feedback.label }}
+                        {{evaluation_form.assignments_feedback}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.assignments_guidance.label }}
+                        {{evaluation_form.assignments_guidance}}
+                    </div>
+            </section>
+
+                <h3>Interactions</h3>
+            <section>
+                <p>The next and previousz buttons help you to navigate through your content.</p>
+                <div class="mb-4">
+                        {{ evaluation_form.interaction_availability.label }}
+                        {{evaluation_form.interaction_availability}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.interaction_help.label }}
+                        {{evaluation_form.interaction_help}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.interaction_fairness.label }}
+                        {{evaluation_form.interaction_fairness}}
+                    </div>
+
+
+
+            </section>
+
+
+                <h3>Environment</h3>
+            <section>
+                <p>The next and previousz buttons help you to navigate through your content.</p>
+                <div class="mb-4">
+                        {{ evaluation_form.environment_classroom_size.label }}
+                        {{evaluation_form.environment_classroom_size}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_seats.label }}
+                        {{evaluation_form.environment_seats}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_audio_visual_equip.label }}
+                        {{evaluation_form.environment_audio_visual_equip}}
+                    </div>
+
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_public_address.label }}
+                        {{evaluation_form.environment_public_address}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_books.label }}
+                        {{evaluation_form.environment_books}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_computers.label }}
+                        {{evaluation_form.environment_computers}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_internet.label }}
+                        {{evaluation_form.environment_internet}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_air_conditioning.label }}
+                        {{evaluation_form.environment_air_conditioning}}
+                    </div>
+
+                <div class="mb-4">
+                        {{ evaluation_form.environment_secretariat.label }}
+                        {{evaluation_form.environment_secretariat}}
+                    </div>
+
+
+
+
+
+
+
+
+{#                 <div class="mb-4">#}
+{##}
+{#                        {{evaluation_form.submitter }}#}
+{#                    </div>#}
+
+
+
+
+            </section>
+
+
+
+
+
+
+                <h3>Confirmation</h3>
+            <section>
+                <p>The next and previousz buttons help you to navigate through your content.</p>
+                <div class="mb-4">
+                        {{ evaluation_form.is_evaluated.label }}
+                        {{evaluation_form.is_evaluated}}
+                    </div>
+
+
+
+</section>
+
+
+
+                    </form>
+        </div>
+                        </div>
+                    </div>
+        </div>
+        </div>
+
+
+
+
+
+
+{%endblock%}

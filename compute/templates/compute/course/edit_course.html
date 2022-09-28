@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+   <div class="container">
+     <form method="post" action="{% url 'edit_course' course.slug %}">
+{% csrf_token %}
+
+    <h5 class="mt-4">Edit Course</h5>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info">Update</button>
+    </form>
+   </div>
+{% endblock %}

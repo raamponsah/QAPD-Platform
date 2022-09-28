@@ -1,0 +1,576 @@
+{% extends 'evaluation-submission/index.html' %}
+{% block content %}
+     <form method="post" >
+         {% csrf_token %}
+     <div id="wizard" class="">
+
+        <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-account-outline"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Curriculum</div>
+              <div class="bd-wizard-step-subtitle">Section 1</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+         <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.curriculum_feedback_beginning_answer.label }}?</h5>
+               <div class="form-row">
+                                    {% for radio in evaluation_form.curriculum_feedback_beginning_answer %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+       <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.curriculum_feedback_course_answer.label }}?</h5>
+               <div class="form-row">
+                                    {% for radio in evaluation_form.curriculum_feedback_course_answer %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.curriculum_feedback_lecture_answer.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.curriculum_feedback_lecture_answer %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.curriculum_feedback_outcomes_answer.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.curriculum_feedback_outcomes_answer %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.curriculum_feedback_procedures_answer.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.curriculum_feedback_procedures_answer %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+           <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.curriculum_feedback_books_answer.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.curriculum_feedback_books_answer %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-bank"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Attendance</div>
+              <div class="bd-wizard-step-subtitle">Section 2</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+       <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.attendance_schedule.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.attendance_schedule %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.attendance_punctuality.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.attendance_punctuality %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.attendance_presence.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.attendance_presence %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        </section>
+
+        <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-account-check-outline"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Delivery </div>
+              <div class="bd-wizard-step-subtitle">Section 3</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+          <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_enthusiasm.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_enthusiasm %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_sequence.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_sequence %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_organization.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_organization %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_clarity.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_clarity %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_contents.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_contents %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_responsiveness.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_responsiveness %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_achievements.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_achievements %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_innovation.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_innovation %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.delivery_theory_practices.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.delivery_theory_practices %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        </section>
+
+        <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-account-check-outline"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Assignments </div>
+              <div class="bd-wizard-step-subtitle">Section 4</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+          <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.assignments_relevance.label }}?</h5>
+              <div class="form-row">
+                                    {% for radio in evaluation_form.assignments_relevance %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.assignments_promptitude.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.assignments_promptitude %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.assignments_feedback.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.assignments_feedback %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.assignments_guidance.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.assignments_guidance %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+
+
+        </section>
+
+
+          <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-bank"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Interaction</div>
+              <div class="bd-wizard-step-subtitle">Section 5</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+       <div class="mb-4">
+                <h5 class="section-heading">{{ evaluation_form.interaction_availability.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.interaction_availability %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.interaction_help.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.interaction_help %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.interaction_fairness.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.interaction_fairness %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        </section>
+
+
+              <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-bank"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Environment</div>
+              <div class="bd-wizard-step-subtitle">Section 6</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+       <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_classroom_size.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_classroom_size %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_seats.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_seats %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_audio_visual_equip.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_audio_visual_equip %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+              <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_public_address.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_public_address %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+                <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_books.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_books %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+          <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_computers.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_computers %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+
+          <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_internet.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_internet %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+          <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_air_conditioning.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_air_conditioning %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+
+           <div class="mb-4">
+                <h5 class="section-heading ">{{ evaluation_form.environment_secretariat.label }}?</h5>
+                                <div class="form-row">
+                                    {% for radio in evaluation_form.environment_secretariat %}
+                                        <div class="form-check form-check-inline">
+                                            <label for="{{ radio.id_for_label }}" class="mx-2 text-dark form-check-label fw-lighter">
+                                                {{ radio.choice_label }}
+                                            </label>
+                                            {{ radio.tag }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+           </div>
+        </section>
+
+
+
+
+
+
+
+
+        <h3>
+          <div class="media">
+{#            <div class="bd-wizard-step-icon"><i class="mdi mdi-emoticon-outline"></i></div>#}
+            <div class="media-body">
+              <div class="bd-wizard-step-title">Submit</div>
+              <div class="bd-wizard-step-subtitle">Step 4</div>
+            </div>
+          </div>
+        </h3>
+        <section>
+          <div class="content-wrapper">
+            <h4 class="section-heading mb-5">Accept agreement and Submit</h4>
+            <div class="form-check">
+              <label class="form-check-label">
+{#                <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>#}
+               {{ evaluation_form.is_evaluated }}
+                I hereby declare that I had read all the questions  and all the details provided by me in this form are true.
+              </label>
+                <button type="submit" class="btn btn-success mb-4 mr-2 btn-lg btn-success">Submit
+
+                </button>
+            </div>
+          </div>
+        </section>
+      </div>
+     </form>
+{% endblock %}

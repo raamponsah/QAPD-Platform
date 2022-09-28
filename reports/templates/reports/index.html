@@ -1,0 +1,77 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% load students_per_course %}
+{% load reports_per_school %}
+{% block overview_stats %}
+    {% include 'compute/includes/overview-school-stats.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-12">
+    <div class="mb-2 d-flex justify-content-start">
+    <div class="col fs-5">Academic Year: {{ academic_year }} - Semester: {{ semester }} For Schools</div>
+               <form action="" class="col-3">
+               <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" name="academic_year" class="form-select" aria-label="Default select example" id="academic_year">
+                   <option value="">View Academic Year</option>
+                   {% for evm in evms %}
+                       <option value="{% url 'school_reports_grouped_by_academic_year' evm.id %}">{{ evm }}</option>
+                   {% endfor %}
+               </select>
+           </form>
+    </div>
+       <div class="row">
+           {% if page_obj %}
+               {% for school in page_obj %}
+            <div class="col-3">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+{#                        <span class="label label-success float-right">Evaluation</span>#}
+                        <h5>{{ school }} Report</h5>
+                        <div class="ibox-tools">
+                    <a href="{% url 'school_report_summary' school.id evm.slug %}" style="color: #fff !important">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+  <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+</svg>
+                    </a>
+                </div>
+                    </div>
+                    <div class="ibox-content">
+
+<ul class="list-group list-group-flush">
+                                <small>Overall Evaluation Score</small>
+
+                            <h1 class="list-group-item">{% overall_evaluation_per_school school.id academic_year semester %}
+                            </h1>
+
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        Total submissions
+         <span class="font-bold">{% overall_evaluation_submitted_per_school school.id academic_year semester  %}</span>
+    </li>
+
+     <li class="list-group-item d-flex justify-content-between align-items-start">
+        Total Number of Courses
+         <span class="font-bold">{% number_courses_school  school.id  academic_year semester %}</span>
+    </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        Total Number of Programs
+         <span class="font-bold">{{ school.id | total_number_of_programs_per_school  }}</span>
+    </li>
+
+     <li class="list-group-item d-flex justify-content-between align-items-start">Total Students
+      <span class="font-bold">{{ school.id | overall_number_of_students_per_school  }}</span></li>
+
+
+       <li class="list-group-item d-flex justify-content-between align-items-start">
+        Total Number of Lecturers
+         <span class="font-bold">{%  overall_number_of_lecturers_per_school school.id academic_year semester  %}</span>
+    </li>
+</ul>                    </div>
+                </div>
+            </div>
+               {% endfor %}
+           {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

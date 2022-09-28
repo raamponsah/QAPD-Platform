@@ -1,0 +1,148 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% block overview_stats %}
+      {% include 'compute/includes/overview-stats.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-12">
+            <div class="ibox ">
+            <div class="ibox-title bg-safe">
+                <h5>Manage Evaluations </h5>
+                <div class="ibox-tools">
+                    <a href="{% url 'create_evaluation_manager' %}" style="color: #fff !important">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+</svg>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" id="report">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Academic Year </th>
+                            <th>Semester </th>
+                            <th>Start Date </th>
+                            <th>End Date </th>
+                            <th>Status </th>
+                            <th>Archive </th>
+                            <th>Actions </th>
+
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if page_obj %}
+    {% for manager in page_obj %}
+
+                        <tr>
+
+                            <td>
+                                <a href="{% url 'evaluation_manager' manager.id %}" class="text-primary text-underline">{{ manager.academic_year }}</a>
+
+                            </td>
+                            <td>{{ manager.semester }}</td>
+                            <td>{{ manager.start_date }}</td>
+                            <td>{{ manager.end_date }}</td>
+                            <td>
+                                {% if manager.ended == True%}
+                                    Not Active
+                                {% elif manager.ended == False%}
+                                     Active
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                <form method="post" action="{% url 'archive_evaluation_manager' manager.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="manager_id" value="{{ manager.id}}">
+                 {% if manager.archived %}
+                           <button type="submit" class="btn btn-xs btn-warning">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+  <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
+</svg>
+              </button>
+                     {% else %}
+                           <button type="submit" class="btn btn-xs btn-success">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+  <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
+</svg>
+              </button>
+                                    {% endif %}
+                                </form>
+
+                            </td>
+
+                        <td>
+                                    <a href="{% url 'edit_evaluation_manager' manager.id %}" class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+</svg></a>
+                                <a href="{% url 'delete_evaluation_manager' manager.id %}" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete" class="text-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+</svg>
+                                </a>
+
+
+
+
+
+<div class="modal fade" id="staticBackdropDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="text-danger fs-6">This is a permanent action</h6>
+          <p>Are you sure you want to delete this record: <br> <span class="text-primary font-bold">{{ manager }}</span>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <form method="post" action="{% url 'delete_evaluation_manager' manager.id %}">
+               {% csrf_token %}
+               <button type="submit" class="btn btn-danger">Delete</button>
+           </form>
+      </div>
+    </div>
+  </div>
+</div>                        </td>
+
+
+                        </tr>
+    {% endfor %}
+      {% endif %}
+                        </tbody>
+                    </table>
+
+                <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+                </div>
+
+            </div>
+            </div>
+            </div>
+{% endblock %}

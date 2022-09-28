@@ -1,0 +1,59 @@
+<div class="row border-bottom">
+        <nav class="navbar navbar-static-top  d-flex justify-content-end" role="navigation" style="margin-bottom: 0">
+
+            <ul class="nav navbar-top-links navbar-right ">
+              <li>
+                    <span class="m-r-sm text-muted welcome-message">{{ request.user }}</span>
+
+                </li>
+           {% if request.user.is_qadmin %}
+                    <li>
+
+               <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="m-r-sm text-uppercase btn btn-dark btn-xs">Upgrade Students</button>
+
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm Students' Upgrade</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="text-danger fs-6">This is a permanent action</h6>
+          <p>Are you sure you want upgrade students' levels?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <form method="post" action="{% url 'students_manager' %}">
+               {% csrf_token %}
+               <button type="submit" class="btn btn-danger">Upgrade</button>
+           </form>
+      </div>
+    </div>
+  </div>
+</div>                        </td>
+
+                </li>
+                {% endif %}
+
+                <li>
+
+                </li>
+
+
+
+
+                <li>
+
+                    <a href="{% url 'logout_administrator' %}" class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right text-danger fs-4 fw-bolder" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+</svg>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+        </div>

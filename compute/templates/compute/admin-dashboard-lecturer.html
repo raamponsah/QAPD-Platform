@@ -1,0 +1,74 @@
+{% extends 'admin-templates/dashboard.html' %}
+
+{% block overview_stats %}
+      {% include 'compute/includes/overview-lecturer-stats.html' %}
+{% endblock %}
+{% block content %}
+
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title bg-brand">
+                <h5>Lecturer: {{ staff_name }}</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class=" d-flex justify-content-end">
+                    <div>
+
+
+                    </div>
+                </div>
+          <table class="table table-striped" id="myTable" >
+                        <thead>
+                        <tr>
+
+
+                            <th>Course </th>
+                            <th>Program </th>
+                            <th>Lecturer </th>
+                            <th>Campus </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if page_obj %}
+    {% for report in page_obj %}
+
+                        <tr>
+
+                            <td>
+                                <a href="{% url 'evaluation_report' report.evaluationInfo.slug %}">{{ report.evaluationInfo }}</a>
+                            </td>
+                            <td>{{ report.evaluationInfo.course_information.qualification_name }}</td>
+                            <td>{{ report.evaluationInfo.course_information.lecturer_name }} {{ report.course_information.evaluationInfo.lecturer_surname }}</td>
+                            <td>{{ report.evaluationInfo.course_information.campus_name }}</td>
+
+
+                        </tr>
+    {% endfor %}
+      {% endif %}
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

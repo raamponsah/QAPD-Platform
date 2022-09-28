@@ -1,0 +1,64 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="104" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="11">
+            <item index="0" class="java.lang.String" itemvalue="hx-post" />
+            <item index="1" class="java.lang.String" itemvalue="hx-enctype" />
+            <item index="2" class="java.lang.String" itemvalue="hx-include" />
+            <item index="3" class="java.lang.String" itemvalue="hx-target" />
+            <item index="4" class="java.lang.String" itemvalue="hx-swap" />
+            <item index="5" class="java.lang.String" itemvalue="hx-params" />
+            <item index="6" class="java.lang.String" itemvalue="hx-push-url" />
+            <item index="7" class="java.lang.String" itemvalue="hx-get" />
+            <item index="8" class="java.lang.String" itemvalue="hx-trigger" />
+            <item index="9" class="java.lang.String" itemvalue="hx-indicator" />
+            <item index="10" class="java.lang.String" itemvalue="hx-refresh" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="17">
+            <item index="0" class="java.lang.String" itemvalue="clyent" />
+            <item index="1" class="java.lang.String" itemvalue="navigator-updater" />
+            <item index="2" class="java.lang.String" itemvalue="pyodbc" />
+            <item index="3" class="java.lang.String" itemvalue="scikit-learn-intelex" />
+            <item index="4" class="java.lang.String" itemvalue="conda-build" />
+            <item index="5" class="java.lang.String" itemvalue="TBB" />
+            <item index="6" class="java.lang.String" itemvalue="conda-verify" />
+            <item index="7" class="java.lang.String" itemvalue="conda" />
+            <item index="8" class="java.lang.String" itemvalue="anaconda-navigator" />
+            <item index="9" class="java.lang.String" itemvalue="sip" />
+            <item index="10" class="java.lang.String" itemvalue="urllib3" />
+            <item index="11" class="java.lang.String" itemvalue="gmpy2" />
+            <item index="12" class="java.lang.String" itemvalue="Pillow" />
+            <item index="13" class="java.lang.String" itemvalue="mkl-fft" />
+            <item index="14" class="java.lang.String" itemvalue="cytoolz" />
+            <item index="15" class="java.lang.String" itemvalue="llvmlite" />
+            <item index="16" class="java.lang.String" itemvalue="mkl-service" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="random.random.randint" />
+          <option value="import_export.resources.Model" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -1,0 +1,33 @@
+{% extends 'student-signup-templates/index.html' %}
+{% block form_content %}
+ <form class="form-detail"  method="post">
+    {% csrf_token %}
+				<h2>Finish Account Creation</h2>
+                    <div class="form-row mb-1">
+
+             {{ form.as_p }}
+                    </div>
+
+
+{#        <div class="form-row mb-1">#}
+{#					<label for="username">Your Program</label>#}
+{#                      {{ form.program }}#}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+{#				</div>#}
+
+
+{#     		<div class="form-row mb-2">#}
+{#					<label for="email">Your Campus</label>#}
+{#                      {{ form.campus }}#}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+{#				</div>#}
+
+
+
+
+
+				<div class="form-row-last">
+					<input type="submit" name="finish" class="register" value="Finish">
+				</div>
+			</form>
+{% endblock %}

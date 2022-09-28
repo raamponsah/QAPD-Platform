@@ -1,0 +1,262 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="layout-px-spacing">
+        <div class="row layout-top-spacing" id="cancel-row">
+            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                <div class="widget-content widget-content-area br-6">
+                    <div class="table-responsive mb-4 mt-4">
+
+                        <div id="multi-column-ordering_wrapper"
+                             class="dataTables_wrapper container-fluid dt-bootstrap4">
+                            <div class="d-flex justify-content-between">
+                                <div class="">
+                                    <h5>Course: {{ evaluation }}</h5>
+                                    <h6>Facilitator: {{ evaluation.facilitator }}</h6>
+                                </div>
+
+                                <div>
+                                    <h5 class="text-info">Overall Score {{ total_score_cumulatively }}</h5>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="multi-column-ordering" class="table table-hover dataTable"
+                                           style="width: 100%;" role="grid"
+                                           aria-describedby="multi-column-ordering_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Name: activate to sort column ascending"
+                                                style="width: 385px;">SubSurvey
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Position: activate to sort column ascending"
+                                                style="width: 385px;">Aspect
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Position: activate to sort column ascending"
+                                                style="width: 385px;">Qty
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Age: activate to sort column ascending"
+                                                style="width: 91px;">Sum
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Age: activate to sort column ascending"
+                                                style="width: 91px;">Avg
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Age: activate to sort column ascending"
+                                                style="width: 91px;">Max
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Age: activate to sort column ascending"
+                                                style="width: 91px;">Min
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Age: activate to sort column ascending"
+                                                style="width: 91px;">Std
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="multi-column-ordering"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Age: activate to sort column ascending"
+                                                style="width: 91px;">Variance
+                                            </th>
+
+                                        </thead>
+                                        <tbody>
+
+                                        <tr class="table-primary font-weight-bold">
+                                            <td>Curriculum</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="col-1">Score {{ averaged_cum_stats }}</td>
+                                        </tr>
+                                        {% for key, value in curriculum.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Curriculum</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+
+                                        {% for key, value in total_curriculum_score.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Curriculum</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+
+                                        {#                                   {% for key, value in cumulative_stats.items %}#}
+                                        {#                                        <tr role="row">#}
+                                        {#                                            <td class="sorting">Cumulative Statistics</td>#}
+                                        {#                                            <td class="sorting">{{ key | title }}</td>#}
+                                        {#                                            {% for k,v in value.items %}#}
+                                        {#                                                <td>{{ v}}</td>#}
+                                        {#                                                {% endfor %}#}
+                                        {##}
+                                        {#                                        </tr>#}
+                                        {#                                    {% endfor %}#}
+
+                                        <tr class="table-primary font-weight-bold">
+                                            <td>Attendance</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Score {{ averaged_attendance_stats }}</td>
+                                        </tr>
+
+                                        {% for key, value in attendance.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Attendance</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+
+                                            </tr>
+                                        {% endfor %}
+
+
+                                        <tr class="table-primary font-weight-bold">
+                                            <td>Delivery</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Score {{ averaged_delivery_stats }}</td>
+                                        </tr>
+
+                                        {% for key, value in attendance.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Delivery</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        <tr class="table-primary font-weight-bold">
+                                            <td>Assignments</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Score {{ averaged_assignments_stats }}</td>
+                                        </tr>
+
+                                        {% for key, value in assignments.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Assignments</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+
+                                            </tr>
+                                        {% endfor %}
+
+
+
+
+                                        <tr class="table-primary font-weight-bold">
+                                            <td>Interactions</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Score {{ averaged_interaction_stats }}</td>
+                                        </tr>
+
+                                        {% for key, value in interactions.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Interactions</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+
+                                            </tr>
+                                        {% endfor %}
+
+
+                                        <tr class="table-primary font-weight-bold">
+                                            <td>Environment</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Score {{ averaged_environment_stats }}</td>
+                                        </tr>
+
+                                        {% for key, value in environment.items %}
+                                            <tr role="row">
+                                                <td class="sorting">Environment</td>
+                                                <td class="sorting">{{ key | title }}</td>
+                                                {% for k,v in value.items %}
+                                                    <td>{{ v }}</td>
+                                                {% endfor %}
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

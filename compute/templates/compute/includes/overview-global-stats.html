@@ -1,0 +1,57 @@
+  {% load reports_per_school %}
+<div class="row">
+            <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+{#                        <span class="label label-success float-right">Evaluation</span>#}
+                        <h5>Submissions</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ e_submissions }}</h1>
+
+                        <small>Total submissions</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+
+                        <h5>Courses </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ n_courses}}</h1>
+
+                        <small>Total Number of Courses (not distinct)</small>
+                    </div>
+                </div>
+            </div>
+
+   <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+
+                        <h5>Global Score</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ cgs }} </h1>
+
+                        <small>Global Evaluation Score </small>
+                    </div>
+                </div>
+            </div>
+
+{#         <div class="col-lg-3">#}
+{#                <div class="ibox ">#}
+{#                    <div class="ibox-title bg-safe">#}
+{##}
+{#                        <h5>Lecturers</h5>#}
+{#                    </div>#}
+{#                    <div class="ibox-content">#}
+{#                        <h1 class="no-margins">{{ number_of_lecturers}}</h1>#}
+{##}
+{#                        <small>Total Number of Lecturers</small>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+        </div>

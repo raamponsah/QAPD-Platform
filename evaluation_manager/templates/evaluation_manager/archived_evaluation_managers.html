@@ -1,0 +1,88 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% block overview_stats %}
+      {% include 'compute/includes/overview-stats.html' %}
+{% endblock %}
+
+{% block content %}
+
+     <div class="col-lg-12">
+            <div class="ibox ">
+            <div class="ibox-title bg-safe">
+                <h5>Archived Evaluation Managers</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" id="report">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+
+
+                            <th>Academic Year </th>
+                            <th>Semester </th>
+                            <th>Start Date </th>
+                            <th>End Date </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if page_obj %}
+    {% for report in page_obj %}
+
+                        <tr>
+
+                            <td>
+                                <a href="{% url 'evaluation_manager' report.id %}">{{ report.academic_year }}</a>
+                            </td>
+                            <td>{{ report.semester }}</td>
+                            <td>{{ report.start_date}}</td>
+                            <td>{{ report.end_date }}</td>
+
+
+                        </tr>
+    {% endfor %}
+      {% endif %}
+                        </tbody>
+                    </table>
+
+                <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+                </div>
+
+            </div>
+            </div>
+            </div>
+{% endblock %}

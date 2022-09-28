@@ -1,0 +1,100 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% load students_per_course %}
+{% load reports_per_school %}
+{% block overview_stats %}
+    {% include 'compute/includes/overview-school-stats.html' %}
+{% endblock %}
+
+{% block content %}
+
+ <div class="col-lg-12" id="report">
+        <div class="ibox">
+            <div class="ibox-title bg-safe">
+                <h3>{{ school }} Evaluation Reports – Academic Year {{ academic_year }} Semester: {{ semester }}</h3>
+            </div>
+
+        <div class="ibox-tools mr-4">
+                  <a class="dropdown-toggle" onclick="printCertificate()" data-toggle="dropdown" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+  <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+  <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+</svg>
+                    </a>
+        </div>
+            <div class="ibox-content">
+
+                    <table class="table table-striped">
+
+                        <thead>
+{#                            <th>Lecturer</th>#}
+                            <th>Course</th>
+                            <th>Course Code</th>
+                            <th>Level</th>
+                            <th>Course Group</th>
+                            <th>Campus</th>
+                            <th>School</th>
+                            <th>Score</th>
+                        </thead>
+
+                        <tbody>
+                         {% for lecturer in lecturers %}
+                          {% if lecturer.staff_id in school_courses_vl %}
+                              <tr>
+                              <td><b><a href="{%url 'lecturer' lecturer.id %}">Summary Report for {{ lecturer }}</a></b></td>
+
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td> <b> Overall Score: {% lecturer_score_per_ay_sch lecturer.staff_id %}</b></td>
+                              </tr>
+                         {% for course in school_courses %}
+                                {% if course.lecturer_code == lecturer.staff_id  %}
+                                <tr>
+
+                                    <td>{{ course.subject_code }}</td>
+                                    <td>{{ course.subject_name }}</td>
+                                    <td>{{ course.level }}</td>
+                                    <td>{{ course.course_group | title }}</td>
+                                    <td>{{ course.campus_name | title }}</td>
+                                    <td>{{ course.faculty_school_name | title }}</td>
+                                    <td>{% score_for_submissions_per_course course %}</td>
+                                </tr>
+                                {% endif %}
+                         {% endfor %}
+
+                            {% endif %}
+                    {% endfor %}
+                        </tbody>
+
+
+                    </table>
+
+
+
+
+                    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

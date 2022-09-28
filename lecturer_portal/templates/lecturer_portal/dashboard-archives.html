@@ -1,0 +1,82 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% load students_per_course %}
+{% block overview_stats %}
+    {% include 'compute/includes/overview-lecturer-stats.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title bg-safe">
+                <h5>Archived Evaluation Reports </h5>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Academic Year</th>
+                            <th>Program</th>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Level</th>
+                            <th>Students Registered</th>
+                            <th>Students Submitted</th>
+                            <th>Campus</th>
+                            <th>Course Group</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if archived_evaluations_submitted %}
+                            {% for evaluation in archived_evaluations_submitted %}
+
+                                <tr>
+                                    <td>{{ evaluation.course.academic_year }}</td>
+
+                                    <td>
+                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.qualification_name }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.subject_code }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.subject_name }}</a>
+                                    </td>
+                                    <td>{{ evaluation.course.level }}</td>
+                                    <td>{{ evaluation.course.id | number_of_students_registered_per_this_course }}</td>
+                                    <td>{{ evaluation.course.id | number_of_evaluations }}</td>
+                                    <td>{{ evaluation.course.campus_name }}</td>
+                                    <td>{{ evaluation.course.course_group | title }}</td>
+
+
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

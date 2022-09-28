@@ -1,0 +1,42 @@
+{% extends 'student-signup-templates/index.html' %}
+{% block form_content %}
+ <form class="form-detail"  method="post">
+    {% csrf_token %}
+				<h2>Create Your Profile</h2>
+
+             <div class="form-row mb-1">
+
+                      {{ form.user }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+        <div class="form-row mb-1">
+					<label for="program">Your Program</label>
+                      {{ form.program }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+
+
+     		<div class="form-row mb-2">
+					<label for="campus">Your Campus</label>
+                      {{ form.campus }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+
+
+				<div class="form-row mb-2">
+					<label for="course_group">Your Course Group</label>
+                      {{ form.course_group }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+
+     		<div class="form-row mb-2">
+					<label for="level">Your Level</label>
+                      {{ form.level }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+
+				<div class="form-row-last">
+					<input type="submit" name="finish" class="register" value="Create Profile">
+				</div>
+			</form>
+{% endblock %}

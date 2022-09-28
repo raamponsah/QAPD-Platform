@@ -1,0 +1,20 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% block overview_stats %}
+      {% include 'compute/includes/overview-stats.html' %}
+{% endblock %}
+    {% block content %}
+        <div class="col-lg-12">
+ <div class="ibox">
+ <div class="ibox-title bg-safe">
+     <h5>Add New Evaluation Manager</h5>
+ </div>
+ <div class="ibox-content">
+        <form method="post" class="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary"value="{{ btn_text }}">
+    </form>
+ </div>
+ </div>
+        </div>
+{% endblock %}

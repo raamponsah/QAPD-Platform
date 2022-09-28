@@ -1,0 +1,46 @@
+{% extends 'student-signup-templates/index.html' %}
+{% block form_content %}
+    <form class="form-detail" method="post">
+        {% csrf_token %}
+       <div class="row">
+
+
+
+       
+
+        <h4 class="text-secondary">Lecturer Login</h4>
+        {% if login_error %}
+            <div class="alert alert-warning border-2 border-danger" role="alert">
+                <strong>Oops!</strong> {{ login_error }} <small><a href="" class="text-primary">Forgot
+                Password?</a></small> </button>
+            </div>
+        {% endif %}
+
+        <div class="form-row mb-1 ">
+
+            <label for="username">EMAIL</label>
+            <input id="username" required name="username" type="username" class="form-control"
+                   placeholder="you@example.com">
+        </div>
+
+        <div class="form-row form-row-1 ">
+            <div class="d-flex justify-content-between">
+                <label for="password">PASSWORD</label>
+                {#                                        <a href=" {% static 'auth_pass_recovery_boxed.html' %} " class="forgot-pass-link">Forgot Password?</a>#}
+            </div>
+            <input id="password" required name="password" type="password" class="form-control" placeholder="Password">
+
+
+        </div>
+
+
+        <div class="form-row-last">
+            <input type="submit" name="login" class="mt-2 text-white btn btn-primary" value="Login">
+        </div>
+
+        <div class="row">
+        <a href="{% url 'login_student' %}" class=" fs-6 btn btn-xs text-muted"><small>Sign in as Student</small></a>
+{#        <a href="{% url 'login_administrator' %}" class=" fs-6 btn btn-xs text-muted"><small>Sign in as Admin</small></a>#}
+    </div>
+    </form>
+{% endblock %}

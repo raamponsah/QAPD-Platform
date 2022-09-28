@@ -1,0 +1,61 @@
+{% extends 'student-signup-templates/index.html' %}
+{% block form_content %}
+    <form class="form-detail"  method="post">
+     {% if form.errors %}
+    <div class="alert alert-warning text-danger border-0 mb-4" role="alert">
+      <p>Please fix the following errors</p>
+        {% for field in form %}
+                       {% for error in field.errors %}
+                          <div>
+                               <strong>{{ error|escape }}</strong>
+                          </div>
+                       {% endfor %}
+                   {% endfor %}
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
+    </div>
+  {% endif %}
+    {% csrf_token %}
+				<h2>Create Account</h2>
+				<div class="form-group mb-2">
+					<div class="form-row form-row-1">
+						<label for="first_name">First Name</label>
+						  {{ form.first_name }}
+					</div>
+					<div class="form-row form-row-1">
+						<label for="last_name">Last Name</label>
+						  {{ form.last_name }}
+					</div>
+				</div>
+        <div class="form-row mb-1">
+					<label for="username">Your Username</label>
+                      {{ form.username }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+				<div class="form-row mb-2">
+					<label for="email">Your Email</label>
+                      {{ form.email }}
+{#					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">#}
+				</div>
+				<div class="form-group mb-4">
+					<div class="form-row form-row-1 ">
+						<label for="password1">Password</label>
+						  {{ form.password1 }}
+					</div>
+					<div class="form-row form-row-1">
+						<label for="password2">Confirm Password</label>
+						  {{ form.password2 }}
+					</div>
+				</div>
+{#				<div class="form-checkbox">#}
+{#					<label class="container"><p>I agree to the <a href="#" class="text">Terms and Conditions</a></p>#}
+{#					  	<input type="checkbox" name="checkbox">#}
+{#					  	<span class="checkmark"></span>#}
+{#					</label>#}
+{#				</div>#}
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Register">
+				</div>
+			</form>
+{% endblock %}

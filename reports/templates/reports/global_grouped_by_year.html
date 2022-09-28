@@ -1,0 +1,28 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% load students_per_course %}
+{% load reports_per_school %}
+
+{% block content %}
+    <div class="col-lg-12">
+       <div class="row">
+         <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+                          <h5>Select Academic Year - Global Reports</h5>
+                    </div>
+                    <div class="ibox-content">
+           <form action="">
+               <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" name="academic_year" class="form-select" aria-label="Default select example" id="academic_year">
+                   <option value="">Select</option>
+                   {% for evm in page_obj %}
+                       <option value="{% url 'global_reports_grouped_by_academic_year' evm.id %}">{{ evm }}</option>
+                   {% endfor %}
+               </select>
+           </form>
+                    </div>
+                </div>
+         </div>
+        </div>
+    </div>
+
+{% endblock %}

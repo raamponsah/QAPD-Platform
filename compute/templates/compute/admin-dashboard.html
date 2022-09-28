@@ -1,0 +1,186 @@
+{% extends 'admin-templates/dashboard.html' %}
+{% block overview_stats %}
+    {% include 'compute/includes/overview-stats.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col">
+        <div class="ibox ">
+            <div class="ibox-title bg-safe">
+                <h5>Evaluation Reports </h5>
+
+            </div>
+            <div class="ibox-content" id="report">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Program</th>
+
+                            <th>Campus</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if page_obj %}
+                            {% for report in page_obj %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'evaluation_report' report.evaluationInfo.slug %}">{{ report.evaluationInfo }}</a>
+                                    </td>
+                                    <td>{{ report.evaluationInfo.course.qualification_name }}</td>
+{#                                    <td>{{ report.evaluationInfo.course.lecturer_code }}</td>#}
+                                    <td>{{ report.evaluationInfo.course.campus_name }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="ibox ">
+            <div class="ibox-title bg-safe">
+                <h5>Course Information</h5>
+
+            </div>
+            <div class="ibox-content" id="report">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Program</th>
+                            <th>Campus</th>
+                            <th>Lecturer ID</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if courses %}
+                            {% for report in courses %}
+
+                                <tr>
+
+                                    <td>
+                                        <a href="">{{ report.subject_name }}</a>
+                                    </td>
+                                    <td>{{ report.subject_code }}</td>
+                                    <td>{{ report.qualification_name }}</td>
+                                    <td>{{ report.lecturer_code }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="ibox ">
+            <div class="ibox-title bg-safe">
+                <h5>Evaluation Managers</h5>
+
+            </div>
+            <div class="ibox-content" id="report">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+
+
+                            <th>Academic Year</th>
+                            <th>Semester</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if evaluation_managers_list %}
+                            {% for manager in evaluation_managers_list %}
+
+                                <tr>
+
+                                    <td>
+                                        <a href="{% url 'evaluation_manager' manager.id %}">{{ manager.academic_year }}</a>
+                                    </td>
+                                    <td>{{ manager.semester }}</td>
+                                    <td>{{ manager.start_date }}</td>
+                                    <td>{{ manager.end_date }}</td>
+
+
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

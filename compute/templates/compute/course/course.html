@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block content%}
+   <div class="layout-px-spacing">
+
+
+                <div class="row layout-top-spacing" id="cancel-row">
+                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                        <div class="widget-content widget-content-area br-6">
+
+   <h5> {{ main_course }}</h5>
+                            <h6>{{ main_course.facilitator }}</h6>
+                            <p>
+                                {{ main_course.description }}
+                            </p>
+
+{#  <ul class="list-group">#}
+{#  <li class="list-group-item list-group-item-action active">Courses</li>#}
+{#    {% for course in course.course_set.all %}#}
+{#        <li class="list-group-item">#}
+{#            <a href="">{{ course }}</a>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+
+</div>
+                    </div>
+                </div>
+   </div>
+
+
+
+
+{% endblock %}
