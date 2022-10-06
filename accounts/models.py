@@ -1,14 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.core.exceptions import ValidationError
 from django.db import models
-
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from django.db.models.manager import BaseManager
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.shortcuts import redirect
-
-from django.urls import reverse
 
 # Create your models here.
 # from core.models import ProgramInformation, CampusInformation
