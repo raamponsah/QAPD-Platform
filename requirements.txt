@@ -5,6 +5,7 @@ charset-normalizer==2.1.1
 cryptography @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b470f7cb-c8f1-42c9-b84f-23789ea77e7c9difcqh4/croots/recipe/cryptography_1652101134392/work
 defusedxml==0.7.1
 diff-match-patch==20200713
+dj-database-url==1.0.0
 Django @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_066uop7vqa/croots/recipe/django_1661292540858/work
 django-environ==0.9.0
 django-import-export==2.9.0
