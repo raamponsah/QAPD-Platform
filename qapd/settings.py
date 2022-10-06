@@ -20,6 +20,13 @@ from mailjet_rest import Client
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -142,4 +149,4 @@ EMAIL_CONFIRMATION_PERIOD_DAYS = 7
 SIMPLE_EMAIL_CONFIRMATION_PERIOD = timedelta(days=EMAIL_CONFIRMATION_PERIOD_DAYS)
 SIMPLE_EMAIL_CONFIRMATION_KEY_LENGTH = 16
 SIMPLE_EMAIL_CONFIRMATION_EMAIL_ADDRESS_MODEL = 'helloralph@vineboard.com'
-mailjet = Client(auth=(env('MAILJET_API_KEY'), env('MAILJET_SECRET_KEY')), version='v3.1')
+mailjet = Client(auth=(os.getenv('MAILJET_API_KEY'), os.getenv('MAILJET_SECRET_KEY')), version='v3.1')

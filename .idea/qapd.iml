@@ -16,6 +16,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="squahfire" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="removeUnused" value="true" />
