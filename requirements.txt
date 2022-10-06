@@ -10,6 +10,7 @@ Django @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_066
 django-environ==0.9.0
 django-import-export==2.9.0
 et-xmlfile==1.1.0
+gunicorn==20.1.0
 idna==3.3
 mailjet-rest==1.3.4
 MarkupPy==1.14
