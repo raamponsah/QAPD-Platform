@@ -68,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
     "accounts.middleware.LecturerProfileMiddleware.lpm",
     "accounts.middleware.StudentProfileMiddleware.spm",
