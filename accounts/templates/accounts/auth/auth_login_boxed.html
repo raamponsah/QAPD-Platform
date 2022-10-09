@@ -13,10 +13,9 @@
             <div class="alert alert-warning border-2 border-danger" role="alert">
                             {% if messages %}
            {% for m in messages %}
-              <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <strong class="" role="alert">
                  {{ m }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+              </strong>
             {% endfor %}
         {% endif %}
 
