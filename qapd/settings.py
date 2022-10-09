@@ -110,6 +110,8 @@ DATABASES = {
     }
 }
 
+USE_TZ = True
+TIME_ZONE = 'Africa/Accra'
 
 # DATABASES = {
 #     'default': {
