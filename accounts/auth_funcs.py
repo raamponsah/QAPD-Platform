@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 import pytz
 
 # Using current time
-ini_time_for_now = datetime.utcnow(tz=timezone.utc)
+ini_time_for_now = datetime.now(timezone.utc)
 
 future_date_after_7days = ini_time_for_now + \
                           timedelta(days=settings.EMAIL_CONFIRMATION_PERIOD_DAYS)
