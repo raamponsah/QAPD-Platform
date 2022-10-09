@@ -3,9 +3,10 @@ from cryptography.fernet import Fernet
 from accounts.models import ActivateUser
 from qapd import settings
 from datetime import datetime, timedelta
+import pytz
 
 # Using current time
-ini_time_for_now = datetime.now()
+ini_time_for_now = datetime.now(tzinfo=pytz.UTC)
 
 future_date_after_7days = ini_time_for_now + \
                           timedelta(days=settings.EMAIL_CONFIRMATION_PERIOD_DAYS)
