@@ -5,23 +5,28 @@
 
     {% csrf_token %}
 				<h4 class="text-secondary">Administrator Login</h4>
-                 <div>
-                     {% if messages %}
-                {% for m in messages %}
-                  <div class="alert alert-info alert-dismissible fade show" role="alert">
-                     {{ m }}
-                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-                {% endif %}
-                 </div>
 
 
-              {% if login_error %}
-                                    <div class="alert alert-warning border-2 border-danger" role="alert">
-                                        <strong>Oops!</strong> {{ login_error }} <small><a href="" class="text-primary" >Forgot Password?</a></small> </button>
-                                    </div>
-                                {% endif %}
+
+             {% if login_error %}
+            <div class="alert alert-warning border-2 border-danger" role="alert">
+                            {% if messages %}
+           {% for m in messages %}
+              <strong class="" role="alert">
+                 {{ m }}
+              </strong>
+            {% endfor %}
+        {% endif %}
+
+                <strong>Oops!</strong> {{ login_error }} <small><a href="" class="text-primary">Forgot
+                Password?</a></small> </button>
+
+
+
+
+            </div>
+
+        {% endif %}
 
         <div class="form-row mb-1 ">
 
