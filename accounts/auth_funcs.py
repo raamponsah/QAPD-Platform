@@ -2,7 +2,8 @@ from cryptography.fernet import Fernet
 
 from accounts.models import ActivateUser
 from qapd import settings
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
+from django.utils import timezone
 import pytz
 from django.utils.timezone import make_aware
 
