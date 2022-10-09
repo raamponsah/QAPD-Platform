@@ -193,7 +193,7 @@ def login_student(request):
 
         # this would have to become a custom user (e.g. student)
         student = authenticate(username=username, password=password)
-        if student is not None:
+        if student is not None and student.is_student is True and student.is_active is True:
             login(request, student)
             messages.success(request, f'Welcome {student}')
             return redirect('evaluations')
