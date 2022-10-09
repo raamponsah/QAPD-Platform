@@ -7,7 +7,7 @@ import pytz
 from django.utils.timezone import make_aware
 
 # Using current time
-ini_time_for_now = make_aware(datetime.now())
+ini_time_for_now = datetime.now()
 
 future_date_after_7days = ini_time_for_now + \
                           timedelta(days=settings.EMAIL_CONFIRMATION_PERIOD_DAYS)
