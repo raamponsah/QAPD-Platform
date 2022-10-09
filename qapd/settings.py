@@ -110,7 +110,7 @@ DATABASES = {
     }
 }
 
-USE_TZ = False
+
 
 
 # DATABASES = {

@@ -4,9 +4,10 @@ from accounts.models import ActivateUser
 from qapd import settings
 from datetime import datetime, timedelta, timezone
 import pytz
+from django.utils.timezone import make_aware
 
 # Using current time
-ini_time_for_now = datetime.now()
+ini_time_for_now = make_aware(datetime.now())
 
 future_date_after_7days = ini_time_for_now + \
                           timedelta(days=settings.EMAIL_CONFIRMATION_PERIOD_DAYS)
