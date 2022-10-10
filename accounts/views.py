@@ -88,7 +88,7 @@ def register_student(request):
             print(token)
             link = f"{get_current_site(request)}/accounts/confirm-email/{token}"
             generate_confirmation_link_mail(user.email, user.username, link)
-            messages.success(request, f'A confirmation email was sent!')
+            messages.success(request, f'A confirmation email was sent to {user.email}!')
             return redirect('login_student')
         else:
             form = StudentRegisterForm(request.POST)
