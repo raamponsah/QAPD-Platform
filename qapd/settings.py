@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'whitenoise.runserver_nostatic',
     'core.apps.CoreConfig',
     'import_export',
     'accounts',
@@ -154,6 +155,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Extra places for collect static to find static files.
 STATICFILES_DIRS = [
