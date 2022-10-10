@@ -9,9 +9,11 @@
 
                     </div>
 
-       {% if messages.success %}
-           please check your email for verification
-       {% endif %}
+     {% for message in messages %}
+    {% if 'success' in message.tags %}
+    <div class="success-message">{{ message }}</div>
+    {% endif %}
+{% endfor %}
 
         {% if login_error %}
             <div class="alert alert-warning border-2 border-danger" role="alert">
