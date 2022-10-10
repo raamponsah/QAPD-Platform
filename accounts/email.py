@@ -53,8 +53,8 @@ def generate_confirmation_link_mail(to_email, to_name, link):
         'Messages': [
             {
                 "From": {
-                    "Email": 'helloralph@vineboard.com',
-                    "Name": 'QAP PORTAL -GIMPA'
+                    "Email": 'raamponsah@gimpa.edu.gh',
+                    "Name": 'GIMPA QAPD'
                 },
                 "To": [
                     {
@@ -62,7 +62,7 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                         "Name": to_name
                     }
                 ],
-                "Subject": "Activate your QAP-GIMPA account!",
+                "Subject": "Activate your GIMPA QAPD account!",
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
                 # "HTMLPart": message
             }
