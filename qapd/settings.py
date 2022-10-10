@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
     "django.contrib.staticfiles",
     'whitenoise.runserver_nostatic',
     'core.apps.CoreConfig',
@@ -60,6 +63,14 @@ INSTALLED_APPS = [
     'email_service',
     'reports'
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dozaqkiam',
+    'API_KEY': '886136859528373',
+    'API_SECRET': 'GS_dXSMOTLCN1LX4ZA6EFb-YJJg'
+}
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
