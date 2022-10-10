@@ -71,7 +71,7 @@ def generate_confirmation_link_mail(to_email, to_name, link):
 
     result = mailjet.send.create(data=data)
     if result:
-        print(result.status_code,"email sent")
+        print(result.status_code,"email sent", result.json())
         return True
     else:
         print(result.status_code,"email not sent", result.json())
