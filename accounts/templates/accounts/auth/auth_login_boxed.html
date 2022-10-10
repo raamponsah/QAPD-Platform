@@ -11,7 +11,7 @@
 
      {% for message in messages %}
     {% if 'success' in message.tags %}
-    <div class="success-message">{{ message }}</div>
+    <div class="success-message alert alert-warning border-success" role="alert">{{ message }}</div>
     {% endif %}
 {% endfor %}
 
