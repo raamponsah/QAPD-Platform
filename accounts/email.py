@@ -74,6 +74,6 @@ def generate_confirmation_link_mail(to_email, to_name, link):
         print(result.status_code,"email sent")
         return True
     else:
-        print(result.status_code,"email not sent")
+        print(result.status_code,"email not sent", result.json())
 
         return False
