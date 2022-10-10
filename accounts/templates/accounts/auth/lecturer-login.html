@@ -6,6 +6,12 @@
 
          <h2 class="fs-6">Sign into your Account</h2>
 
+            {% for message in messages %}
+    {% if 'success' in message.tags %}
+    <div class="success-message alert alert-info border-success" role="alert">{{ message }}</div>
+    {% endif %}
+{% endfor %}
+
            {% if login_error %}
             <div class="alert alert-warning border-2 border-danger" role="alert">
                             {% if messages %}

@@ -30,7 +30,7 @@ def register_lecturer(request):
             token = generate_confirmation_token(user)
             link = f"{get_current_site(request)}/accounts/confirm-email/{token}"
             generate_confirmation_link_mail(user.email, user.username, link)
-            messages.success(request, f'A confirmation email was sent!')
+            messages.success(request, f'A confirmation email was sent {user.email}!')
             return redirect('login_lecturer')
         else:
             form = LecturerRegistrationForm(request.POST)
