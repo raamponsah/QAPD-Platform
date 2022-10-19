@@ -91,16 +91,23 @@ class LecturerProfile(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE,
                                 related_name='student')
+
     choices = (
-        ('000', 'Diploma'),
-        ('100', 'Level 100'),
-        ('200', 'Level 200'),
-        ('300', 'Level 300'),
-        ('400', 'Level 400'),
-        ('600', 'Level 600-PGD'),  # pgd students
-        ('700', 'Level 700'),
-        ('800', 'Level 800'),
+        ('1', 'Year 1'),
+        ('2', 'Year 2'),
+        ('3', 'Year 3'),
+        ('4', 'Year 4'),
     )
+    # choices = (
+    #     ('000', 'Diploma'),
+    #     ('100', 'Level 100'),
+    #     ('200', 'Level 200'),
+    #     ('300', 'Level 300'),
+    #     ('400', 'Level 400'),
+    #     ('600', 'Level 600-PGD'),  # pgd students
+    #     ('700', 'Level 700'),
+    #     ('800', 'Level 800'),
+    # )
 
     lecture_group = (
         ('day', 'Day'),
@@ -119,7 +126,6 @@ class Student(models.Model):
 
     class Meta:
         verbose_name = 'Student Profile'
-
 
 # @receiver(signal=post_save, sender=CustomUser)
 # def create_student_profile(sender, instance, created, **kwargs):

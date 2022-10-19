@@ -16,17 +16,22 @@ class CourseInformation(models.Model):
         ('evening', 'Evening'),
         ('weekend', 'Weekend'),
     )
-
-    level_choices = (
-        ('000', 'Diploma'),
-        ('100', 'Level 100'),
-        ('200', 'Level 200'),
-        ('300', 'Level 300'),
-        ('400', 'Level 400'),
-        ('600', 'Level 600-PGD'),  # pgd students
-        ('700', 'Level 700'),
-        ('800', 'Level 800'),
+    level_choices =  (
+        ('1', 'Year 1'),
+        ('2', 'Year 2'),
+        ('3', 'Year 3'),
+        ('4', 'Year 4'),
     )
+    # level_choices = (
+    #     ('000', 'Diploma'),
+    #     ('100', 'Level 100'),
+    #     ('200', 'Level 200'),
+    #     ('300', 'Level 300'),
+    #     ('400', 'Level 400'),
+    #     ('600', 'Level 600-PGD'),  # pgd students
+    #     ('700', 'Level 700'),
+    #     ('800', 'Level 800'),
+    # )
     academic_year = models.CharField(max_length=10, null=True, blank=True)
     campus_name = models.CharField(max_length=255, null=True, blank=True)
     faculty_school_name = models.CharField(max_length=255, null=True, blank=True)

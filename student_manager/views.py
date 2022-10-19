@@ -13,7 +13,7 @@ def manager_students_view(request):
     if students:
         if request.method == 'POST':
             for student in students:
-                Student.objects.filter(id=student.id).update(level=int(student.level) + 100)
+                Student.objects.filter(id=student.id).update(level=int(student.level) + 1)  # changed to 1
             messages.success(request, 'Students\' levels have been updated')
             return redirect('dashboard')
     else:
