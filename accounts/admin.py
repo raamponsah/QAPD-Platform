@@ -16,11 +16,11 @@ class CustomUserAdmin(UserAdmin):
     # ordering = ('-start_date',)
     search_fields = ('email', 'last_name', 'username')
     list_display = ('email', 'username', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_student', 'is_qadmin',
-                    'is_lecturer')
+                    'is_lecturer','is_superuser')
 
     fieldsets = (
         (None, {'fields': ('email', 'username', 'first_name', 'last_name',)}),
-        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_qadmin', 'is_student', 'is_lecturer')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_qadmin', 'is_student', 'is_lecturer','is_superuser')}),
     )
 
     add_fieldsets = (
@@ -28,7 +28,7 @@ class CustomUserAdmin(UserAdmin):
             'classes': ('wide',),
             'fields': ('email', 'username', 'first_name',
                        'last_name', 'password1', 'password2', 'is_qadmin', 'is_student',
-                       'is_staff','is_lecturer', 'is_active',)}),
+                       'is_staff','is_lecturer', 'is_active','is_superuser')}),
     )
 
 
