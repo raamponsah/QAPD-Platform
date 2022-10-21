@@ -16,7 +16,7 @@ class CourseInformation(models.Model):
         ('evening', 'Evening'),
         ('weekend', 'Weekend'),
     )
-    level_choices =  (
+    level_choices = (
         ('1', 'Year 1'),
         ('2', 'Year 2'),
         ('3', 'Year 3'),
