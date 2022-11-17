@@ -92,14 +92,14 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td class="col-1">Score {{ averaged_cum_stats }}</td>
+                                            <td class="col-1">Score {{ averaged_cum_stats |floatformat:2}}</td>
                                         </tr>
                                         {% for key, value in curriculum.items %}
                                             <tr role="row">
                                                 <td class="sorting">Curriculum</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
                                             </tr>
                                         {% endfor %}
@@ -109,7 +109,7 @@
                                                 <td class="sorting">Curriculum</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
                                             </tr>
                                         {% endfor %}
@@ -134,7 +134,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Score {{ averaged_attendance_stats }}</td>
+                                            <td>Score {{ averaged_attendance_stats|floatformat:2 }}</td>
                                         </tr>
 
                                         {% for key, value in attendance.items %}
@@ -158,7 +158,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Score {{ averaged_delivery_stats }}</td>
+                                            <td>Score {{ averaged_delivery_stats |floatformat:2}}</td>
                                         </tr>
 
                                         {% for key, value in attendance.items %}
@@ -166,7 +166,7 @@
                                                 <td class="sorting">Delivery</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
 
                                             </tr>
@@ -181,7 +181,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Score {{ averaged_assignments_stats }}</td>
+                                            <td>Score {{ averaged_assignments_stats|floatformat:2 }}</td>
                                         </tr>
 
                                         {% for key, value in assignments.items %}
@@ -189,7 +189,7 @@
                                                 <td class="sorting">Assignments</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
 
                                             </tr>
@@ -207,7 +207,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Score {{ averaged_interaction_stats }}</td>
+                                            <td>Score {{ averaged_interaction_stats|floatformat:2 }}</td>
                                         </tr>
 
                                         {% for key, value in interactions.items %}
@@ -215,7 +215,7 @@
                                                 <td class="sorting">Interactions</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
 
                                             </tr>
@@ -231,7 +231,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Score {{ averaged_environment_stats }}</td>
+                                            <td>Score {{ averaged_environment_stats |floatformat:2}}</td>
                                         </tr>
 
                                         {% for key, value in environment.items %}
@@ -239,7 +239,7 @@
                                                 <td class="sorting">Environment</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
 
                                             </tr>
