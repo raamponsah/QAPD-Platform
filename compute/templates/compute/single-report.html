@@ -142,7 +142,7 @@
                                                 <td class="sorting">Attendance</td>
                                                 <td class="sorting">{{ key | title }}</td>
                                                 {% for k,v in value.items %}
-                                                    <td>{{ v }}</td>
+                                                    <td>{{ v|floatformat:2 }}</td>
                                                 {% endfor %}
 
                                             </tr>
