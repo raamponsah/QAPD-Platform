@@ -39,7 +39,7 @@ class SchoolDataResource(resources.ModelResource):
 
 class ProgramInformationResource(resources.ModelResource):
 
-    author = fields.Field(
+    school = fields.Field(
         column_name='school',
         attribute='school',
         widget=ForeignKeyWidget(School, 'name'))
