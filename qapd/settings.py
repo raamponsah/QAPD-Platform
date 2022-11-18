@@ -109,17 +109,17 @@ WSGI_APPLICATION = "qapd.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'Ofo34BEgzFrQulmojLWa',
-        'HOST': 'containers-us-west-43.railway.app',
-        'PORT': '7611',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         #'ENGINE': 'django.db.backends.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'containers-us-west-125.railway.app',
+#         'PORT': '7611',
+#     }
+# }
 
 
 
