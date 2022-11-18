@@ -20,15 +20,14 @@ NUMBER_OF_ENVIRONMENT_CHOICES = 9
 def dashboard(request):
     _reports = Evaluation.objects.all().annotate(submitted=Count(F('evaluation_form')))
     e_submitted = EvaluationSubmission.objects.all()
-    paginator = Paginator(e_submitted, 25)
+    paginator = Paginator(e_submitted, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
-
-
     evaluation_managers_list = EvaluationManager.objects.all().order_by('-end_date')
     courses = CourseInformation.objects.all()
-    paginator_2 = Paginator(courses, 25)
+    paginator_2 = Paginator(courses, 10)
+    page_number_2 = request.GET.get('page')
+    page_obj_2 = paginator_2.get_page(page_number_2)
 
     stats = statistics()
     context = {
@@ -37,7 +36,7 @@ def dashboard(request):
         'page_title': 'Evaluation Reports',
         'page_obj': page_obj,
         'evaluation_managers_list': evaluation_managers_list,
-        'courses': paginator_2,
+        'courses': page_obj_2,
         **stats
     }
     return render(request, 'compute/admin-dashboard.html', context)
