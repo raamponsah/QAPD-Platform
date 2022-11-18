@@ -1,18 +1,20 @@
 from django.db.models import Count
 from django.shortcuts import render
 
+from accounts.auth_decorators import only_admins
 # Create your views here.
 from accounts.models import LecturerProfile
 from core.models import CourseInformation, School, EvaluationSubmission, Evaluation
 from evaluation_manager.models import EvaluationManager
 from helper_functions.helpers import computational_global_stats, computational_school_stats
 
-
+@only_admins
 def select_schools_academic_year(request):
     evaluation_managers = EvaluationManager.objects.all().order_by('academic_year', 'semester')
     return render(request, 'reports/grouped_by_year.html', {'page_obj': evaluation_managers, 'active': 'school-report'})
 
 
+@only_admins
 def school_reports_grouped_by_academic_year(request, evm_id):
     evaluation_manager = EvaluationManager.objects.filter(id=evm_id).first()
     evaluation_managers = EvaluationManager.objects.all().order_by('academic_year', 'semester')
@@ -36,7 +38,7 @@ def school_reports_grouped_by_academic_year(request, evm_id):
                                                   'e_submissions': e_submissions.count()
                                                   })
 
-
+@only_admins
 def school_report_summary(request, school_id, slug):
     school = School.objects.get(id=school_id)
     evaluation_manager = EvaluationManager.objects.filter(slug=slug).first()
@@ -67,6 +69,7 @@ def school_report_summary(request, school_id, slug):
 
 
 # Global report functions
+@only_admins
 def select_global_academic_year(request):
     evaluation_managers = EvaluationManager.objects.all().order_by('academic_year', 'semester')
     e_submissions = EvaluationSubmission.objects.filter(is_evaluated=True).count()
@@ -75,7 +78,7 @@ def select_global_academic_year(request):
                    'e_submissions': e_submissions,
                    })
 
-
+@only_admins
 def global_reports_grouped_by_academic_year(request, evm_id):
     evaluation_manager = EvaluationManager.objects.filter(id=evm_id).first()
     evaluation_managers = EvaluationManager.objects.all().order_by('academic_year', 'semester')
@@ -110,11 +113,13 @@ def global_reports_grouped_by_academic_year(request, evm_id):
 
 
 # facilities Report
+@only_admins
 def select_facilities_academic_year(request):
     evaluation_managers = EvaluationManager.objects.all().order_by('academic_year', 'semester')
     return render(request, 'reports/facilities_grouped_by_year.html', {'page_obj': evaluation_managers,
                                                                        'active': 'facilities-report'})
 
+@only_admins
 def facilities_reports_grouped_by_academic_year(request, evm_id):
     evaluation_manager = EvaluationManager.objects.filter(id=evm_id).first()
     evaluation_managers = EvaluationManager.objects.all().order_by('academic_year', 'semester')
