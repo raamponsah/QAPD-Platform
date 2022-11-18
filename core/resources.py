@@ -1,6 +1,8 @@
 from django.db import IntegrityError
-from import_export import resources
-from core.models import CourseInformation, ProgramInformation, CampusInformation
+from import_export import resources, fields
+from import_export.widgets import ForeignKeyWidget
+
+from core.models import CourseInformation, ProgramInformation, CampusInformation, School
 
 
 class SchoolDataResource(resources.ModelResource):
@@ -36,9 +38,15 @@ class SchoolDataResource(resources.ModelResource):
 
 
 class ProgramInformationResource(resources.ModelResource):
+
+    author = fields.Field(
+        column_name='school',
+        attribute='school',
+        widget=ForeignKeyWidget(School, 'name'))
+
     class Meta:
         model = ProgramInformation
-        fields = ('id', 'program_name', 'department_name')
+        fields = ('id', 'program_name', 'department_name','school')
 
 
 class CampusInformationResource(resources.ModelResource):
