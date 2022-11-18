@@ -23,8 +23,12 @@ def dashboard(request):
     paginator = Paginator(e_submitted, 25)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+
+
     evaluation_managers_list = EvaluationManager.objects.all().order_by('-end_date')
     courses = CourseInformation.objects.all()
+    paginator_2 = Paginator(courses, 25)
 
     stats = statistics()
     context = {
@@ -33,7 +37,7 @@ def dashboard(request):
         'page_title': 'Evaluation Reports',
         'page_obj': page_obj,
         'evaluation_managers_list': evaluation_managers_list,
-        'courses': courses,
+        'courses': paginator_2,
         **stats
     }
     return render(request, 'compute/admin-dashboard.html', context)

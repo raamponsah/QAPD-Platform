@@ -21,6 +21,7 @@ def manager_students_view(request):
     # return render(request, 'student_manager/index.html', context)
 
 
+@only_admins
 def students_managers(request):
     campuses = CampusInformation.objects.all()
     return render(request, 'student_manager/index.html')
