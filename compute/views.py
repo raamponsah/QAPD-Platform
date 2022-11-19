@@ -92,7 +92,7 @@ def evaluation_reports_generated_list_archived(request):
 def evaluation_report(request, slug):
     evaluation = get_object_or_404(Evaluation, slug=slug)
     lecturer = None
-    if LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get():
+    if LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get().count()==0:
         lecturer = LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get()
     else:
         lecturer=None
