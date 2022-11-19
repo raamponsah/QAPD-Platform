@@ -13,7 +13,7 @@ class SchoolDataResource(resources.ModelResource):
             'campus_name',
             'faculty_school_name',
             'department_name',
-            'qualification_name',
+            'qualification_name__program_name',
             'lecturer_code',
             'subject_code',
             'subject_name',
