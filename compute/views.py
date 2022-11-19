@@ -83,7 +83,7 @@ def evaluation_reports_generated_list_archived(request):
         'page_title': 'Evaluation Reports',
         'page_obj': page_obj,
         'active': 'levm',
-                  ** stats
+        **stats
     }
     return render(request, 'compute/admin-dashboard.html', context)
 
@@ -92,11 +92,10 @@ def evaluation_reports_generated_list_archived(request):
 def evaluation_report(request, slug):
     evaluation = get_object_or_404(Evaluation, slug=slug)
     lecturer = None
-    if LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get().count() is not None:
+    try:
         lecturer = LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get()
-    else:
+    except:
         lecturer = None
-
 
     evaluation_submitted = Evaluation.objects.filter(slug=slug).annotate(
         submitted=Count(F('evaluation_form'))).get()
