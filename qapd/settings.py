@@ -69,7 +69,12 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET_KEY')
 }
 
-
+CACHES = {
+   'default': {
+      'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+      'LOCATION': 'apqad_cache_table',
+   }
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
