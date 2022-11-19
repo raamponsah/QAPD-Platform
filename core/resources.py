@@ -6,8 +6,8 @@ from core.models import CourseInformation, ProgramInformation, CampusInformation
 
 
 class SchoolDataResource(resources.ModelResource):
-    qualification_name = fields.Field(attribute='qualification_name', column_name='qualification_name',
-                                      widget=ForeignKeyWidget(ProgramInformation, 'program_name'))
+    # qualification_name = fields.Field(attribute='qualification_name', column_name='qualification_name',
+    #                                   widget=ForeignKeyWidget(ProgramInformation, 'program_name'))
 
     class Meta:
         model = CourseInformation
