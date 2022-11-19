@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -14,10 +15,13 @@ from helper_functions.helpers import statistics
 @only_admins
 def evaluation_managers_view(request):
     evaluation_managers_list = EvaluationManager.objects.all().order_by('-end_date')
+    paginator = Paginator(evaluation_managers_list, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     stats = statistics()
     context = {
         'active': 'evm',
-        'page_obj': evaluation_managers_list,
+        'page_obj': page_obj,
         **stats
     }
     return render(request, 'evaluation_manager/list.html', context)
