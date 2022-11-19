@@ -25,8 +25,8 @@ class SchoolDataResource(resources.ModelResource):
             'level',
             'course_group'
         )
-        skip_unchanged = True
-        report_skipped = True
+        # skip_unchanged = True
+        # report_skipped = True
 
     def save_instance(self, instance, using_transactions=True, dry_run=False):
         try:
