@@ -91,7 +91,7 @@ def evaluation_reports_generated_list_archived(request):
 @only_admins_and_lecturers
 def evaluation_report(request, slug):
     evaluation = get_object_or_404(Evaluation, slug=slug)
-    lecturer = LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get() if LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get() else None
+    lecturer = LecturerProfile.objects.filter(staff_id=evaluation.course.lecturer_code).get() if True else None
     evaluation_submitted = Evaluation.objects.filter(slug=slug).annotate(
         submitted=Count(F('evaluation_form'))).get()
 
