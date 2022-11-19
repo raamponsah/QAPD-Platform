@@ -28,7 +28,7 @@ class CourseInformation(models.Model):
     campus_name = models.CharField(max_length=255, null=True, blank=True)
     faculty_school_name = models.CharField(max_length=255, null=True, blank=True)
     department_name = models.CharField(max_length=255, null=True, blank=True)
-    qualification_name = models.ForeignKey('ProgramInformation', null=True, blank=True, on_delete=models.CASCADE)
+    qualification_name = models.CharField(max_length=255, null=True, blank=True)
     lecturer_code = models.IntegerField(null=True, blank=True)
     subject_code = models.CharField(max_length=255, null=True, blank=True)
     subject_name = models.CharField(max_length=255, null=True, blank=True)
