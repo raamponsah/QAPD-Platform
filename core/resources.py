@@ -45,9 +45,7 @@ class ProgramInformationResource(resources.ModelResource):
 
     class Meta:
         model = ProgramInformation
-        exclude = ('id',)
-        import_id_fields = ('name',)
-        fields = ('id', 'program_name', 'department_name', 'school')
+        fields = ('program_name', 'department_name', 'school')
 
 
 class CampusInformationResource(resources.ModelResource):
