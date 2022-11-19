@@ -38,14 +38,14 @@ class SchoolDataResource(resources.ModelResource):
 
 
 class ProgramInformationResource(resources.ModelResource):
-    # school = fields.Field(
-    #     column_name='school',
-    #     attribute='school',
-    #     widget=ForeignKeyWidget(School, 'name'))
+    school = fields.Field(
+        column_name='school',
+        attribute='school',
+        widget=ForeignKeyWidget(School, 'name'))
 
     class Meta:
         model = ProgramInformation
-        fields = ('id', 'program_name', 'department_name', 'school__name')
+        fields = ('id', 'program_name', 'department_name', 'school')
 
 
 class CampusInformationResource(resources.ModelResource):

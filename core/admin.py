@@ -31,7 +31,7 @@ admin.site.register(CourseInformation, CourseAdminResource)
 
 class ProgramInformationAdminResource(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('program_name',
-                    'department_name',)
+                    'department_name','school')
 
 
 admin.site.register(ProgramInformation, ProgramInformationAdminResource)
