@@ -12,6 +12,7 @@ class SchoolDataResource(resources.ModelResource):
     class Meta:
         model = CourseInformation
         fields = (
+            'id',
             'academic_year',
             'campus_name',
             'faculty_school_name',
