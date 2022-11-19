@@ -6,8 +6,6 @@ from core.models import CourseInformation, ProgramInformation, CampusInformation
 
 
 class SchoolDataResource(resources.ModelResource):
-    # qualification_name = fields.Field(attribute='qualification_name', column_name='qualification_name',
-    #                                   widget=ForeignKeyWidget(ProgramInformation, 'program_name'))
 
     class Meta:
         model = CourseInformation
@@ -25,8 +23,20 @@ class SchoolDataResource(resources.ModelResource):
             'level',
             'course_group'
         )
-        # skip_unchanged = True
-        # report_skipped = True
+        skip_unchanged = True
+        report_skipped = True
+
+    def save_instance(self, instance, using_transactions=True, dry_run=False):
+        try:
+            super().save_instance(instance, using_transactions, dry_run)
+        except IntegrityError:
+            pass
+
+    # def save_instance(self, instance, using_transactions=True, dry_run=False):
+    #     try:
+    #         super(SchoolDataResource, self).save_instance(instance, using_transactions, dry_run)
+    #     except IntegrityError:
+    #         pass
 
 
 class ProgramInformationResource(resources.ModelResource):
