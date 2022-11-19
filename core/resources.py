@@ -40,11 +40,13 @@ class SchoolDataResource(resources.ModelResource):
 class ProgramInformationResource(resources.ModelResource):
     school = fields.Field(
         column_name='school',
-        attribute='id',
-        widget=ForeignKeyWidget(School, 'id'))
+        attribute='school',
+        widget=ForeignKeyWidget(School, 'name'))
 
     class Meta:
         model = ProgramInformation
+        exclude = ('id',)
+        import_id_fields = ('name',)
         fields = ('id', 'program_name', 'department_name', 'school')
 
 
