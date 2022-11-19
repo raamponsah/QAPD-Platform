@@ -40,7 +40,7 @@ class SchoolDataResource(resources.ModelResource):
 class ProgramInformationResource(resources.ModelResource):
     school = fields.Field(
         column_name='school',
-        attribute='school',
+        attribute='id',
         widget=ForeignKeyWidget(School, 'id'))
 
     class Meta:
