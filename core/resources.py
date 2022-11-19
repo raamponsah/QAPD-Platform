@@ -46,10 +46,10 @@ class SchoolDataResource(resources.ModelResource):
 
 
 class ProgramInformationResource(resources.ModelResource):
-    school = fields.Field(
-        column_name='school',
-        attribute='school',
-        widget=ForeignKeyWidget(School, 'name'))
+    # school = fields.Field(
+    #     column_name='school',
+    #     attribute='school',
+    #     widget=ForeignKeyWidget(School, 'name'))
 
     class Meta:
         model = ProgramInformation
