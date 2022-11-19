@@ -41,7 +41,7 @@ class ProgramInformationResource(resources.ModelResource):
     school = fields.Field(
         column_name='school',
         attribute='school',
-        widget=ForeignKeyWidget(School, 'name'))
+        widget=ForeignKeyWidget(School, 'id'))
 
     class Meta:
         model = ProgramInformation
