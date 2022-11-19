@@ -165,7 +165,7 @@ class EvaluationSubmission(models.Model):
 class ProgramInformation(models.Model):
     program_name = models.CharField(max_length=255)
     department_name = models.CharField(max_length=255)
-    school = models.ForeignKey('School', blank=True, null=True, on_delete=models.PROTECT)
+    school = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.program_name
