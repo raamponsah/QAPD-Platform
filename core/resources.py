@@ -45,10 +45,16 @@ class ProgramInformationResource(resources.ModelResource):
 
     class Meta:
         model = ProgramInformation
-        fields = ('id','program_name', 'department_name', 'school')
+        fields = ('id', 'program_name', 'department_name', 'school')
 
 
 class CampusInformationResource(resources.ModelResource):
     class Meta:
         model = CampusInformation
         fields = ('id', 'campus_name',)
+
+
+class SchoolListResource(resources.ModelResource):
+    class Meta:
+        model = School
+        fields = ('id', 'name',)

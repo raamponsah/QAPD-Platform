@@ -32,7 +32,7 @@ admin.site.register(CourseInformation, CourseAdminResource)
 
 class ProgramInformationAdminResource(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('program_name',
-                    'department_name','school')
+                    'department_name', 'school')
     resource_class = ProgramInformationResource
 
 
@@ -44,7 +44,14 @@ class CampusInformationAdminResource(ImportExportModelAdmin, admin.ModelAdmin):
 
 
 admin.site.register(CampusInformation, CampusInformationAdminResource)
-admin.site.register(School)
+
+
+class SchoolAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('name',)
+    resource_class = School
+
+
+admin.site.register(School, SchoolAdmin)
 
 from django.contrib import admin
 

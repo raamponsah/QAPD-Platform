@@ -15,6 +15,7 @@ class CourseInformation(models.Model):
         ('day', 'Day'),
         ('evening', 'Evening'),
         ('weekend', 'Weekend'),
+        ('modular', 'Modular'),
     )
     level_choices = (
         ('1', 'Year 1'),
@@ -22,21 +23,12 @@ class CourseInformation(models.Model):
         ('3', 'Year 3'),
         ('4', 'Year 4'),
     )
-    # level_choices = (
-    #     ('000', 'Diploma'),
-    #     ('100', 'Level 100'),
-    #     ('200', 'Level 200'),
-    #     ('300', 'Level 300'),
-    #     ('400', 'Level 400'),
-    #     ('600', 'Level 600-PGD'),  # pgd students
-    #     ('700', 'Level 700'),
-    #     ('800', 'Level 800'),
-    # )
+
     academic_year = models.CharField(max_length=10, null=True, blank=True)
     campus_name = models.CharField(max_length=255, null=True, blank=True)
     faculty_school_name = models.CharField(max_length=255, null=True, blank=True)
     department_name = models.CharField(max_length=255, null=True, blank=True)
-    qualification_name = models.CharField(max_length=255, null=True, blank=True)
+    qualification_name = models.ForeignKey('ProgramInformation', null=True, blank=True, on_delete=models.CASCADE)
     lecturer_code = models.IntegerField(null=True, blank=True)
     subject_code = models.CharField(max_length=255, null=True, blank=True)
     subject_name = models.CharField(max_length=255, null=True, blank=True)
