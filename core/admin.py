@@ -5,7 +5,7 @@ from import_export.admin import ImportExportModelAdmin
 
 from core.models import CourseInformation, Evaluation, EvaluationSubmission, ProgramInformation, CampusInformation, \
     School
-from core.resources import ProgramInformationResource, SchoolListResource
+from core.resources import ProgramInformationResource, SchoolListResource, CampusInformationResource
 
 admin.site.register(Evaluation)
 admin.site.register(EvaluationSubmission)
@@ -41,6 +41,7 @@ admin.site.register(ProgramInformation, ProgramInformationAdminResource)
 
 class CampusInformationAdminResource(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('campus_name',)
+    resource_class = CampusInformationResource
 
 
 admin.site.register(CampusInformation, CampusInformationAdminResource)
