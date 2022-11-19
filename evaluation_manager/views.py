@@ -15,7 +15,7 @@ from helper_functions.helpers import statistics
 @only_admins
 def evaluation_managers_view(request):
     evaluation_managers_list = EvaluationManager.objects.all().order_by('-end_date')
-    paginator = Paginator(evaluation_managers_list, 10)
+    paginator = Paginator(evaluation_managers_list, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     stats = statistics()
@@ -69,7 +69,10 @@ def evaluation_manager_view(request, pk):
         if evaluation.course.academic_year == manager.academic_year \
                 and evaluation.course.semester == manager.semester:
             display_related_evaluations.append(evaluation)
-    context = {'page_obj': display_related_evaluations, **stats, 'manager': manager,'active': 'evm',}
+    paginator = Paginator(display_related_evaluations, 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'page_obj': page_obj, **stats, 'manager': manager,'active': 'evm',}
     return render(request, 'evaluation_manager/evaluation_manager.html', context)
 
 
