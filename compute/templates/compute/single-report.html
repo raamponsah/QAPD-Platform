@@ -6,7 +6,11 @@
           <div class="col-lg-12" id="report">
             <div class="ibox ">
             <div class="ibox-title bg-brand">
-                <h5>Evaluation Report - {{ evaluation }})</h5>
+                {% if lecturer %}
+                <h5>Evaluation Report - {{ evaluation }} {{ lecturer }} ({{ lecturer.staff_id }})</h5>
+                    {% else %}
+                     <h5>Evaluation Report - {{ evaluation }}) <small>Lecturer not registered</small></h5>
+                {% endif %}
                 <div class="ibox-tools">
 
                     <a class="dropdown-toggle" onclick="printCertificate()" data-toggle="dropdown" href="#">
