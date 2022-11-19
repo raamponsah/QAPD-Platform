@@ -28,18 +28,6 @@ class SchoolDataResource(resources.ModelResource):
         # skip_unchanged = True
         # report_skipped = True
 
-    def save_instance(self, instance, using_transactions=True, dry_run=False):
-        try:
-            super().save_instance(instance, using_transactions, dry_run)
-        except IntegrityError:
-            pass
-
-    # def save_instance(self, instance, using_transactions=True, dry_run=False):
-    #     try:
-    #         super(SchoolDataResource, self).save_instance(instance, using_transactions, dry_run)
-    #     except IntegrityError:
-    #         pass
-
 
 class ProgramInformationResource(resources.ModelResource):
     school = fields.Field(
