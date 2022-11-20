@@ -142,7 +142,7 @@ class EvaluationSubmission(models.Model):
     environment_secretariat = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
     slug = models.SlugField(unique=True, default=uuid.uuid4)
-    submitter = models.ForeignKey(Student, blank=True, null=True, on_delete=models.PROTECT)
+    submitter = models.ForeignKey(Student, blank=True, null=True, on_delete=models.CASCADE)
     is_evaluated = models.BooleanField(blank=False, null=False, default=False)
 
     # deadline = models.DateTimeField(null=False,blank=False, default=datetime.datetime)
