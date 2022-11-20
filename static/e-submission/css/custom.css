@@ -1,0 +1,7 @@
+input[type="radio"]:invalid {
+        accent-color: red;
+}
+
+input[type="radio"]:checked {
+        accent-color: steelblue;
+}
