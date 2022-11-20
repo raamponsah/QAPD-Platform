@@ -15,11 +15,11 @@ ini_time_for_now = timezone.now()
 future_date_after_7days = ini_time_for_now + \
                           timedelta(days=settings.EMAIL_CONFIRMATION_PERIOD_DAYS)
 
+KEY = b'-6Cgt41UQ0zkUavQMIPz8ZeUP2DsnyW5KTvtwrihUy0='
+
 
 def generate_confirmation_token(user):
-    key = os.getenv('CONFIRM_KEY')
-
-    f = Fernet(key)
+    f = Fernet(KEY)
     user_email = user.email
     expiry = future_date_after_7days
     t = f"{user_email}/{expiry}"
@@ -32,8 +32,7 @@ def generate_confirmation_token(user):
 
 def decode_token(token):
     b = bytes(token, encoding='utf-8')
-    key = os.getenv('CONFIRM_KEY')
-    f = Fernet(key)
+    f = Fernet(KEY)
     text = f.decrypt(b)
     text = text.decode('utf-8')
     return text
