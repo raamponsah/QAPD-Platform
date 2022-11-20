@@ -1,8 +1,8 @@
 input[type="radio"]:invalid {
     appearance: none;
 
-	border: 2px solid #2b06fe;
-    background:blue;
+	border: 2px solid red;
+    background:red;
 	border-radius: 50%;
 	background-clip: content-box;
 	padding: 5px;
