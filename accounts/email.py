@@ -1,3 +1,5 @@
+import os
+
 from qapd.settings import mailjet
 
 
@@ -6,8 +8,8 @@ def send_mail(to_email, to_name, subject, message):
         'Messages': [
             {
                 "From": {
-                    "Email": 'helloralph@vineboard.com',
-                    "Name": 'QAPD'
+                    "Email": os.getenv('EMAIL_HOST_USER'),
+                    "Name": os.getenv('EMAIL_HOST_USERNAME')
                 },
                 "To": [
                     {
@@ -32,8 +34,8 @@ def send_bulk_mail(bulk_contacts, subject, message):
         'Messages': [
             {
                 "From": {
-                    "Email": 'helloralph@vineboard.com',
-                    "Name": 'QAPD'
+                    "Email": os.getenv('EMAIL_HOST_USER'),
+                    "Name": os.getenv('EMAIL_HOST_USERNAME')
                 },
                 "To": bulk_contacts,
                 "Subject": subject,
@@ -44,17 +46,14 @@ def send_bulk_mail(bulk_contacts, subject, message):
     }
 
     result = mailjet.send.create(data=data)
-    print(result.status_code)
-    print(result.json())
-
 
 def generate_confirmation_link_mail(to_email, to_name, link):
     data = {
         'Messages': [
             {
                 "From": {
-                    "Email": 'raamponsah@gimpa.edu.gh',
-                    "Name": 'GIMPA QAPD'
+                    "Email": os.getenv('EMAIL_HOST_USER'),
+                    "Name": os.getenv('EMAIL_HOST_USERNAME')
                 },
                 "To": [
                     {
@@ -62,7 +61,7 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                         "Name": to_name
                     }
                 ],
-                "Subject": "Activate your GIMPA QAPD account!",
+                "Subject": "Activate your GIMPA APQAD account!",
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
                 # "HTMLPart": message
             }
