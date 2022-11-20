@@ -244,7 +244,11 @@ def confirm_email_view(request, token):
                 messages.success(request, f"Email was confirmed successfully")
                 print("user activated!")
 
-                return redirect('login_student')
+                if user.is_lecturer:
+                    return redirect('login_lecturer')
+                elif user.is_student:
+                    return redirect('login_student')
+
     return None
 
 
