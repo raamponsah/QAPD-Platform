@@ -63,15 +63,19 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                 ],
                 "Subject": "Activate your GIMPA APQAD account!",
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
-                "HTMLPart": f"Dear {to_name},<br>"
+                "HTMLPart": f"<div style='display:flex;justify-content:center;font-size:16px;'>"
+                            f"Dear {to_name},<br>"
                             f"Please activate your your account by clicking on the following link:</strong> <br/> "
                             f"<a href='{link}' style='background:rgb(0, 110, 255); "
-                            f"border-radius:10px;color:white;text-decoration:none;padding:2rem; "
-                            f"margin:1rem;display:flex;justify-content:center; align-items:center'>CONFIRM EMAIL</a> "
+                            f"border-radius:10px;width:400px;color:white;text-decoration:none;padding:1rem; "
+                            f"margin:1rem auto;display:flex;justify-content:center; align-items:center'>CLICK TO "
+                            f"CONFIRM "
+                            f"EMAIL</a> "
                             f"<br>"
                             f"Thank you<br>"
                             f"Your sincerely<br>"
                             f"APQAD GIMPA"
+                            f"</div>"
 
 
             }
