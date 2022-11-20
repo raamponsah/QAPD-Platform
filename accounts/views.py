@@ -211,6 +211,11 @@ def logout_student(request):
     return redirect('login_student')
 
 
+def logout_lecturer(request):
+    logout(request)
+    return redirect('login_lecturer')
+
+
 def logout_administrator(request):
     logout(request)
     return redirect('login_administrator')

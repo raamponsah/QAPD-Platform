@@ -1,3 +1,5 @@
+import os
+
 from cryptography.fernet import Fernet
 
 from accounts.models import ActivateUser
@@ -15,7 +17,7 @@ future_date_after_7days = ini_time_for_now + \
 
 
 def generate_confirmation_token(user):
-    key = b'-6Cgt41UQ0zkUavQMIPz8ZeUP2DsnyW5KTvtwrihUy0='
+    key = os.getenv('CONFIRM_KEY')
 
     f = Fernet(key)
     user_email = user.email
@@ -30,7 +32,7 @@ def generate_confirmation_token(user):
 
 def decode_token(token):
     b = bytes(token, encoding='utf-8')
-    key = b'-6Cgt41UQ0zkUavQMIPz8ZeUP2DsnyW5KTvtwrihUy0='
+    key = os.getenv('CONFIRM_KEY')
     f = Fernet(key)
     text = f.decrypt(b)
     text = text.decode('utf-8')
