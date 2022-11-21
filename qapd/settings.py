@@ -133,17 +133,6 @@ DATABASES = {
 
 
 
-# DATABASES = {
-#     'default': {
-#         #'ENGINE': 'django.db.backends.sqlite3',
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': 'UUJ2OLqeV0EqIlygJdB4',
-#         'HOST': 'containers-us-west-92.railway.app',
-#         'PORT': '7049',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
