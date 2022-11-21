@@ -12,7 +12,7 @@ from helper_functions.helpers import computational_stats, statistics
 
 @only_lecturer
 def lecturer_dashboard(request):
-    lecturer_user = CustomUser.objects.filter(id=request.user.id).first()
+    lecturer_user = CustomUser.objects.filter(id=request.user.id).get()
     lecturer_profile = LecturerProfile.objects.get(user=lecturer_user)
     lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id)
     number_lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id).count()
