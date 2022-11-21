@@ -120,25 +120,28 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'UUJ2OLqeV0EqIlygJdB4',
-        'HOST': 'containers-us-west-92.railway.app',
-        'PORT': '7049',
+        'NAME': os.getenv('DBNAME'),
+        'USER': os.getenv('DBUSER'),
+        'PASSWORD': os.getenv('DBPASSWORD'),
+        'HOST': os.getenv('DBHOST'),
+        'PORT': os.getenv('DBPORT'),
     }
 }
 
 
 
 
+
+
 # DATABASES = {
 #     'default': {
+#         #'ENGINE': 'django.db.backends.sqlite3',
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'QAPD_DB',
+#         'NAME': 'railway',
 #         'USER': 'postgres',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',
-#         'PORT': '5433',
+#         'PASSWORD': 'UUJ2OLqeV0EqIlygJdB4',
+#         'HOST': 'containers-us-west-92.railway.app',
+#         'PORT': '7049',
 #     }
 # }
 
