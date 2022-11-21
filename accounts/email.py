@@ -65,7 +65,7 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
                 "HTMLPart": f"<div style='font-size:18px; line-height:1.6;color: rgb(48,55,61);"
                             f"font-family: proxima-nova,'Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;'>"
-                            f"<h5>Dear {to_name.capitalize()},</h5>"
+                            f"<h4>Dear {to_name.capitalize()},</h4>"
                             f"<p>Thank you for registering with Academic Planning and Quality Assurance Department "
                             f"Portal. </p>"
                             f"<p>We have moved our lecturer evaluation online!</p>"
