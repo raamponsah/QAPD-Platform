@@ -65,14 +65,18 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
                 "HTMLPart": f"<div>"
                             f"Dear {to_name},<br>"
-                            f"Please activate your your account by clicking on the following link:</strong> <br/> "
+                            f"<p>Please activate your your account by clicking on the following link:</strong> <br/> "
                             f"<a href='{link}'>CLICK TO "
                             f"CONFIRM "
-                            f"EMAIL</a> "
+                            f"EMAIL</a> </p>"
+                            f"<p>If you have any queries please send it to <a "
+                            f"href='mailto:lecturersevaluations@gimpa.edu.gh'>lecturersevaluations@gimpa.edu.gh</a"
+                            f"></p> "
                             f"<br>"
                             f"Thank you<br>"
                             f"Your sincerely<br>"
                             f"APQAD GIMPA"
+                            f"<a href='https://www.gimpa.edu.gh'>GIMPA</a>"
                             f"</div>"
 
 
