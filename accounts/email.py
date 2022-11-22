@@ -61,9 +61,9 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                         "Name": to_name
                     }
                 ],
-                "Subject": "GIMPA APQAD: CONFIRM EMAIL",
+                "Subject": "Activate your GIMPA APQAD account!",
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
-                "HTMLPart": f"<div style='font-size:20px; line-height:1.6;color: rgb(48,55,61);"
+                "HTMLPart": f"<div style='font-size:18px; line-height:1.6;color: rgb(48,55,61);"
                             f"font-family: proxima-nova,'Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;'>"
                             f"<h4>Dear {to_name.capitalize()},</h4>"
                             f"<p>Thank you for registering with Academic Planning and Quality Assurance Department "
