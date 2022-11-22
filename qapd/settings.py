@@ -117,16 +117,31 @@ WSGI_APPLICATION = "qapd.wsgi.application"
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES = {
+    # 'default': {
+    #     #'ENGINE': 'django.db.backends.sqlite3',
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.getenv('DBNAME'),
+    #     'USER': os.getenv('DBUSER'),
+    #     'PASSWORD': os.getenv('DBPASSWORD'),
+    #     'HOST': os.getenv('DBHOST'),
+    #     'PORT': os.getenv('DBPORT'),
+    # }
+
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DBNAME'),
-        'USER': os.getenv('DBUSER'),
-        'PASSWORD': os.getenv('DBPASSWORD'),
-        'HOST': os.getenv('DBHOST'),
-        'PORT': os.getenv('DBPORT'),
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '5Ejps8WwE8AyX9E7iVZU',
+        'HOST': 'containers-us-west-60.railway.app',
+        'PORT': '6398',
     }
 }
+
+
+
+
+
 
 
 
