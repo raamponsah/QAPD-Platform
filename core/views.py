@@ -13,6 +13,7 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
 @only_student
 def evaluations(request):
+    print("the id is",request.user.id)
     student = CustomUser.objects.filter(id=request.user.id).get()
     student_profile = Student.objects.filter(user=student).get()
     qualification_name = student_profile.program,
