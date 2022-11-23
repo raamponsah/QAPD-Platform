@@ -40,7 +40,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ["*.apqad.up.railway.app", "apqad.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["*.apqad.up.railway.app", "www.apqad.up.railway.app"]
 # Application definition
 
 INSTALLED_APPS = [
