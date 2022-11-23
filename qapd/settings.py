@@ -39,7 +39,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['*.apqad.up.railway.app','www.apqad.up.railway.app']
+ALLOWED_HOSTS = ['*.apqad.up.railway.app', 'apqad.up.railway.app','www.apqad.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ["https://*.apqad.up.railway.app/", "https://apqad.up.railway.app/"]
 # Application definition
 
