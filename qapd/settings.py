@@ -36,11 +36,11 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ["*.apqad.up.railway.app", "www.apqad.up.railway.app"]
+ALLOWED_HOSTS = ['*.apqad.up.railway.app','www.apqad.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ["https://*.apqad.up.railway.app/", "https://apqad.up.railway.app/"]
 # Application definition
 
 INSTALLED_APPS = [
