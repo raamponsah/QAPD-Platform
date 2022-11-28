@@ -25,6 +25,7 @@ class CourseAdminResource(ImportExportModelAdmin, admin.ModelAdmin):
                     'course_group',
 
                     )
+    search_fields = ['subject_code', 'subject_name', 'qualification_name', 'campus_name', ]
     resource_class = SchoolDataResource
 
 
