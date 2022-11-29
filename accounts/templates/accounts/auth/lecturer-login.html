@@ -4,7 +4,7 @@
         {% csrf_token %}
        <div class="row">
 
-         <h2 class="fs-6">Sign into your Account</h2>
+         <h2 class="fs-6 text-success">Login as a Lecturer</h2>
 
             {% for message in messages %}
     {% if 'success' in message.tags %}
@@ -49,11 +49,11 @@
 
 
         <div class="form-row-last">
-            <input type="submit" name="login" class="mt-2 text-white btn btn-primary" value="Login">
+            <input type="submit" name="login" class="mt-2 text-white btn btn-success" value="Login">
         </div>
 
         <div class="row">
-        <a href="{% url 'login_student' %}" class=" fs-6 btn btn-xs text-muted"><small>Sign in as Student</small></a>
+        <a href="{% url 'login_student' %}" class=" fs-6 btn btn-xs text-primary"><small>Login as Student here</small></a>
 {#        <a href="{% url 'login_administrator' %}" class=" fs-6 btn btn-xs text-muted"><small>Sign in as Admin</small></a>#}
     </div>
     </form>
