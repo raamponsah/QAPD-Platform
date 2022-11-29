@@ -52,9 +52,9 @@ def evaluation_view_form(request, pk):
 @only_admins
 def student_user_statistics(request):
     students_with_profiles = Student.objects.all().count()
-    users = CustomUser.objects.filter(is_student=True, is_active=True).count()
+    all_student_users = CustomUser.objects.filter(is_student=True, is_active=True).count()
     students_who_have_evaluated = EvaluationSubmission.objects.all().distinct('submitter').count()
 
-    context = {'students_with_profiles': students_with_profiles, 'all_student_users': users,'students_who_have_evaluated':students_who_have_evaluated, 'page_title': 'Student Statistics'}
+    context = {'students_with_profiles': students_with_profiles, 'all_student_users': all_student_users, 'students_who_have_evaluated':students_who_have_evaluated, 'page_title': 'Student Statistics'}
 
     return render(request, 'core/student_user_statistics.html', context)
