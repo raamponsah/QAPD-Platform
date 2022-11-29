@@ -241,7 +241,7 @@ def confirm_email_view(request, token):
                 activate_user.is_activated = True
                 activate_user.save()
                 user.save()
-                messages.success(request, f"Email was confirmed successfully")
+                messages.success(request, f"Account activated successfully. Please Login")
                 print("user activated!")
 
                 if user.is_lecturer:
