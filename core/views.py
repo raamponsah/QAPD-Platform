@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from accounts.auth_decorators import only_student
+from accounts.auth_decorators import only_student, only_admins
 from accounts.models import Student, CustomUser
 from core.forms import EvaluationForm
 from core.models import Evaluation, EvaluationSubmission, CourseInformation
@@ -48,3 +48,14 @@ def evaluation_view_form(request, pk):
                                                                     'submitter': request.user.id})
     context = {'evaluation': evaluation_instance, 'evaluation_form': evaluation_form}
     return render(request, 'core/evaluation_form.html', context)
+
+
+@only_admins
+def student_user_statistics(request):
+    students_with_profiles = Student.objects.all().count()
+    all_student_users = CustomUser.objects.filter(is_student=True, is_active=True).count()
+    students_who_have_evaluated = EvaluationSubmission.objects.all().distinct('submitter').count()
+
+    context = {'students_with_profiles': students_with_profiles, 'all_student_users': all_student_users, 'students_who_have_evaluated':students_who_have_evaluated, 'page_title': 'Student Statistics'}
+
+    return render(request, 'core/student_user_statistics.html', context)
