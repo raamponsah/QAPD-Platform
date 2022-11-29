@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.auth_decorators import only_student, only_admins
-from accounts.models import Student, CustomUser
+from accounts.models import Student, CustomUser, LecturerProfile
 from core.forms import EvaluationForm
 from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
@@ -13,15 +13,17 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
 @only_student
 def evaluations(request):
-    print("the id is",request.user.id)
+    print("the id is", request.user.id)
     student = CustomUser.objects.filter(id=request.user.id).get()
     student_profile = Student.objects.filter(user=student).get()
     qualification_name = student_profile.program,
     # campus_name = student_profile.campus, level = student_profile.level
     school_data = CourseInformation.objects.filter(campus_name=student_profile.campus,
-                                                   qualification_name=student_profile.program, level=student_profile.level)
+                                                   qualification_name=student_profile.program,
+                                                   level=student_profile.level)
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student_profile).values_list('evaluationInfo')
-    evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(id__in=evaluated_submissions)
+    evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
+        id__in=evaluated_submissions)
 
     context = {'evaluations': evaluation_set, 'page_title': 'Evaluations'}
     return render(request, 'core/evaluations.html', context)
@@ -51,12 +53,26 @@ def evaluation_view_form(request, pk):
 
 
 @only_admins
-def student_user_statistics(request):
+def user_statistics(request):
     students_with_profiles = Student.objects.all().count()
     all_student_users = CustomUser.objects.filter(is_student=True, is_active=True).count()
     all_non_active_students = CustomUser.objects.filter(is_student=True, is_active=False).count()
     students_who_have_evaluated = EvaluationSubmission.objects.all().distinct('submitter').count()
 
-    context = {'students_with_profiles': students_with_profiles,'all_non_active_students':all_non_active_students, 'all_student_users': all_student_users, 'students_who_have_evaluated':students_who_have_evaluated, 'page_title': 'Student Statistics'}
+    lecturers_with_profiles = LecturerProfile.objects.all().count()
+    all_lecturer_users = CustomUser.objects.filter(is_lecturer=True, is_active=True).count()
+    all_non_active_lecturers = CustomUser.objects.filter(is_lecturer=True, is_active=False).count()
 
-    return render(request, 'core/student_user_statistics.html', context)
+    context = {
+        'students_with_profiles': students_with_profiles,
+        'all_non_active_students': all_non_active_students,
+        'all_student_users': all_student_users,
+        'students_who_have_evaluated': students_who_have_evaluated,
+        'page_title': 'Student Statistics',
+        'lecturers_with_profiles': lecturers_with_profiles,
+        'all_non_active_lecturers': all_non_active_lecturers,
+        'all_lecturer_users': all_lecturer_users,
+
+    }
+
+    return render(request, 'core/user_statistics.html', context)
