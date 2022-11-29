@@ -4,7 +4,7 @@
         {% csrf_token %}
        <div class="row">
 
-         <h2 class="fs-6 text-success">Login as a Lecturer</h2>
+         <h2 class="fs-5 text-success">Login as a Lecturer</h2>
 
             {% for message in messages %}
     {% if 'success' in message.tags %}
@@ -55,6 +55,16 @@
         <div class="row">
         <a href="{% url 'login_student' %}" class=" fs-6 btn btn-xs text-primary"><small>Login as Student here</small></a>
 {#        <a href="{% url 'login_administrator' %}" class=" fs-6 btn btn-xs text-muted"><small>Sign in as Admin</small></a>#}
-    </div>
+       <div class="form-left-last">
+                    {% if auth_page_url == 'login_lecturer' %}
+                    <a href="{% url 'login_lecturer' %}" class="account ">{{ auth_page_link_text }}</a>
+                        {% elif auth_page_url == 'register_lecturer' %}
+                        <a href="{% url 'register_lecturer' %}" class="account">{{ auth_page_link_text }}</a>
+                    {% endif %}
+{#					<input type="submit" name="account" class="account" value="Have An Account">#}
+				</div>
+
+
+        </div>
     </form>
 {% endblock %}
