@@ -53,12 +53,17 @@
         </div>
 
         <div class="row">
-                         {% if auth_page_url == 'login_lecturer' %}
+                       <div class="col-md-6">
+                             {% if auth_page_url == 'login_lecturer' %}
                     <a href="{% url 'login_lecturer' %}" class="account ">{{ auth_page_link_text }}</a>
                         {% elif auth_page_url == 'register_lecturer' %}
                         <a href="{% url 'register_lecturer' %}" class="account">{{ auth_page_link_text }}</a>
                     {% endif %}
-        <a href="{% url 'login_student' %}" class=" fs-6 btn btn-xs text-primary"><small>Student Login</small></a>
+                       </div>
+        <div class="col-md-6">
+                    <a href="{% url 'login_student' %}" class=" fs-6 btn btn-xs text-primary"><small>Student Login</small></a>
+
+        </div>
 {#        <a href="{% url 'login_administrator' %}" class=" fs-6 btn btn-xs text-muted"><small>Sign in as Admin</small></a>#}
        <div class="form-left-last">
 
