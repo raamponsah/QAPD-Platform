@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <a href="{% url 'welcome' %}"><img src="{% static './images/gimpalogo.png' %}" alt=""></a>
+        <a href="{% url 'welcome' %}"><img src="{% static 'website/images/gimpalogo.png' %}" alt=""></a>
         <nav>
             <ul>
                 <li><a href="{% url 'welcome' %}">Home</a></li>
@@ -42,7 +42,7 @@
 
 
           <div id="banner-image">
-            <img src="./images/icons8-play-64.png" class="play" alt="">
+            <img src="{% static 'website/images/icons8-play-64.png' %}" class="play" alt="">
           </div>
         </section>
 
@@ -79,7 +79,7 @@
         <section class="lecturer-hub">
             <div class="lecturer-hub-image">
                 <!-- <img src="./images/pexels-vlada-karpovich-4939638.jpg" alt=""> -->
-            <img src="./images/icons8-play-64.png" class="play" alt="">
+            <img src="{% static 'website/images/icons8-play-64.png' %}" class="play" alt="">
 
            </div>
 
