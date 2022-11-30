@@ -9,6 +9,7 @@ class CheckGlobalAuth:
 
         self.exception_urls = list([
             reverse('admin:login'),
+            reverse('welcome'),
             reverse('login_student'),
             reverse('login_lecturer'),
             reverse('login_administrator'),
@@ -27,4 +28,4 @@ class CheckGlobalAuth:
         if rpath in self.exception_urls:
             return redirect(rpath)
         else:
-            return redirect('login_student')
+            return redirect('welcome')
