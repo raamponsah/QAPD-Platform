@@ -1,0 +1,527 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+
+}
+
+
+.btn{
+    display: inline-block;
+    padding: 1rem 4rem;
+    background:#0a7c00;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    width: 100%;
+    overflow-x: hidden;
+  
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    font-weight: 600;
+    color: white;
+}
+
+header{
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row wrap;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    padding: 2rem 4rem;
+    background: #007CBE;
+    width: 100%;
+}
+
+header nav ul{
+    display: flex;
+    list-style: none;
+
+}
+
+header nav ul li a{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+section#jumbotron{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row wrap;
+    padding: 2rem 4rem;
+    background: #007CBE;
+
+}
+
+
+section#jumbotron div{
+    margin: 0 auto;
+    display: flex;
+    gap: 0.23rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    text-align: left;
+    
+}
+
+section#jumbotron div:first-child{
+    width: 50%;
+    opacity: 1;
+    transition: opacity 5s ease-in-out;
+
+}
+
+section#jumbotron h5.tagline{
+    font-size: 0.9rem;
+    font-weight: 300;
+    /* margin-bottom: -5rem; */
+    text-transform: uppercase;
+}
+section#jumbotron h2{
+    font-size: 5.5rem;
+    font-weight: 600;
+    /* margin-bottom: -4.5rem; */
+}
+
+section#jumbotron h3{
+    font-size: 2.5rem;
+    /* margin-top: -5rem; */
+}
+
+section#jumbotron p{
+    font-size: 1.5rem;
+    color: #fff;
+
+}
+
+section#jumbotron div#banner-image{
+    width: 700px;
+    height: 500px;
+    background: url(./images/christina-wocintechchat-com-FBdmhGMdCso-unsplash.jpg) no-repeat center center/cover;
+    border-radius: 1rem;
+    opacity: 1;
+    transition: opacity 3s ease-in-out;
+    position:relative;
+    
+}
+section#jumbotron div#banner-image .play{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation:puslate 1s infinite;
+    cursor: pointer;
+}
+
+
+section#jumbotron div#banner-image .play:hover{
+    animation: none;
+}
+
+@keyframes puslate{
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50%{
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+
+
+
+section#jumbotron div #buttons{
+    width:100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+
+}
+div#buttons a{
+    text-decoration: none;
+    color: #fff;
+    background: #333;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+
+    display: inline-block;
+}
+
+div#buttons a.accent{
+    background: #ED9B40;
+    color: #fff;
+}
+
+div#buttons a.olive{
+    background: #61C9A8;
+    color: #fff;
+}
+
+
+#student,#lecturer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 4rem;
+    gap: 1rem;
+    background: #EEF0F2;
+}
+
+#student h4, #lecturer h4{
+   
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #007CBE;
+}
+
+#lecturer{
+    background: #e7eaf6;
+}
+section.walkthrough{
+    padding: 1rem;
+}
+
+.bubble{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:#B9E6FF;
+    border-bottom: 4px solid #007CBE;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    color: #01334e;
+    transform: scale(0.9);
+  
+}
+
+.bubble:hover{
+    transform:scale(1);
+    transition:transform 0.3s ease-in-out;
+    cursor:pointer;
+}
+
+
+.bubble h2{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fbfbfb;
+}
+
+.lecturer-hub{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row wrap;
+    background-color: #98CE00;
+    gap:40px;
+    /* padding: 0 4rem 0 0;; */
+}
+.lecturer-hub h4{
+    font-size: 6rem;
+    font-weight: 600;
+    color: #fff;
+}
+.lecturer-card{
+    display: flex;
+ 
+    flex-direction: column;
+    /* padding: 2rem 4rem; */
+
+
+}
+.lecturer-hub-image{
+    width: 100%;
+    height:650px;
+    position: relative;
+    background: url(./images/pexels-andrea-piacquadio-3769021.jpg) no-repeat center center/cover;
+    opacity: 1;
+    transition: opacity 3s ease-in-out;
+}
+
+.lecturer-hub-image .play{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation:puslate 1s infinite;
+    cursor: pointer;
+}
+.owl-green{
+    background-color: #00a651;
+    border-bottom: 5px solid #016f36;
+    color: #fff;
+}
+
+.owl-orange{
+    background-color: #ff8c00;
+    border-bottom: 5px solid #b35f00;
+    color: #fff;
+}
+
+.owl-purple{
+    background-color: #a64dff;
+    border-bottom: 5px solid #6a2db5;
+    color: #fff;
+}
+
+.owl-pink{
+    background-color: #ff4d4d;
+    border-bottom: 5px solid #b52b2b;
+    color: #fff;
+}
+
+.owl-blue{
+    background-color: #007CBE;
+    border-bottom: 5px solid #004e7c;
+    color: #fff;
+}
+
+.owl-lightblue{
+    background-color: #00b8d9;
+    border-bottom: 5px solid #007c8e;
+    color: #fff;
+}
+
+.owl-lightpink{
+    background-color: #ff80ab;
+    border-bottom: 5px solid #b5526a;
+    color: #fff;
+}
+
+.owl-lightgold{
+    background-color: #ffcc00;
+    border-bottom: 5px solid #b58c00;
+    color: #fff;
+}
+
+.owl-lightviolet{
+    background-color: #e6b3ff;
+    border-bottom: 5px solid #a673b5;
+    color: #fff;
+}
+
+.owl-lightcarrot{
+    background-color: #ffbf80;
+    border-bottom: 5px solid #b58c4d;
+    color: #fff;
+}
+    
+
+footer .footer-content{
+
+
+    padding: 1rem;
+    text-align: center;
+    background-color: #044389;
+    color: #fff;
+    font-size: .95rem;
+
+    min-height:350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .footer-content .about{
+    width:500px;
+}
+
+
+@media screen and (max-width:1080px){
+    section#jumbotron{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row wrap;
+        padding: 2rem 4rem;
+        background: #004e7c;
+    
+    }
+
+    #student,#lecturer{
+        display:flex;
+        justify-content: center;
+        gap:20px;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem 4rem;
+        gap: 1rem;
+        background: #EEF0F2;
+    }
+}
+
+@media screen and (max-width:880px){
+    section#jumbotron{
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        align-items: center;
+        flex-direction: row wrap;
+        padding: 2rem 4rem;
+        background: #004e7c;
+    
+    }
+
+    #student,#lecturer{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem 4rem;
+        gap: 1rem;
+        background: #EEF0F2;
+    }
+
+    .lecturer-hub{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row wrap;
+        gap:20px;
+        background-color: #98CE00;
+        padding: 0 4rem 0 0;;
+    }
+}
+
+@media screen and (max-width:680px){
+    section#jumbotron{
+        display: flex;
+        justify-content: center;
+   
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 2rem 4rem;
+        background: #004e7c;
+
+    
+    }
+
+    section#jumbotron div{
+        display: flex;
+        gap: 0.23rem;
+        flex-direction: column;
+        justify-content: center;
+        
+        text-align: center;
+        
+    }
+
+    section#jumbotron div h3{
+        text-align: center;
+    
+    }
+    
+    section#jumbotron div:first-child{
+        width: 100%;
+        line-height:1.25;
+        opacity: 1;
+        transition: opacity 5s ease-in-out;
+
+    
+    }
+
+    section#jumbotron div#banner-image{
+        width: 100%;
+        background: url(./images/christina-wocintechchat-com-FBdmhGMdCso-unsplash.jpg) no-repeat center center/cover;
+        opacity: 1;
+        transition: opacity 3s ease-in-out;
+        position:relative;
+        
+    }
+
+    #student,#lecturer{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem 4rem;
+        gap: 1rem;
+        background: #EEF0F2;
+    }
+
+  
+
+   
+    section#jumbotron div #buttons{
+        width:100%;
+        display: flex;
+        gap: 1rem;
+        flex-direction: columns;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    div h5.tagline{
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.25;
+        opacity: 1;
+        transition: opacity 5s ease-in-out;
+    }
+
+    
+section.lecturer-hub{
+    padding: 40px;
+    text-align: center;
+    flex-direction: column;
+
+}
+section.lecturer-hub h4{
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    opacity: 1;
+    transition: opacity 5s ease-in-out;
+}
+    div.lecturer-hub-image{
+   
+        width: 100%;
+        position: relative;
+        background: url(./images/pexels-andrea-piacquadio-3769021.jpg) no-repeat center center/cover;
+        opacity: 1;
+        transition: opacity 3s ease-in-out;
+    }
+
+    
+
+}
