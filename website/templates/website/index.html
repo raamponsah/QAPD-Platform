@@ -47,14 +47,14 @@
 
                 <dialog id="videoDialog">
                 <span class="close" id="close">
-                    <img src="./images/icons8-cancel-40.png" alt="">
+                    <img src="{% static 'website/images/icons8-cancel-40.png' %}" alt="">
                 </span>
                     <video controls id="video">
-                        <source src="./videos/student-tuts.mp4" type="video/mp4"  />
+                        <source src="{% static 'website/videos/new-stu-tut.mp4'%}" type="video/mp4"  />
                         <!-- <source src="rabbit320.webm" type="video/webm" /> -->
                         <p>
                           Your browser doesn't support this video. Here is a
-                          <a href="./videos/student-tuts.mp4">link to the video</a> instead.
+                          <a href="{% static 'website/videos/new-stu-tut.mp4'%}">link to the video</a> instead.
                         </p>
                       </video>
 
@@ -155,7 +155,7 @@
         <div class="footer-content">
 
             <div class="footer-section about">
-        <img src="./images/gimpalogo.png" alt="">
+        <img src="{% static 'website/images/gimpa-logo.png' %}" alt="">
 
                 <h2 class="logo-text">APQAD-GIMPA</h2>
                 <p>APQAD-GIMPA is the Academic Planning and Quality Assurance Directorate that facilitate in quality services of the Institute</p>
