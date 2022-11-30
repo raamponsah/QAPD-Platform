@@ -3,7 +3,8 @@ const dialog = document.querySelector('#videoDialog');
 const video = document.querySelector("#video")
 const close = document.querySelector("#close")
 
-playStudentVideo.addEventListener('click', () => {
+if(playStudentVideo){
+    playStudentVideo.addEventListener('click', () => {
     if (typeof dialog.showModal === "function") {
         dialog.showModal();
         video.play();
@@ -13,6 +14,7 @@ playStudentVideo.addEventListener('click', () => {
       }
 
 });
+}
 
 close.addEventListener('click', () => {
     if (typeof dialog.close === "function") {
