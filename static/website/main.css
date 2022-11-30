@@ -27,7 +27,7 @@ body{
     line-height: 1.5;
     width: 100%;
     overflow-x: hidden;
-  
+
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -52,6 +52,7 @@ header{
 
 header nav ul{
     display: flex;
+    flex-direction: row wrap;
     list-style: none;
 
 }
@@ -63,6 +64,11 @@ header nav ul li a{
     color: #fff;
     font-size: 1rem;
     text-transform: uppercase;
+}
+
+
+header img{
+    width: 420px;
 }
 
 section#jumbotron{
@@ -85,7 +91,7 @@ section#jumbotron div{
     align-items: flex-start;
 
     text-align: left;
-    
+
 }
 
 section#jumbotron div:first-child{
@@ -126,7 +132,7 @@ section#jumbotron div#banner-image{
     opacity: 1;
     transition: opacity 3s ease-in-out;
     position:relative;
-    
+
 }
 section#jumbotron div#banner-image .play{
     position:absolute;
@@ -198,7 +204,7 @@ div#buttons a.olive{
 }
 
 #student h4, #lecturer h4{
-   
+
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 2rem;
@@ -226,7 +232,7 @@ section.walkthrough{
     font-size: 1.1rem;
     color: #01334e;
     transform: scale(0.9);
-  
+
 }
 
 .bubble:hover{
@@ -259,7 +265,7 @@ section.walkthrough{
 }
 .lecturer-card{
     display: flex;
- 
+
     flex-direction: column;
     /* padding: 2rem 4rem; */
 
@@ -341,7 +347,7 @@ section.walkthrough{
     border-bottom: 5px solid #b58c4d;
     color: #fff;
 }
-    
+
 
 footer .footer-content{
 
@@ -364,6 +370,14 @@ footer .footer-content .about{
 
 
 @media screen and (max-width:1080px){
+    header{
+        flex-direction: column;
+        padding: 1rem 2rem;
+    }
+    header img{
+        width: 70%;
+    }
+
     section#jumbotron{
         display: flex;
         justify-content: space-between;
@@ -371,7 +385,7 @@ footer .footer-content .about{
         flex-direction: row wrap;
         padding: 2rem 4rem;
         background: #004e7c;
-    
+
     }
 
     #student,#lecturer{
@@ -387,6 +401,13 @@ footer .footer-content .about{
 }
 
 @media screen and (max-width:880px){
+    header{
+        flex-direction: column;
+        padding: 1rem 2rem;
+    }
+    header img{
+        width: 70%;
+    }
     section#jumbotron{
         display: flex;
         justify-content: space-between;
@@ -395,7 +416,7 @@ footer .footer-content .about{
         flex-direction: row wrap;
         padding: 2rem 4rem;
         background: #004e7c;
-    
+
     }
 
     #student,#lecturer{
@@ -420,10 +441,17 @@ footer .footer-content .about{
 }
 
 @media screen and (max-width:680px){
+    header{
+        flex-direction: column;
+        padding: 1rem 2rem;
+    }
+    header img{
+        width: 90%;
+    }
     section#jumbotron{
         display: flex;
         justify-content: center;
-   
+
         align-items: center;
         flex-direction: column;
         width: 100%;
@@ -431,7 +459,7 @@ footer .footer-content .about{
         padding: 2rem 4rem;
         background: #004e7c;
 
-    
+
     }
 
     section#jumbotron div{
@@ -439,23 +467,23 @@ footer .footer-content .about{
         gap: 0.23rem;
         flex-direction: column;
         justify-content: center;
-        
+
         text-align: center;
-        
+
     }
 
     section#jumbotron div h3{
         text-align: center;
-    
+
     }
-    
+
     section#jumbotron div:first-child{
         width: 100%;
         line-height:1.25;
         opacity: 1;
         transition: opacity 5s ease-in-out;
 
-    
+
     }
 
     section#jumbotron div#banner-image{
@@ -464,7 +492,7 @@ footer .footer-content .about{
         opacity: 1;
         transition: opacity 3s ease-in-out;
         position:relative;
-        
+
     }
 
     #student,#lecturer{
@@ -477,9 +505,9 @@ footer .footer-content .about{
         background: #EEF0F2;
     }
 
-  
 
-   
+
+
     section#jumbotron div #buttons{
         width:100%;
         display: flex;
@@ -499,7 +527,7 @@ footer .footer-content .about{
         transition: opacity 5s ease-in-out;
     }
 
-    
+
 section.lecturer-hub{
     padding: 40px;
     text-align: center;
@@ -514,7 +542,7 @@ section.lecturer-hub h4{
     transition: opacity 5s ease-in-out;
 }
     div.lecturer-hub-image{
-   
+
         width: 100%;
         position: relative;
         background: url(./images/pexels-andrea-piacquadio-3769021.jpg) no-repeat center center/cover;
@@ -522,6 +550,6 @@ section.lecturer-hub h4{
         transition: opacity 3s ease-in-out;
     }
 
-    
+
 
 }
