@@ -29,14 +29,14 @@
           <div>
             <h5 class="tagline">Enhancing your evaluation experience</h5>
             <h2>Evaluate Smart</h2>
-            <!-- <h3>Evaluate in 5 mins</h3> -->
-
+            <h3>Evaluate in 5 mins</h3>
+{##}
 
             <p>Smartlev is GIMPA'S Online Lecturer's Evaluation platform to enhance students evaluation process.</p>
 
             <div id="buttons">
-                <a href="login.html" class="btn accent">Am a Student</a>
-                <a href="register.html" class="btn olive">Am a Lecturer</a>
+                <a href="{% url 'login_student' %}" class="btn accent">Am a Student</a>
+                <a href="{% url 'login_lecturer' %}" class="btn olive">Am a Lecturer</a>
               </div>
           </div>
 
@@ -47,7 +47,7 @@
         </section>
 
         <section id="student" class="walkthrough">
-                <h4>Student Walkthrough</h4>
+                <h4>Student Walk-through</h4>
                 <div class="bubble owl-lightblue">
                     <h2>Register Account</h2>
                     <p>Register your account by selecting on 'Am a student'. Register with your student email and password alongside other required data</p>
