@@ -44,6 +44,23 @@
           <div id="banner-image">
             <img src="{% static 'website/images/icons8-play-64.png' %}" class="play" alt="">
           </div>
+
+                <dialog id="videoDialog">
+                <span class="close" id="close">
+                    <img src="./images/icons8-cancel-40.png" alt="">
+                </span>
+                    <video controls id="video">
+                        <source src="./videos/student-tuts.mp4" type="video/mp4"  />
+                        <!-- <source src="rabbit320.webm" type="video/webm" /> -->
+                        <p>
+                          Your browser doesn't support this video. Here is a
+                          <a href="./videos/student-tuts.mp4">link to the video</a> instead.
+                        </p>
+                      </video>
+
+
+
+            </dialog>
         </section>
 
         <section id="student" class="walkthrough">
@@ -89,7 +106,7 @@
             </h4>
             <div class="">
                 <h2>Register Account</h2>
-                <p>Register your account today to view your evaluation reports and print them. By registering you get the benefit to view your courses and understand how you are performing as evaluated by your stduents.</p>
+  <p>Register your account today to view your evaluation reports and print them. By registering you get the benefit to view your courses and understand how you are performing as evaluated by your students.</p>
 
                 <a href="{% url 'register_lecturer' %}" class="btn accent">Register Today &rarr;</a>
                 </div>
@@ -104,25 +121,27 @@
             <h4>Lecturer's Walkthrough</h4>
             <div class="bubble owl-green">
                 <h2>Register</h2>
-                <p>APQAD-GIMPA is a student-led initiative that aims to promote the development of the Ghanaian economy through the use of technology.</p>
+                                                    <p>Register your account by selecting on 'Am a Lecturer'. Register with your lecturer email and password alongside other required data</p>
+
             </div>
             <div class="bubble owl-orange">
                 <h2>Confirm Email</h2>
-                <p>APQAD-GIMPA is a student-led initiative that aims to promote the development of the Ghanaian economy through the use of technology.</p>
+                <p>Go to your email inbox or spam to confirm and activate your account by clicking on "CLICK HERE". This will redirect you back to the login page.</p>
             </div>
             <div class="bubble owl-purple">
                 <h2>Setup Profile</h2>
-                <p>APQAD-GIMPA is a student-led initiative that aims to promote the development of the Ghanaian economy through the use of technology.</p>
+                <p>Setup your profile by filling in your Staff ID. Please this is a required step.</p>
+
             </div>
             <div class="bubble owl-pink">
                 <h2>Select Course</h2>
-                <p>APQAD-GIMPA is a student-led initiative that aims to promote the development of the Ghanaian economy through the use of technology.</p>
+                <p>You can now view a course evaluation report and you can comfortably print as well,</p>
             </div>
 
 
             <div class="bubble owl-blue">
                 <h2>Encourage</h2>
-                <p>APQAD-GIMPA is a student-led initiative that aims to promote the development of the Ghanaian economy through the use of technology.</p>
+                <p>Please ENCOURAGE your students to evaluate your courses as this will enable you to view you reports and also assist in your appraisal.</p>
             </div>
 
 
@@ -139,9 +158,9 @@
         <img src="./images/gimpalogo.png" alt="">
 
                 <h2 class="logo-text">APQAD-GIMPA</h2>
-                <p>APQAD-GIMPA is a student-led initiative that aims to promote the development of the Ghanaian economy through the use of technology.</p>
+                <p>APQAD-GIMPA is the Academic Planning and Quality Assurance Directorate that facilitate in quality services of the Institute</p>
                 <div class="contact">
-                    <span><i class="fas fa-phone"></i> &nbsp; 024 000 0000</span>
+                    <span>WhatsApp Only<i class="fas fa-phone"></i>0242782725/0503422990</span>
                     <span><i class="fas fa-envelope"></i> &nbsp;
                         </span>
                 </div>
@@ -150,6 +169,7 @@
 
 
     </footer>
+<script src="{% static 'website/main.js' %}"></script>
 
 </body>
 </html>
