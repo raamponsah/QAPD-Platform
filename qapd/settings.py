@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'evaluation_manager',
     'student_manager',
     'email_service',
-    'reports'
+    'reports',
+    'website',
 ]
 
 CLOUDINARY_STORAGE = {
