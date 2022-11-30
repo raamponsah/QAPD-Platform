@@ -13,12 +13,12 @@
 </head>
 <body>
     <header>
-        <img src="{% static './images/gimpalogo.png' %}" alt="">
+        <a href="{% url 'welcome' %}"><img src="{% static './images/gimpalogo.png' %}" alt=""></a>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="mailto:lecturersevaluation@gimap.edu.gh"></a></li>
+                <li><a href="{% url 'welcome' %}">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="mailto:lecturersevaluation@gimpa.edu.gh"></a></li>
             </ul>
         </nav>
     </header>
