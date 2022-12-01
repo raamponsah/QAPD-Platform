@@ -6,7 +6,7 @@ from qapd import settings
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('', include('website.urls')),
+                  path('/', include('website.urls')),
                   path('core/', include('core.urls')),
                   path('student-manager/', include('student_manager.urls')),
                   path('evaluation-managers/', include('evaluation_manager.urls')),
