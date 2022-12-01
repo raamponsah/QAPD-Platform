@@ -27,7 +27,14 @@ def evaluations(request):
     evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
         id__in=evaluated_submissions)
 
-    context = {'evaluations': evaluation_set, 'page_title': 'Evaluations', 'lecturers': lecturer_profiles}
+    existing_courses = []
+    for lecturer in lecturer_profiles:
+        for evaluation in evaluation_set:
+            if evaluation.course.lecturer_code == lecturer.staff_id:
+                existing_courses.append(evaluation.course)
+
+
+    context = {'evaluations': existing_courses, 'page_title': 'Evaluations', 'lecturers': lecturer_profiles}
     return render(request, 'core/evaluations.html', context)
 
 
