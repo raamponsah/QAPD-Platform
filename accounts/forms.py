@@ -46,6 +46,7 @@ class StudentRegisterForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(False)
+        user.email = self.cleaned_data['email'].lower()
         user.is_student = True
         user.save()
         return user
@@ -106,6 +107,7 @@ class LecturerRegistrationForm(UserCreationForm):
         user = super().save(False)
         user.is_lecturer = True
         user.is_active = False
+        user.email = self.cleaned_data['email'].lower()
         user.save()
         return user
 

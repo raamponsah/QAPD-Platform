@@ -81,6 +81,7 @@ def register_student(request):
     view_name = "student_view"
     if request.method == 'POST':
         form = StudentRegisterForm(request.POST)
+
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
