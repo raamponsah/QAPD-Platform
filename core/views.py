@@ -25,8 +25,8 @@ def evaluations(request):
     # campus_name = student_profile.campus, level = student_profile.level
     school_data = CourseInformation.objects.filter(campus_name=student_profile.campus,
                                                    qualification_name=student_profile.program,
-                                                   level=student_profile.level,
-                                                   course_group=student_profile.course_group)
+                                                   level=student_profile.level
+                                                   )
     lecturer_profiles = LecturerProfile.objects.all()
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student_profile).values_list('evaluationInfo')
     evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
