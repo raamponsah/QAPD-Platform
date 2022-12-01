@@ -5,8 +5,9 @@ from django.urls import path, include
 from qapd import settings
 
 urlpatterns = [
+                  path('', include('website.urls')),
                   path('admin/', admin.site.urls),
-                  path('/', include('website.urls')),
+                  path('accounts/', include('accounts.urls')),
                   path('core/', include('core.urls')),
                   path('student-manager/', include('student_manager.urls')),
                   path('evaluation-managers/', include('evaluation_manager.urls')),
@@ -14,5 +15,4 @@ urlpatterns = [
                   path('computation/', include('compute.urls')),
                   path('email-service/', include('email_service.urls')),
                   path('reports/', include('reports.urls')),
-                  path('accounts/', include('accounts.urls')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
