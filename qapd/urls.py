@@ -3,9 +3,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from qapd import settings
+from website.views import website
 
 urlpatterns = [
-                  path('', include('website.urls')),
+                  path('', website, name='welcome'),
                   path('admin/', admin.site.urls),
                   path('accounts/', include('accounts.urls')),
                   path('core/', include('core.urls')),
