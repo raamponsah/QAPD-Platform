@@ -31,7 +31,6 @@ def only_student(view_func):
         else:
             return redirect('login_student')
             # return HttpResponse('401 Unauthorized: You are not authorised to view this page.', status=401)
-
     return wrapper_func
 
 
