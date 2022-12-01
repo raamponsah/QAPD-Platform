@@ -11,7 +11,7 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # SEMESTER_SWITCH = 1
 
 
-@only_student
+# @only_student
 def evaluations(request):
     if request.user.is_authenticated is not True:  # if user is not logged in
         return redirect('login_student')
@@ -29,8 +29,8 @@ def evaluations(request):
                                                    )
     lecturer_profiles = LecturerProfile.objects.all()
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student_profile).values_list('evaluationInfo')
-    evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
-        id__in=evaluated_submissions).select_related('course')
+    evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).select_related('course').exclude(
+        id__in=evaluated_submissions)
 
     existing_courses = []
     for lecturer in lecturer_profiles:
