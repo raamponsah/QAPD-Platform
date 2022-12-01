@@ -11,21 +11,13 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # SEMESTER_SWITCH = 1
 
 # Auth Checks
-# Student checksum
-def checkStudentAuth():
+
+@only_student
+def evaluations(request):
     if request.user.is_authenticated is not True: # if user is not logged in
         return redirect('login_student')
     if request.user.is_student is False: # if user is a student
         return redirect('login_student')
-
-def checkLecturerAuth():
-    if request.user.is_authenticated is not True: # if user is not logged in
-        return redirect('login_lecturer')
-    if request.user.is_lecturer is False: # if user is a lecturer
-        return redirect('login_lecturer')
-@only_student
-def evaluations(request):
-    checkStudentAuth()
     student = CustomUser.objects.filter(id=request.user.id).get()
     if student is None:
         return redirect('welcome')

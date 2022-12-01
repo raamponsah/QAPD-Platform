@@ -8,12 +8,12 @@ from accounts.models import LecturerProfile, CustomUser
 from compute.compute_constants import NUMBER_OF_ATTENDANCE_CHOICES, NUMBER_OF_DELIVERY_CHOICES, \
     NUMBER_OF_CUMULATIVE_CHOICES, NUMBER_OF_INTERACTION_CHOICES, NUMBER_OF_ASSIGNMENTS_CHOICES
 from core.models import CourseInformation, Evaluation, EvaluationSubmission
-from core.views import checkLecturerAuth
 from helper_functions.helpers import computational_stats, statistics
 
 @only_lecturer
 def lecturer_dashboard(request):
-    checkLecturerAuth()
+    if request.user.is_authenticated is False:
+        return redirect('welcome')
     lecturer_user = CustomUser.objects.filter(id=request.user.id).get()
     lecturer_profile = LecturerProfile.objects.get(user=lecturer_user)
     lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id)
