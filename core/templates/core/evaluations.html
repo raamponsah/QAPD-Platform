@@ -7,8 +7,9 @@
      <p class="fs-4 fw-lighter text-muted">
      Please click on each of the following links to evaluation the respective course.
     </p>
+         {% for lecturer in lecturers %}
+
     {% for evaluation in evaluations %}
-        {% for lecturer in lecturers %}
      {% if lecturer.staff_id == evaluation.course.lecturer_code %}
     <div class="card  mb-1">
 
