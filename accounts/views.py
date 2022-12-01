@@ -190,7 +190,7 @@ def login_student(request):
                'view_name': view_name
                }
     if request.method == "POST":
-        username = request.POST['username']
+        username = request.POST['username'].lower()
         password = request.POST['password']
 
         # this would have to become a custom user (e.g. student)
