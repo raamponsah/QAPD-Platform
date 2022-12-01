@@ -13,8 +13,6 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
 @only_student
 def evaluations(request):
-    print("the id is", request.user.id)
-
     student = CustomUser.objects.filter(id=request.user.id).get()
     if student is None:
         return redirect('welcome')

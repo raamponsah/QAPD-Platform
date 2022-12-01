@@ -182,7 +182,7 @@ def login_lecturer(request):
 def login_student(request):
     page_title = 'Login/Register'
     auth_page_url = 'register_student'
-    auth_page_link_text = 'No Account?'
+    auth_page_link_text = 'No Account? Register here'
     view_name = 'student_view'
     context = {'page_title': page_title,
                'auth_page_url': auth_page_url,
