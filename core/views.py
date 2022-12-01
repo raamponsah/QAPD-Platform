@@ -25,7 +25,7 @@ def evaluations(request):
     lecturer_profiles = LecturerProfile.objects.all()
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student_profile).values_list('evaluationInfo')
     evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
-        id__in=evaluated_submissions)
+        id__in=evaluated_submissions).select_related('course')
 
     existing_courses = []
     for lecturer in lecturer_profiles:
