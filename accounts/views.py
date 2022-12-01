@@ -151,7 +151,7 @@ def login_administrator(request):
 def login_lecturer(request):
     page_title = 'Lecturer Login/Register'
     auth_page_url = 'register_lecturer'
-    auth_page_link_text = 'No account?'
+    auth_page_link_text = 'No Account? Register here'
     view_name = 'lecturer_view'
     context = {'page_title': page_title,
                'bg': 'bg-dark',
