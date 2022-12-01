@@ -36,7 +36,7 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(CustomUser, CustomUserAdmin)
 
 
-class LecturerProfileAdmin:
+class LecturerProfileAdmin(admin.ModelAdmin):
     search_fields = ('staff_id',)
 
 
