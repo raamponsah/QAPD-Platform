@@ -22,11 +22,12 @@ def evaluations(request):
     school_data = CourseInformation.objects.filter(campus_name=student_profile.campus,
                                                    qualification_name=student_profile.program,
                                                    level=student_profile.level)
+    lecturer_profiles = LecturerProfile.objects.all()
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student_profile).values_list('evaluationInfo')
     evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
         id__in=evaluated_submissions)
 
-    context = {'evaluations': evaluation_set, 'page_title': 'Evaluations'}
+    context = {'evaluations': evaluation_set, 'page_title': 'Evaluations', 'lecturers': lecturer_profiles}
     return render(request, 'core/evaluations.html', context)
 
 
