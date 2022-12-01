@@ -22,11 +22,12 @@ def evaluations(request):
     if student is None:
         return redirect('welcome')
     student_profile = Student.objects.filter(user=student).get()
-    qualification_name = student_profile.program,
+    qualification_name = student_profile.program
     # campus_name = student_profile.campus, level = student_profile.level
     school_data = CourseInformation.objects.filter(campus_name=student_profile.campus,
                                                    qualification_name=student_profile.program,
-                                                   level=student_profile.level)
+                                                   level=student_profile.level,
+                                                   course_group=student_profile.course_group)
     lecturer_profiles = LecturerProfile.objects.all()
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student_profile).values_list('evaluationInfo')
     evaluation_set = Evaluation.objects.filter(course__in=school_data, ended=False).exclude(
