@@ -14,12 +14,10 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # @only_student
 def evaluations(request):
     if request.user.is_authenticated is not True:  # if user is not logged in
-        return redirect('login_student')
-    if request.user.is_student is False:  # if user is a student
-        return redirect('login_student')
-    student = CustomUser.objects.filter(id=request.user.id).get()
-    if student is None:
         return redirect('welcome')
+    if request.user.is_student is False:  # if user is a student
+        return redirect('welcome')
+    student = CustomUser.objects.filter(id=request.user.id).get()
     student_profile = Student.objects.filter(user=student).get()
     qualification_name = student_profile.program
     # campus_name = student_profile.campus, level = student_profile.level
