@@ -7,7 +7,8 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('welcome'),
                    reverse('password_reset_request'),
                    reverse('password_reset_done'),
-                   reverse('/accounts/reset/(?P<uidb64>[^/]+)\\Z/(?P<token>[^/]+)\\Z'),
+                   reverse('/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,'
+                           '20})/$'),
                    reverse('password_reset_complete'),
                    reverse('login'),
                    reverse('register_user'),
@@ -53,8 +54,9 @@ def utilityfunc(path):
         return redirect('password_reset_done')
     elif path == reverse('password_reset_complete'):
         return redirect('password_reset_complete')
-    elif path == reverse('/accounts/reset/(?P<uidb64>[^/]+)\\Z/(?P<token>[^/]+)\\Z'):
-        return redirect('/accounts/reset/(?P<uidb64>[^/]+)\\Z/(?P<token>[^/]+)\\Z')
+    elif path == reverse(
+            '/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'):
+        return redirect('/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$')
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:

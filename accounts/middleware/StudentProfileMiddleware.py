@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 
-from accounts.middleware.LecturerProfileMiddleware import exception_urls_
+from accounts.middleware.LecturerProfileMiddleware import exception_urls_, utilityfunc
 from accounts.models import LecturerProfile, Student
 
 
@@ -29,24 +29,3 @@ def check_authenticated_user(get_response):
         return response
 
     return middleware
-
-
-def utilityfunc(path):
-    if path == reverse('login'):
-        return redirect('login')
-    elif path == reverse('register_user'):
-        return redirect('register_user')
-    elif path == reverse('welcome'):
-        return redirect('welcome')
-    elif path == reverse('password_reset_request'):
-        return redirect('password_reset_request')
-    elif path == reverse('password_reset_done'):
-        return redirect('password_reset_done')
-    elif path == reverse('password_reset_complete'):
-        return redirect('password_reset_complete')
-    elif path == reverse('/accounts/reset/(?P<uidb64>[^/]+)\\Z/(?P<token>[^/]+)\\Z'):
-        return redirect('/accounts/reset/(?P<uidb64>[^/]+)\\Z/(?P<token>[^/]+)\\Z')
-    elif path == reverse('admin:login'):
-        return redirect('admin:login')
-    else:
-        return redirect('welcome')
