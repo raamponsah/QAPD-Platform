@@ -7,7 +7,7 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('welcome'),
                    reverse('password_reset_request'),
                    reverse('password_reset_done'),
-                   reverse(reset_pattern_url),
+                   # reverse(reset_pattern_url),
                    reverse('password_reset_complete'),
                    reverse('login'),
                    reverse('register_user'),
@@ -53,8 +53,8 @@ def utilityfunc(path):
         return redirect('password_reset_done')
     elif path == reverse('password_reset_complete'):
         return redirect('password_reset_complete')
-    elif path == reverse(reset_pattern_url):
-        return redirect(reset_pattern_url)
+    # elif path == reverse(reset_pattern_url):
+    #     return redirect(reset_pattern_url)
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:
