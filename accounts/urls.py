@@ -22,6 +22,7 @@ urlpatterns = [
     path('go-confirm-email/', sent_confirm_view, name='confirmation-message-view'),
     path('user-account/me', user_account, name='user_account'),
 
+    # password resets process urls
     path('password/reset', password_reset_request, name='password_reset_request'),
     path('password_reset/done/',
          auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'),
