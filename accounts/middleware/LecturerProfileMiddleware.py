@@ -12,7 +12,9 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('login_student'),
                    reverse('login_lecturer'),
                    reverse('login_administrator'),
-                   reverse('register_user'),
+                   reverse('register_student'),
+                   reverse('register_lecturer'),
+
                    # reverse('password_reset_confirm'),
                    ]
 
