@@ -2,21 +2,14 @@ from django.shortcuts import redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
 
+from accounts.middleware.LecturerProfileMiddleware import exception_urls_
+
 
 class CheckGlobalAuth:
     def __init__(self, get_response):
         self.get_response = get_response
 
-        self.exception_urls = list([
-            reverse('admin:login'),
-            reverse('welcome'),
-            reverse('password_reset_request'),
-            reverse('login_student'),
-            reverse('login_lecturer'),
-            reverse('login_administrator'),
-            reverse('register_student'),
-            reverse('register_lecturer'),
-        ])
+        self.exception_urls = list(exception_urls_)
 
     def __call__(self, request):
         response = self.get_response(request)
