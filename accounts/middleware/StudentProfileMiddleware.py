@@ -23,7 +23,7 @@ def check_authenticated_user(get_response):
     def middleware(request):
         response = get_response(request)
         if request.user.id is None:
-            while request.path not in list([reverse('admin:login'),reverse('welcome'), reverse('login'), reverse('register_user')]):
+            while request.path not in list([reverse('admin:login'),reverse('welcome'),reverse('password_reset_request'), reverse('login'), reverse('register_user')]):
                 return utilityfunc(request.path)
         return response
 
@@ -37,6 +37,8 @@ def utilityfunc(path):
         return redirect('register_user')
     elif path == reverse('welcome'):
         return redirect('welcome')
+    elif path == reverse('password_reset_request'):
+        return redirect('password_reset_request')
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:

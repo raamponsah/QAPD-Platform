@@ -10,6 +10,7 @@ class CheckGlobalAuth:
         self.exception_urls = list([
             reverse('admin:login'),
             reverse('welcome'),
+            reverse('password_reset_request'),
             reverse('login_student'),
             reverse('login_lecturer'),
             reverse('login_administrator'),
