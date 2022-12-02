@@ -7,7 +7,7 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('welcome'),
                    reverse('password_reset_request'),
                    reverse('password_reset_done'),
-                   reverse('/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,'
+                   reverse('/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'
                            '20})/$'),
                    reverse('password_reset_complete'),
                    reverse('login'),
