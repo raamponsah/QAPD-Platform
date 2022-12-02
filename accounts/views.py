@@ -4,8 +4,14 @@ from django.contrib import messages
 # Create your views here.
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode
 
 from .auth_decorators import only_lecturer, only_student
 from .auth_funcs import decode_token, generate_confirmation_token
@@ -301,7 +307,7 @@ def password_reset_request(request):
                         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                         "user": user,
                         'token': default_token_generator.make_token(user),
-                        'protocol': 'http',
+                        'protocol': 'https',
                     }
                     email = render_to_string(email_template_name, c)
                     try:
