@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -11,10 +12,8 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # SEMESTER_SWITCH = 1
 
 
-@only_student
+@login_required(login_url='/accounts/login/student/')
 def evaluations(request):
-    if not request.user.is_authenticated:  # if user is not logged in
-        return redirect('welcome')
     if request.user.is_student is False:  # if user is a student
         return redirect('welcome')
     student = CustomUser.objects.filter(id=request.user.id).get()
