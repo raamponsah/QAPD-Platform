@@ -25,7 +25,7 @@
             {% endfor %}
         {% endif %}
 
-                <strong>Oops!</strong> {{ login_error }} <small><a href="" class="text-primary">Forgot
+                <strong>Oops!</strong> {{ login_error }} <small><a href="{% url 'password_reset_request' %}" class="text-primary">Forgot
                 Password?</a></small> </button>
 
 
