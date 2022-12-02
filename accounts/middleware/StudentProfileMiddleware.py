@@ -48,6 +48,8 @@ def utilityfunc(path):
         return redirect('password_reset_complete')
     elif path == r'/accounts/reset/Mzkz/(?P<token>[^/]+)\\Z':
         return r'/accounts/reset/Mzkz/(?P<token>[^/]+)\\Z'
+    elif path == r"/accounts/reset/(?P<uidb64>[^/]+)\\Z')/(?P<token>[^/]+)\\Z":
+        return redirect(r"/accounts/reset/(?P<uidb64>[^/]+)\\Z'/(?P<token>[^/]+)\\Z")
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:
