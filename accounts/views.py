@@ -7,7 +7,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import BadHeaderError
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -17,7 +17,7 @@ from django.utils.http import urlsafe_base64_encode
 
 from .auth_decorators import only_lecturer, only_student
 from .auth_funcs import decode_token, generate_confirmation_token
-from .email import generate_confirmation_link_mail
+from .email import generate_confirmation_link_mail, send_mail
 from .forms import StudentRegisterForm, StudentProfileForm, LecturerProfileForm, LecturerRegistrationForm
 from .models import LecturerProfile, ActivateUser, CustomUser
 
@@ -296,15 +296,15 @@ def password_reset_request(request):
     if request.method == "POST":
         password_reset_form = PasswordResetForm(request.POST)
         if password_reset_form.is_valid():
-            data = password_reset_form.cleaned_data['email']
+            data = password_reset_form.cleaned_data['email'].lower()
             associated_users = User.objects.filter(Q(email=data))
             if associated_users.exists():
                 for user in associated_users:
-                    subject = "Password Reset Requested"
+                    subject = "APQAD-GIMPA: Password Reset Requested"
                     email_template_name = "main/password/password_reset_email.txt"
                     c = {
                         "email": user.email,
-                        'domain': 'https://apqad.up.railway.app/',
+                        'domain': 'apqad.up.railway.app',
                         'site_name': 'APQAD-GIMPA',
                         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                         "user": user,
@@ -313,7 +313,7 @@ def password_reset_request(request):
                     }
                     email = render_to_string(email_template_name, c)
                     try:
-                        send_mail(user.email, user.username, 'Password Reset', email)
+                        send_mail(user.email, user.username, subject, email)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect("/password_reset/done/")
