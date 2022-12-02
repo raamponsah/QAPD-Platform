@@ -11,7 +11,7 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # SEMESTER_SWITCH = 1
 
 
-# @only_student
+@only_student
 def evaluations(request):
     if request.user.is_authenticated is not True:  # if user is not logged in
         return redirect('welcome')
