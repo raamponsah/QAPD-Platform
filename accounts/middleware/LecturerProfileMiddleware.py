@@ -14,6 +14,7 @@ exception_urls_ = [reverse('admin:login'),
                    # reverse('password_reset_confirm'),
                    ]
 
+
 def lpm(get_response):
     def middleware(request):
         response = get_response(request)
