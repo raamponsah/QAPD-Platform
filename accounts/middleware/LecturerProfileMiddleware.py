@@ -11,6 +11,7 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('password_reset_complete'),
                    reverse('login'),
                    reverse('register_user'),
+                   '/accounts/reset/Mzkz/(?P<token>[^/]+)\\Z'
                    ]
 
 def lpm(get_response):
@@ -53,6 +54,8 @@ def utilityfunc(path):
         return redirect('password_reset_confirm')
     elif path == reverse('password_reset_complete'):
         return redirect('password_reset_complete')
+    elif path == r'/accounts/reset/Mzkz/(?P<token>[^/]+)\\Z':
+        return r'/accounts/reset/Mzkz/(?P<token>[^/]+)\\Z'
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:
