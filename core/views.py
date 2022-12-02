@@ -14,6 +14,7 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
 @login_required(login_url='/accounts/login/student/')
 def evaluations(request):
+    print(request.user)
     if request.user.is_student is False:  # if user is a student
         return redirect('welcome')
     student = CustomUser.objects.filter(id=request.user.id).get()
