@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 from accounts.middleware.LecturerProfileMiddleware import utilityfunc
-from accounts.middleware.whitelisted_routes import EXCEPTION_URL_LIST
+from accounts.middleware.whitelisted_routes import EXCEPTION_URL_LIST, whitelisted_urls
 from accounts.models import Student
 
 
@@ -27,7 +27,7 @@ def check_authenticated_user(get_response):
     def middleware(request):
         response = get_response(request)
         if request.user.id is None:
-            while request.path not in list(EXCEPTION_URL_LIST):
+            while request.path not in list(whitelisted_urls(request)):
                 return utilityfunc(request.path)
         return response
 

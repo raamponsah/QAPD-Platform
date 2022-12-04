@@ -3,7 +3,7 @@ from django.urls import reverse, resolve, path
 import re
 from django.http import HttpResponse
 
-from accounts.middleware.whitelisted_routes import EXCEPTION_URL_LIST
+from accounts.middleware.whitelisted_routes import EXCEPTION_URL_LIST, whitelisted_urls
 
 
 # from dashboard.views import runurl
@@ -25,7 +25,7 @@ class RouterMiddleware:
         return response
 
     def utilityfunc(self, request, rpath):
-        exception_urls = list(EXCEPTION_URL_LIST)
+        exception_urls = list(whitelisted_urls(request))
         if rpath in exception_urls:
             return redirect(rpath)
         else:
