@@ -23,7 +23,7 @@ class RouterMiddleware:
         response = self.get_response(request)
         if not request.user.is_authenticated:
             if request.path not in exception_urls:
-                print("Path requested => ", request.path)
+                print("Path requested => ", request.path, "UUID:=> ", request.GET.get('uidb64'))
                 # return utilityfunc(request, response)
                 return redirect('welcome')
         return response
