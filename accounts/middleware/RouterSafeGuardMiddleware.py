@@ -21,11 +21,11 @@ class RouterMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if not request.user.is_authenticated and request.path not in whitelisted_urls(request):
-            return utilityfunc(request, request.path)
         response = self.get_response(request)
-
+        if not request.user.is_authenticated or request.path in whitelisted_urls(request):
+            return utilityfunc(request, request.path)
         return response
+
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         whitelist = [
