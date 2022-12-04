@@ -55,7 +55,7 @@ def check_authenticated_user(get_response):
                            reverse('password_reset_request'),
                            reverse('password_reset_done'),
                            reverse('password_reset_complete'),
-                           reverse('reset_pattern_url',
+                           reverse('password_reset_confirm',
                                    kwargs={'uidb64': request.GET.get('uidb64', None),
                                            'token': request.GET.get('token', None)}),
                            ]
