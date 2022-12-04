@@ -21,7 +21,6 @@ class RouterMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        exception_urls = list(whitelisted_urls(request))
         response = self.get_response(request)
         if not request.user.is_authenticated:
             return redirect('welcome')
