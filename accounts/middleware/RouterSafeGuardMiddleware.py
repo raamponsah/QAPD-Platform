@@ -1,12 +1,6 @@
-from django.shortcuts import redirect, get_object_or_404, render
-from django.urls import reverse, resolve, path
-import re
-from django.http import HttpResponse
+from django.shortcuts import redirect
 
 from accounts.middleware.whitelisted_routes import whitelisted_urls
-
-
-# from dashboard.views import runurl
 
 
 class RouterMiddleware:
