@@ -10,11 +10,12 @@ def whitelisted_urls(request):
         reverse('login_administrator'),
         reverse('register_student'),
         reverse('register_lecturer'),
+
+        reverse('password_reset_confirm',
+                kwargs={'uidb64': request.GET.uidb64,
+                        'token': request.GET.token}),
         reverse('password_reset_request'),
         reverse('password_change'),
         reverse('password_reset_done'),
         reverse('password_reset_complete'),
-        reverse('password_reset_confirm',
-                kwargs={'uidb64': request.GET.get('uidb64'),
-                        'token': request.GET.get('token')}),
     ]
