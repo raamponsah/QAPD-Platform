@@ -1,4 +1,4 @@
-from django.http import request, HttpRequest
+from django.http import request
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 
@@ -56,8 +56,8 @@ def check_authenticated_user(get_response):
                            reverse('password_reset_done'),
                            reverse('password_reset_complete'),
                            reverse('password_reset_confirm',
-                                   kwargs={'uidb64': HttpRequest.GET['uidb64'],
-                                           'token': HttpRequest.GET['token']}),
+                                   kwargs={'uidb64': request.GET.get('uidb64', None),
+                                           'token': request.GET.get('token', None)}),
                            ]
         response = get_response(request)
         if request.user.id is None:
@@ -78,9 +78,9 @@ def utilityfunc(path):
     elif path == reverse('password_reset_request'):
         return redirect('password_reset_request')
     elif path == reverse('password_reset_confirm',
-                         kwargs={'uidb64': HttpRequest.GET['uidb64'], 'token': HttpRequest.GET['token']}):
+                         kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)}):
         return redirect('password_reset_confirm',
-                        kwargs={'uidb64': HttpRequest.GET['uidb64'], 'token': HttpRequest.GET['token']})
+                        kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)})
     elif path == reverse('password_reset_done'):
         return redirect('password_reset_done')
     elif path == reverse('password_reset_complete'):
