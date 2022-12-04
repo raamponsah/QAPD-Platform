@@ -21,7 +21,7 @@ def lpm(get_response):
                            reverse('register_student'),
                            reverse('register_lecturer'),
 
-                           reverse('reset_pattern_url',
+                           reverse('password_reset_confirm',
                                    kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)}),
                            ]
 
