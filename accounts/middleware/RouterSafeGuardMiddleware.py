@@ -49,7 +49,4 @@ class RouterMiddleware:
         ]
         if request.path not in whitelist:
             return redirect('welcome')
-        else:
-            print("Path requested => ", request.path, "params=>", request.GET)
-            return None
-        print(view_kwargs)
+        return None
