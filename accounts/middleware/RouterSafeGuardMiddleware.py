@@ -47,6 +47,7 @@ class RouterMiddleware:
                     kwargs={'uidb64': view_kwargs.get('uidb64'),
                             'token': view_kwargs.get('token')}),
         ]
+        print(view_func, request.path)
         if request.path not in whitelist:
             return redirect('welcome')
         return None
