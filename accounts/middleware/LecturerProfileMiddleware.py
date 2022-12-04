@@ -17,7 +17,6 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('password_reset_request'),
                    reverse('password_reset_done'),
                    reverse('password_reset_complete'),
-
                    reverse('password_reset_confirm',
                            kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)}),
 
