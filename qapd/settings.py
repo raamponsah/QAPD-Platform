@@ -89,9 +89,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
-    "accounts.middleware.LecturerProfileMiddleware.lpm",
-    "accounts.middleware.student_middleware.router_middleware",
+    # "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
+    # "accounts.middleware.LecturerProfileMiddleware.lpm",
+    # "accounts.middleware.student_middleware.router_middleware",
 ]
 
 ROOT_URLCONF = "qapd.urls"
