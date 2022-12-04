@@ -1,56 +1,33 @@
-from django.shortcuts import redirect
-from django.urls import reverse
+from django.shortcuts import redirect, get_object_or_404, render
+from django.urls import reverse, resolve, path
+import re
+from django.http import HttpResponse
 
 from accounts.middleware.whitelisted_routes import whitelisted_urls
 
 
-def utilityfunc(request, rpath):
-    exception_urls = whitelisted_urls(request)
-    if rpath in exception_urls:
-        return redirect(rpath)
-    else:
-        return redirect('welcome')
-
-
-def utilityfunc_wl(rpath):
-    return redirect(rpath)
+# from dashboard.views import runurl
 
 
 class RouterMiddleware:
     def __init__(self, get_response):
+        # self.whitelisted_urls = '/dashboard/factual/limiting/(?P<token>[^/]+)\\Z'
+        self.whitelisted_urls = '/accounts/confirm-email/(?P<token>[^/]+)\\Z'
+
         self.get_response = get_response
 
     def __call__(self, request):
         response = self.get_response(request)
-        if request.path in whitelisted_urls(request):
-            return response
-
         if not request.user.is_authenticated:
-            return redirect('welcome')
-
+            if request.path not in whitelisted_urls(request):
+                return self.utilityfunc(response)
         return response
 
-    def process_view(self, request, view_func, view_args, view_kwargs):
-        whitelist = [
-            reverse('admin:login'),
-            reverse('welcome'),
-            reverse('password_reset_request'),
-            reverse('password_reset_done'),
-            reverse('password_reset_complete'),
-            reverse('login_student'),
-            reverse('login_lecturer'),
-            reverse('login_administrator'),
-            reverse('register_student'),
-            reverse('register_lecturer'),
-            reverse('password_reset_request'),
-            reverse('password_reset_done'),
-            reverse('password_reset_complete'),
-            reverse('password_reset_confirm',
-                    kwargs={'uidb64': view_kwargs.get('uidb64'),
-                            'token': view_kwargs.get('token')}),
-        ]
+    def utilityfunc(self, rpath):
+        if rpath in self.exception_urls:
+            return redirect(rpath)
+        else:
+            return redirect('login_student')
 
-        if request.path in whitelist:
-            return utilityfunc(request, request.path)
-
-        return None
+    def utilityfunc_wl(self, rpath):
+        return redirect(rpath)
