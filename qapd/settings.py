@@ -90,7 +90,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
-    # "accounts.middleware.LecturerProfileMiddleware.lpm",
+    "accounts.middleware.LecturerProfileMiddleware.lpm",
     # "accounts.middleware.student_middleware.router_middleware",
 ]
 
