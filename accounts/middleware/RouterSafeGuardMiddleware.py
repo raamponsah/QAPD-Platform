@@ -21,12 +21,15 @@ class RouterMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        if request.path in whitelisted_urls(request):
+            print("found path=>", request.path)
+            return utilityfunc(request, request.path)
+        else:
+            print("not found path=>", request.path)
+            return utilityfunc(request, request.path)
 
         response = self.get_response(request)
-        if request.path in whitelisted_urls(request) and not request.user.is_authenticated:
-            return utilityfunc(request, request.path)
-        elif not request.user.is_authenticated:
-            return utilityfunc(request, 'welcome')
+
 
         return response
 
