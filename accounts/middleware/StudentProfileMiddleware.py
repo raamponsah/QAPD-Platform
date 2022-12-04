@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 
-from accounts.middleware.LecturerProfileMiddleware import exception_urls_, utilityfunc
+from accounts.middleware.LecturerProfileMiddleware import utilityfunc
 from accounts.models import LecturerProfile, Student
 
 
