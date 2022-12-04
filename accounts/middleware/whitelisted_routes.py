@@ -11,6 +11,7 @@ def whitelisted_urls(request):
         reverse('register_student'),
         reverse('register_lecturer'),
         reverse('password_reset_request'),
+        reverse('password_change'),
         reverse('password_reset_done'),
         reverse('password_reset_complete'),
         reverse('password_reset_confirm',
