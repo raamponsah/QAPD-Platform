@@ -51,7 +51,7 @@ def check_authenticated_user(get_response):
                            reverse('register_student'),
                            reverse('register_lecturer'),
 
-                           reverse('reset_pattern_url',
+                           reverse('password_reset_confirm',
                                    kwargs={'uidb64': request.GET.get('uidb64', None),
                                            'token': request.GET.get('token', None)}),
                            ]
@@ -77,8 +77,8 @@ def utilityfunc(path):
         return redirect('password_reset_done')
     elif path == reverse('password_reset_complete'):
         return redirect('password_reset_complete')
-    elif path == reverse('reset_pattern_url', kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)}):
-        return redirect('reset_pattern_url', kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)})
+    elif path == reverse('password_reset_confirm', kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)}):
+        return redirect('password_reset_confirm', kwargs={'uidb64': request.GET.get('uidb64', None), 'token': request.GET.get('token', None)})
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:
