@@ -28,3 +28,7 @@ class RouterMiddleware:
                 # request.GET.get('uidb64')
                 return redirect('welcome')
         return response
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        # This code is executed just before the view is called
+        print(view_kwargs)
