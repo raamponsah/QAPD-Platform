@@ -21,31 +21,35 @@ class RouterMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # if request.path in whitelisted_urls(request):
-        #     print(" Found Path => ", request.path, request)
+        if not request.user.is_authenticated and request.path not in whitelisted_urls(request):
+            return reverse('welcome')
+        elif request.path in whitelisted_urls(request):
+            return utilityfunc(request, request.path)
         response = self.get_response(request)
+
         return response
 
-    # def process_view(self, request, view_func, view_args, view_kwargs):
-    #     # This code is executed just before the view is called
-    #     whitelist = [
-    #         reverse('admin:login'),
-    #         reverse('welcome'),
-    #         reverse('password_reset_request'),
-    #         reverse('password_reset_done'),
-    #         reverse('password_reset_complete'),
-    #         reverse('login_student'),
-    #         reverse('login_lecturer'),
-    #         reverse('login_administrator'),
-    #         reverse('register_student'),
-    #         reverse('register_lecturer'),
-    #         reverse('password_reset_request'),
-    #         reverse('password_reset_done'),
-    #         reverse('password_reset_complete'),
-    #         reverse('password_reset_confirm',
-    #                 kwargs={'uidb64': view_kwargs.get('uidb64'),
-    #                         'token': view_kwargs.get('token')}),
-    #     ]
-    #     print("yopol=> ", view_func, request.path)
-    #     if request.path not in whitelist:
-    #         return utilityfunc(request, request.path)
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        whitelist = [
+            reverse('admin:login'),
+            reverse('welcome'),
+            reverse('password_reset_request'),
+            reverse('password_reset_done'),
+            reverse('password_reset_complete'),
+            reverse('login_student'),
+            reverse('login_lecturer'),
+            reverse('login_administrator'),
+            reverse('register_student'),
+            reverse('register_lecturer'),
+            reverse('password_reset_request'),
+            reverse('password_reset_done'),
+            reverse('password_reset_complete'),
+            reverse('password_reset_confirm',
+                    kwargs={'uidb64': view_kwargs.get('uidb64'),
+                            'token': view_kwargs.get('token')}),
+        ]
+
+        if request.path in whitelist:
+            return utilityfunc(request, request.path)
+
+        return None
