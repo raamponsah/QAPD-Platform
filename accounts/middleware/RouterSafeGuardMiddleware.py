@@ -18,8 +18,6 @@ class RouterMiddleware:
 
     def utilityfunc(self, request, response):
         if request.path in whitelisted_urls(request):
-            print(response)
-            print(request.path)
             return response
         else:
             return redirect('welcome')
