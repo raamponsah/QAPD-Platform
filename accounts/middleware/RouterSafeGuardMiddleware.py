@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse, resolve, path
 import re
-from django.http import HttpResponse, request
+from django.http import HttpResponse, HttpRequest
 
 
 # from dashboard.views import runurl
@@ -27,8 +27,8 @@ class RouterMiddleware:
             reverse('password_reset_done'),
             reverse('password_reset_complete'),
             reverse('password_reset_confirm',
-                    kwargs={'uidb64': request.GET.get('uidb64', None),
-                            'token': request.GET.get('token', None)}),
+                    kwargs={'uidb64': HttpRequest.GET['uidb64'],
+                            'token': HttpRequest.GET['token']}),
         ])
         self.get_response = get_response
 
