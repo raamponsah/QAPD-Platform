@@ -22,14 +22,9 @@ class RouterMiddleware:
 
     def __call__(self, request):
         if request.path in whitelisted_urls(request):
-            print("found path=>", request.path)
-            return utilityfunc(request, request.path)
-        else:
-            print("not found path=>", request.path)
-            return utilityfunc(request, request.path)
+            print("found path=>", request.path, request)
 
         response = self.get_response(request)
-
 
         return response
 
