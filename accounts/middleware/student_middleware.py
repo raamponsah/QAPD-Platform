@@ -6,7 +6,7 @@ from accounts.middleware.LecturerProfileMiddleware import utilityfunc
 from accounts.models import Student
 
 
-def spm(get_response):
+def router_middleware(get_response):
     def middleware(request):
         reset_pattern_url = '/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'
         exception_urls_ = [reverse('admin:login'),
