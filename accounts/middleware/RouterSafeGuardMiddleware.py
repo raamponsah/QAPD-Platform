@@ -47,6 +47,7 @@ class RouterMiddleware:
                             'token': view_kwargs.get('token')}),
         ]
         print(view_func, request.path)
-        if request.path not in whitelist:
-            return redirect('welcome')
+        if request.path in whitelist:
+            return utilityfunc(request, request.path)
+
         return None
