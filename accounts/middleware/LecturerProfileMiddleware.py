@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 
@@ -14,7 +15,7 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('register_student'),
                    reverse('register_lecturer'),
 
-                   reverse('reset_pattern_url'),
+                   reverse('reset_pattern_url', kwargs={'uidb64':request['uidb64'], 'token':request['token']}),
                    ]
 
 
@@ -56,8 +57,8 @@ def utilityfunc(path):
         return redirect('password_reset_done')
     elif path == reverse('password_reset_complete'):
         return redirect('password_reset_complete')
-    elif path == reverse('reset_pattern_url'):
-        return redirect('reset_pattern_url')
+    elif path == reverse('reset_pattern_url', kwargs={'uidb64':request['uidb64'], 'token':request['token']}):
+        return redirect('reset_pattern_url', kwargs={'uidb64':request['uidb64'], 'token':request['token']})
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:
