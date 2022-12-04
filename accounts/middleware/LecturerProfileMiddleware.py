@@ -4,25 +4,27 @@ from django.urls import reverse
 
 from accounts.models import LecturerProfile
 
-reset_pattern_url = '/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'
-exception_urls_ = [reverse('admin:login'),
-                   reverse('welcome'),
-                   reverse('password_reset_request'),
-                   reverse('password_reset_done'),
-                   reverse('password_reset_complete'),
-                   reverse('login_student'),
-                   reverse('login_lecturer'),
-                   reverse('login_administrator'),
-                   reverse('register_student'),
-                   reverse('register_lecturer'),
 
-                   reverse('reset_pattern_url',
-                           kwargs={'uidb64': request.GET['uidb64'], 'token': request.GET['token']}),
-                   ]
 
 
 def lpm(get_response):
     def middleware(request):
+        reset_pattern_url = '/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'
+        exception_urls_ = [reverse('admin:login'),
+                           reverse('welcome'),
+                           reverse('password_reset_request'),
+                           reverse('password_reset_done'),
+                           reverse('password_reset_complete'),
+                           reverse('login_student'),
+                           reverse('login_lecturer'),
+                           reverse('login_administrator'),
+                           reverse('register_student'),
+                           reverse('register_lecturer'),
+
+                           reverse('reset_pattern_url',
+                                   kwargs={'uidb64': request.GET['uidb64'], 'token': request.GET['token']}),
+                           ]
+
         response = get_response(request)
         try:
             if request.user.id is not None and request.user.is_lecturer is True:
