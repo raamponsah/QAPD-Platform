@@ -17,6 +17,7 @@ class RouterMiddleware:
         return response
 
     def utilityfunc(self, request, rpath):
+        print("This is paths:=> ", rpath, request.path)
         if rpath in whitelisted_urls(request):
             return redirect(rpath)
         else:
