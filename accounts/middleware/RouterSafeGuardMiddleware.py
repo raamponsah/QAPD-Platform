@@ -3,7 +3,7 @@ from django.urls import reverse, resolve, path
 import re
 from django.http import HttpResponse
 
-from accounts.middleware.whitelisted_routes import EXCEPTION_URL_LIST, whitelisted_urls
+from accounts.middleware.whitelisted_routes import whitelisted_urls
 
 
 # from dashboard.views import runurl

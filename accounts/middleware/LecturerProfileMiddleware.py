@@ -2,7 +2,7 @@ from django.http import request
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 
-from accounts.middleware.whitelisted_routes import EXCEPTION_URL_LIST, whitelisted_urls
+from accounts.middleware.whitelisted_routes import whitelisted_urls
 from accounts.models import LecturerProfile
 
 
