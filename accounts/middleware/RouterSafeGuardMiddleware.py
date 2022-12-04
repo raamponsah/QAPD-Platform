@@ -30,7 +30,7 @@ class RouterMiddleware:
             reverse('password_reset_request'),
             reverse('password_reset_done'),
             reverse('password_reset_complete'),
-            reverse('password_reset_confirm',
+            reverse('reset_pattern_url',
                     kwargs={'uidb64': request.GET.get('uidb64', None),
                             'token': request.GET.get('token', None)}),
         ])
@@ -55,7 +55,7 @@ class RouterMiddleware:
             reverse('password_reset_request'),
             reverse('password_reset_done'),
             reverse('password_reset_complete'),
-            reverse('password_reset_confirm',
+            reverse('reset_pattern_url',
                     kwargs={'uidb64': request.GET.get('uidb64', None),
                             'token': request.GET.get('token', None)}),
         ])

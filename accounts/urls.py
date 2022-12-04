@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 
 from accounts.views import student_profile_create, logout_student, register_student, login_student, \
     login_administrator, logout_administrator, register_lecturer, lecturer_profile_create, login_lecturer, \
@@ -23,6 +23,7 @@ urlpatterns = [
     path('user-account/me', user_account, name='user_account'),
 
     # password resets process urls
+    # path('password/', include('django.contrib.auth.urls')),
     path('password/reset', password_reset_request, name='password_reset_request'),
     path('reset/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"),
@@ -30,7 +31,8 @@ urlpatterns = [
     path('password_reset/done/',
          auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'),
          name='password_reset_done'),
-
+    path('password-change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+    path('password-change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     path('reset/done/',
          auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'),
          name='password_reset_complete'),
