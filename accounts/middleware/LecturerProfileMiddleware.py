@@ -6,6 +6,7 @@ from accounts.middleware.whitelisted_routes import whitelisted_urls
 from accounts.models import LecturerProfile
 
 
+
 def lpm(get_response):
     def middleware(request):
         response = get_response(request)
