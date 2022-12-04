@@ -5,9 +5,6 @@ def whitelisted_urls(request):
     return [
         reverse('admin:login'),
         reverse('welcome'),
-        reverse('password_reset_request'),
-        reverse('password_reset_done'),
-        reverse('password_reset_complete'),
         reverse('login_student'),
         reverse('login_lecturer'),
         reverse('login_administrator'),
