@@ -1,4 +1,6 @@
 from django.shortcuts import redirect
+from django.urls import reverse
+
 from accounts.middleware.whitelisted_routes import whitelisted_urls
 
 
@@ -22,13 +24,32 @@ class RouterMiddleware:
         exception_urls = list(whitelisted_urls(request))
         response = self.get_response(request)
         if not request.user.is_authenticated:
-            if request.path not in exception_urls:
-                print("Path requested => ", request.path, "params=>", request.GET)
-                # return utilityfunc(request, response)
-                # request.GET.get('uidb64')
-                return redirect('welcome')
+            return redirect('welcome')
         return response
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         # This code is executed just before the view is called
+        whitelist = [
+            reverse('admin:login'),
+            reverse('welcome'),
+            reverse('password_reset_request'),
+            reverse('password_reset_done'),
+            reverse('password_reset_complete'),
+            reverse('login_student'),
+            reverse('login_lecturer'),
+            reverse('login_administrator'),
+            reverse('register_student'),
+            reverse('register_lecturer'),
+            reverse('password_reset_request'),
+            reverse('password_reset_done'),
+            reverse('password_reset_complete'),
+            reverse('password_reset_confirm',
+                    kwargs={'uidb64': view_kwargs.get('uidb64'),
+                            'token': view_kwargs.get('token')}),
+        ]
+        if request.path not in whitelist:
+            print("Path requested => ", request.path, "params=>", request.GET)
+            # return utilityfunc(request, response)
+            # request.GET.get('uidb64')
+            return redirect('welcome')
         print(view_kwargs)
