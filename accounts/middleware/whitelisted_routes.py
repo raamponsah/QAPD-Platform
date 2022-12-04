@@ -13,8 +13,8 @@ def whitelisted_urls(request):
         reverse('register_lecturer'),
 
         reverse('password_reset_confirm',
-                kwargs={'uidb64': request.path.split('/')[2] if request.path.split('/')[2] else None,
-                        'token': request.path.split('/')[1] if request.path.split('/')[1] else None}),
+                kwargs={'uidb64': request.path.split('/')[0] if request.path.split('/')[0] else None,
+                        'token': request.path.split('/')[0] if request.path.split('/')[0] else None}),
 
         reverse('password_reset_request'),
         reverse('password_change'),
