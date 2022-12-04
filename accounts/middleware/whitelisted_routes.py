@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.urls import reverse
 
 
@@ -12,8 +13,8 @@ def whitelisted_urls(request):
         reverse('register_lecturer'),
 
         reverse('password_reset_confirm',
-                kwargs={'uidb64': request.GET.uidb64,
-                        'token': request.GET.token}),
+                kwargs={'uidb64': HttpRequest.path.split('/')[5], 'token': HttpRequest.path.split('/')[6]}),
+
         reverse('password_reset_request'),
         reverse('password_change'),
         reverse('password_reset_done'),
