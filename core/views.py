@@ -40,8 +40,10 @@ def evaluations(request):
     return render(request, 'core/evaluations.html', context)
 
 
-@only_student
+@login_required(login_url='/accounts/login/student/')
 def evaluation_view_form(request, pk):
+    if request.user.is_student is False:  # if user is a student
+        return redirect('welcome')
     student = Student.objects.filter(user=request.user.id).get()
     evaluation_instance = Evaluation.objects.filter(pk=pk).get()
     evaluation_form = EvaluationForm(initial={'evaluationInfo': evaluation_instance})
