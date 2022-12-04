@@ -3,6 +3,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 
 from accounts.models import LecturerProfile
+
 reset_pattern_url = '/accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'
 exception_urls_ = [reverse('admin:login'),
                    reverse('welcome'),
@@ -15,7 +16,8 @@ exception_urls_ = [reverse('admin:login'),
                    reverse('register_student'),
                    reverse('register_lecturer'),
 
-                   reverse('reset_pattern_url', kwargs={'uidb64':request.GET['uidb64'], 'token':request.GET['token']}),
+                   reverse('reset_pattern_url',
+                           kwargs={'uidb64': request.GET['uidb64'], 'token': request.GET['token']}),
                    ]
 
 
@@ -57,8 +59,8 @@ def utilityfunc(path):
         return redirect('password_reset_done')
     elif path == reverse('password_reset_complete'):
         return redirect('password_reset_complete')
-    elif path == reverse('reset_pattern_url', kwargs={'uidb64':request.GET['uidb64'], 'token':request.GET['token']}):
-        return redirect('reset_pattern_url', kwargs={'uidb64':request.GET['uidb64'], 'token':request.GET['token']})
+    elif path == reverse('reset_pattern_url', kwargs={'uidb64': request.GET['uidb64'], 'token': request.GET['token']}):
+        return redirect('reset_pattern_url', kwargs={'uidb64': request.GET['uidb64'], 'token': request.GET['token']})
     elif path == reverse('admin:login'):
         return redirect('admin:login')
     else:
