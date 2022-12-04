@@ -24,8 +24,9 @@ urlpatterns = [
 
     # password resets process urls
     path('password/reset', password_reset_request, name='password_reset_request'),
-    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"),
-                     name='password_reset_confirm'),
+    path('reset/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"),
+         name='password_reset_confirm'),
     path('password_reset/done/',
          auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'),
          name='password_reset_done'),
