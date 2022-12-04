@@ -31,8 +31,8 @@ class RouterMiddleware:
             reverse('password_reset_done'),
             reverse('password_reset_complete'),
             reverse('password_reset_confirm',
-                    kwargs={'uidb64': request.GET.get('uidb64', None),
-                            'token': request.GET.get('token', None)}),
+                    kwargs={'uidb64': request.GET.get('uidb64'),
+                            'token': request.GET.get('token')}),
         ])
         response = self.get_response(request)
         if not request.user.is_authenticated:
@@ -56,8 +56,8 @@ class RouterMiddleware:
             reverse('password_reset_done'),
             reverse('password_reset_complete'),
             reverse('password_reset_confirm',
-                    kwargs={'uidb64': request.GET.get('uidb64', None),
-                            'token': request.GET.get('token', None)}),
+                    kwargs={'uidb64': request.GET.get('uidb64'),
+                            'token': request.GET.get('token')}),
         ])
         if rpath in exception_urls:
             return redirect(rpath)
