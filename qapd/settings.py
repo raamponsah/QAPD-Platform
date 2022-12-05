@@ -91,7 +91,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
     "accounts.middleware.LecturerProfileMiddleware.lpm",
-    "accounts.middleware.student_middleware.router_middleware",
+    "accounts.middleware.StudentProfileMiddleware.spm",
 ]
 
 ROOT_URLCONF = "qapd.urls"
