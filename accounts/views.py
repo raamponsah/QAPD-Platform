@@ -8,7 +8,6 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import BadHeaderError
-from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
@@ -89,7 +88,6 @@ def register_student(request):
     view_name = "student_view"
     if request.method == 'POST':
         form = StudentRegisterForm(request.POST)
-
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
@@ -159,7 +157,7 @@ def login_administrator(request):
 def login_lecturer(request):
     page_title = 'Lecturer Login/Register'
     auth_page_url = 'register_lecturer'
-    auth_page_link_text = 'No Account? Register here'
+    auth_page_link_text = 'No account?'
     view_name = 'lecturer_view'
     context = {'page_title': page_title,
                'bg': 'bg-dark',
@@ -190,7 +188,7 @@ def login_lecturer(request):
 def login_student(request):
     page_title = 'Login/Register'
     auth_page_url = 'register_student'
-    auth_page_link_text = 'No Account? Register here'
+    auth_page_link_text = 'No Account?'
     view_name = 'student_view'
     context = {'page_title': page_title,
                'auth_page_url': auth_page_url,
@@ -198,14 +196,14 @@ def login_student(request):
                'view_name': view_name
                }
     if request.method == "POST":
-        username = request.POST['username'].lower()
+        username = request.POST['username']
         password = request.POST['password']
 
         # this would have to become a custom user (e.g. student)
         student = authenticate(username=username, password=password)
         if student is not None and student.is_student is True and student.is_active is True:
             login(request, student)
-            messages.success(request, f'Welcome, {student}')
+            messages.success(request, f'Welcome {student}')
             return redirect('evaluations')
         else:
             context['login_error'] = 'Username or password is incorrect.'
@@ -250,7 +248,7 @@ def confirm_email_view(request, token):
                 activate_user.is_activated = True
                 activate_user.save()
                 user.save()
-                messages.success(request, f"Account activated successfully. Please Login")
+                messages.success(request, f"Email was confirmed successfully")
                 print("user activated!")
 
                 if user.is_lecturer:
@@ -296,27 +294,27 @@ def password_reset_request(request):
     if request.method == "POST":
         password_reset_form = PasswordResetForm(request.POST)
         if password_reset_form.is_valid():
-            data = password_reset_form.cleaned_data['email'].lower()
+            data = password_reset_form.cleaned_data['email']
             associated_users = User.objects.filter(Q(email=data))
             if associated_users.exists():
                 for user in associated_users:
-                    subject = "APQAD-GIMPA: Password Reset Requested"
+                    subject = "Password Reset Requested"
                     email_template_name = "main/password/password_reset_email.txt"
                     c = {
                         "email": user.email,
-                        'domain': 'apqad.up.railway.app',
-                        'site_name': 'APQAD-GIMPA',
+                        'domain': '127.0.0.1:8000',
+                        'site_name': 'Website',
                         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                         "user": user,
                         'token': default_token_generator.make_token(user),
-                        'protocol': 'https',
+                        'protocol': 'http',
                     }
                     email = render_to_string(email_template_name, c)
                     try:
-                        send_mail(user.email, user.username, subject, email)
+                        send_mail(user.email, user.username, 'Password Reset', email)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
-                    return redirect("password_reset_done")
+                    return redirect("/password_reset/done/")
     password_reset_form = PasswordResetForm()
-    return render(request, template_name="main/password/password_reset.html",
+    return render(request=request, template_name="main/password/password_reset.html",
                   context={"password_reset_form": password_reset_form})
