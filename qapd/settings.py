@@ -117,7 +117,7 @@ WSGI_APPLICATION = "qapd.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
