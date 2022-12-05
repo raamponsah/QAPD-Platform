@@ -15,19 +15,20 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-import dj_database_url
+
 from mailjet_rest import Client
+import dj_database_url
 # env = os.environ.Env()
 # environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(os.path.join(BASE_DIR, ".env"))
+# load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -89,9 +90,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    # "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
-    # "accounts.middleware.LecturerProfileMiddleware.lpm",
-    # "accounts.middleware.StudentProfileMiddleware.spm",
+    "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
+    "accounts.middleware.LecturerProfileMiddleware.lpm",
+    "accounts.middleware.StudentProfileMiddleware.spm",
 ]
 
 ROOT_URLCONF = "qapd.urls"
