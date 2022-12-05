@@ -117,17 +117,17 @@ WSGI_APPLICATION = "qapd.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASE_URL = os.getenv('DATABASE_URL')
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DBNAME'),
-#         'USER': os.getenv('DBUSER'),
-#         'PASSWORD': os.getenv('DBPASSWORD'),
-#         'HOST': os.getenv('DBHOST'),
-#         'PORT': os.getenv('DBPORT'),
-#     }
-# }
+# DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ["PGDATABASE"],
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
+    }
+}
 
 
 
