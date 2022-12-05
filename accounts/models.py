@@ -2,9 +2,6 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.core.exceptions import ValidationError
 from django.db import models
-
-# Create your models here.
-# from core.models import ProgramInformation, CampusInformation
 from qapd import settings
 
 
@@ -48,7 +45,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_hadmin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    # is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
     objects = CustomManager()
