@@ -12,7 +12,7 @@ def validate_gimpa_email(value):
     if "gimpa.edu.gh" in value:
         return value
     else:
-        raise ValidationError("Only Validated GIMPA Emails are allowed")
+        raise ValidationError("Only validated GIMPA emails are allowed")
 
 
 class CustomManager(BaseUserManager):
@@ -48,7 +48,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_hadmin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    # is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
     objects = CustomManager()
