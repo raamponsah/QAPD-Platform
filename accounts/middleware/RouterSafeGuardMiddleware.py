@@ -13,15 +13,14 @@ class RouterMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
         if not request.user.is_authenticated:
-            return self.utilityfunc(request, response)
+            return self.utilityfunc(request.path, request, response)
         return response
 
-    def utilityfunc(self, request, response):
-        for p in whitelisted_urls(request):
-            if request.path == p:
-                print(request.path)
-                print("whitelisted=> ", request.path)
-                return response
+    def utilityfunc(self, path, request, response):
+        if path in whitelisted_urls(request):
+            print(request.path)
+            print("whitelisted=> ", request.path)
+            return response
         print(request.path)
         return redirect('welcome')
 
