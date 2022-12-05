@@ -1,6 +1,6 @@
 from django import template
 
-from accounts.models import Student
+from accounts.models import Student, LecturerProfile
 from core.models import CourseInformation, CampusInformation, ProgramInformation, EvaluationSubmission, Evaluation
 
 register = template.Library()
@@ -21,8 +21,14 @@ def number_of_students_registered_per_this_course(value):
 
 @register.filter
 def number_of_evaluations(value):
-    course = CourseInformation.objects.filter(id=value).first()
-    course_evaluation = Evaluation.objects.filter(course=course).first()
+    course = CourseInformation.objects.filter(id=value).get()
+    course_evaluation = Evaluation.objects.filter(course=course).get()
     number_of_evaluated_submissions = EvaluationSubmission.objects.filter(evaluationInfo=course_evaluation,
                                                                           is_evaluated=True).count()
     return number_of_evaluated_submissions
+
+
+@register.filter
+def get_lecturer_name(value):
+    lecturer = LecturerProfile.objects.filter(staff_id=value).get()
+    return lecturer.user.first_name + ' ' + lecturer.user.last_name
