@@ -32,7 +32,7 @@ class RouterMiddleware:
         if rpath in self.exception_urls:
             return redirect(rpath)
         else:
-            return redirect('login_student')
+            return redirect('welcome')
 
     def utilityfunc_wl(self, rpath):
         return redirect(rpath)
