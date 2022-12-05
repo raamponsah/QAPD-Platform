@@ -30,5 +30,6 @@ def number_of_evaluations(value):
 
 @register.filter
 def get_lecturer_name(value):
+    value = int(value)
     lecturer = LecturerProfile.objects.filter(staff_id=value).get()
     return lecturer.user.first_name + ' ' + lecturer.user.last_name
