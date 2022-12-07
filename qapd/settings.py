@@ -10,19 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-
 import os
 from datetime import timedelta
 from pathlib import Path
 
-
 from mailjet_rest import Client
 import dj_database_url
+
 # env = os.environ.Env()
 # environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # from dotenv import load_dotenv
 
@@ -39,8 +37,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-ALLOWED_HOSTS = ['*.apqad.up.railway.app', 'apqad.up.railway.app','www.apqad.up.railway.app']
+ALLOWED_HOSTS = ['*.apqad.up.railway.app', 'apqad.up.railway.app', 'www.apqad.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ["https://*.apqad.up.railway.app/", "https://apqad.up.railway.app/"]
 # Application definition
 
@@ -73,10 +70,10 @@ CLOUDINARY_STORAGE = {
 }
 
 CACHES = {
-   'default': {
-      'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-      'LOCATION': 'apqad_cache_table',
-   }
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'apqad_cache_table',
+    }
 }
 
 MIDDLEWARE = [
@@ -127,11 +124,10 @@ DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 
-
 # Just added this line
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend', # This is the default that allows us to log in via username
-    'accounts.Backends.CustomBackend', # This is our custom backend that allows us to log in via email
+    'django.contrib.auth.backends.ModelBackend',  # This is the default that allows us to log in via username
+    'accounts.Backends.CustomBackend',  # This is our custom backend that allows us to log in via email
 ]
 # DATABASES = {
 #     'default': {
@@ -143,11 +139,6 @@ AUTHENTICATION_BACKENDS = [
 #         'PORT': os.environ["PGPORT"],
 #     }
 # }
-
-
-
-
-
 
 
 # Password validation
@@ -180,7 +171,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Extra places for collect static to find static files.
 STATICFILES_DIRS = [

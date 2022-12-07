@@ -7,7 +7,7 @@ from django.urls import reverse
 from accounts.models import CustomUser
 
 
-class CustomerBackend(ModelBackend):
+class CustomBackend(ModelBackend):
 
     def authenticate(self, request, **kwargs):
         email = kwargs['username']
