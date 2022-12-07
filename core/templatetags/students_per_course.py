@@ -28,7 +28,7 @@ def number_of_evaluations(value):
     return number_of_evaluated_submissions
 
 
-@register.filter
+@register.simple_tag
 def get_lecturer_name(value):
     value = int(value)
     lecturer = LecturerProfile.objects.filter(staff_id=value).get()
