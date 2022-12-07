@@ -8,6 +8,7 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import BadHeaderError
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
@@ -119,7 +120,7 @@ def student_profile_create(request, pk):
         if form.is_valid():
             print(request.POST)
             form.save()
-            return redirect('evaluations')
+            return redirect('evaluations', user_id=pk)
         else:
             print(form.errors.as_json())
             context['error'] = form.errors.as_json()
@@ -282,7 +283,7 @@ def setup_student_profile(request, user_id):
         if form.is_valid():
             form.save()
             messages.success(request, f"Student Profile has been setup successfully")
-            return redirect('evaluations', user_id=user.id)
+            return redirect('evaluations', user_id=user_id)
         else:
             context['form'] = form
             context['error'] = form.errors.as_json()
