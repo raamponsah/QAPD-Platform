@@ -13,11 +13,10 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
 
 @login_required(login_url='/accounts/login/student/')
-def evaluations(request):
-    print(request.user)
-    if request.user.is_student is False:  # if user is a student
+def evaluations(request, user_id):
+    if request.user.id is not user_id:  # if user is a student
         return redirect('welcome')
-    student = CustomUser.objects.filter(id=request.user.id).get()
+    student = CustomUser.objects.filter(id=user_id).get()
     student_profile = Student.objects.filter(user=student).get()
     qualification_name = student_profile.program
     # campus_name = student_profile.campus, level = student_profile.level
