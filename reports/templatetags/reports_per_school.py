@@ -720,6 +720,7 @@ def lecturer_score_per_ay_sch(value):
 
 @register.simple_tag
 def get_lecturer_name(value):
-    value = int(float(value))
-    lecturer = LecturerProfile.objects.filter(staff_id=value).get()
+    print(value, type(value))
+    code = int(float(value))
+    lecturer = LecturerProfile.objects.filter(staff_id=code).get()
     return lecturer
