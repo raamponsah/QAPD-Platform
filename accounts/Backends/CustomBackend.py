@@ -18,7 +18,8 @@ class CustomBackend(ModelBackend):
                 return custom_user.user
         except CustomUser.DoesNotExist:
             messages.error(request, 'Invalid email or password')
-            return reverse('welcome')
+            return None
+            # return reverse('welcome')
 
     def get_user(self, user_id):
         """
