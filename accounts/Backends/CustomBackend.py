@@ -14,7 +14,7 @@ class CustomBackend(ModelBackend):
         password = kwargs['password']
         try:
             custom_user = CustomUser.objects.get(email=email)
-            if custom_user.user.check_password(password) is True:
+            if custom_user.check_password(password) is True:
                 return custom_user.user
         except CustomUser.DoesNotExist:
             # messages.error(request, 'Invalid email or password')
