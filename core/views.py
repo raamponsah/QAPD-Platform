@@ -34,7 +34,8 @@ def evaluations(request, user_id):
             if evaluation.course.lecturer_code == lecturer.staff_id:
                 existing_courses.append(evaluation.course)
 
-    context = {'evaluations': existing_courses,'user_id':user_id, 'page_title': 'Evaluations', 'lecturers': lecturer_profiles}
+    context = {'evaluations': existing_courses, 'user_id': user_id, 'page_title': 'Evaluations',
+               'lecturers': lecturer_profiles}
     return render(request, 'core/evaluations.html', context)
 
 
@@ -51,7 +52,7 @@ def evaluation_view_form(request, user_id, pk):
             EvaluationSubmission(submitter=student, evaluationInfo=evaluation_instance,
                                  **evaluation_form.cleaned_data).save()
             messages.success(request, f"Thank you for evaluating!")
-            return redirect('evaluations')
+            return redirect('evaluations', user_id=user_id)
         else:
             print(evaluation_form.errors)
             messages.error(request, f"Some questions were not answered, please check.")
