@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def website(request):
-    return render(request, 'website/index.html')
+    return render(request, 'website/onmode.html')
