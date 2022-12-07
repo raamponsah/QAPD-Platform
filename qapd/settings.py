@@ -71,8 +71,9 @@ CLOUDINARY_STORAGE = {
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'apqad_cache_table',
+        # 'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        # 'LOCATION': 'apqad_cache_table',
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
 
