@@ -204,7 +204,7 @@ def login_student(request):
         if student is not None and student.is_student is True and student.is_active is True:
             login(request, student)
             messages.success(request, f'Welcome {student}')
-            return redirect('evaluations')
+            return redirect('evaluations', user_id=student.id)
         else:
             context['login_error'] = 'Username or password is incorrect.'
             messages.error(request, 'Login error, credentials invalid')

@@ -14,7 +14,7 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
 
 @login_student
-def evaluations(request):
+def evaluations(request, user_id):
     student = CustomUser.objects.filter(id=user_id).get()
     student_profile = Student.objects.filter(user=student).get()
     qualification_name = student_profile.program
