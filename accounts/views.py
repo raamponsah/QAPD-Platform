@@ -282,7 +282,7 @@ def setup_student_profile(request, user_id):
         if form.is_valid():
             form.save()
             messages.success(request, f"Student Profile has been setup successfully")
-            return redirect('evaluations')
+            return redirect('evaluations', user_id=user.id)
         else:
             context['form'] = form
             context['error'] = form.errors.as_json()
