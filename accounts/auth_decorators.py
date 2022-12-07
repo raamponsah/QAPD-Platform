@@ -39,7 +39,8 @@ def only_student(view_func):
 
 def only_lecturer(view_func):
     def wrapper_func(request, *args, **kwargs):
-        if request.user.is_authenticated and request.user.is_lecturer is True:
+        user = CustomUser.objects.filter(id=request.user.id).get()
+        if request.user.is_authenticated and user.is_lecturer is True and user.is_active is True:
             return view_func(request, *args, **kwargs)
         else:
             return redirect('login_lecturer')
