@@ -13,7 +13,7 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # SEMESTER_SWITCH = 1
 
 
-@login_student
+@only_student
 def evaluations(request, user_id):
     student = CustomUser.objects.filter(id=user_id).get()
     student_profile = Student.objects.filter(user=student).get()
