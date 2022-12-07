@@ -1,4 +1,4 @@
-from django.forms import ModelForm, forms, RadioSelect
+from django.forms import ModelForm, forms, RadioSelect, HiddenInput
 
 from core.models import EvaluationSubmission
 
@@ -103,6 +103,7 @@ class EvaluationForm(ModelForm):
             'environment_internet': RadioSelect(attrs={'class': 'form-check-input'}),
             'environment_air_conditioning': RadioSelect(attrs={'class': 'form-check-input'}),
             'environment_secretariat': RadioSelect(attrs={'class': 'form-check-input'}),
+            'submitter': HiddenInput(attrs={'class': 'form-check-input'}),
         }
 
         labels = {

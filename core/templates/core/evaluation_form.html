@@ -561,6 +561,7 @@
             <h4 class="section-heading mb-5">Accept agreement and Submit</h4>
             <div class="form-check">
               <label class="form-check-label">
+                  <input type="hidden" value="{{ request.user}}" name="submitter">
 {#                <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>#}
                {{ evaluation_form.is_evaluated }}
                 I hereby declare that I had read all the questions  and all the details provided by me in this form are true.
