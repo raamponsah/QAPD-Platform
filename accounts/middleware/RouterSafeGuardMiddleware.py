@@ -18,6 +18,8 @@ class RouterMiddleware:
             reverse('login_administrator'),
             reverse('register_lecturer'),
             reverse('register_student'),
+            reverse('welcome'),
+            reverse('redirect_to_welcome'),
         ])
         self.get_response = get_response
 
