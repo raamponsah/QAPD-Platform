@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+from django.urls import reverse
 
 from accounts.models import CustomUser
 
@@ -17,7 +18,7 @@ class CustomerBackend(ModelBackend):
                 return custom_user.user
         except CustomUser.DoesNotExist:
             messages.error(request, 'Invalid email or password')
-            return redirect('welcome')
+            return reverse('welcome')
 
     def get_user(self, user_id):
         """
