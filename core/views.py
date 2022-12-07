@@ -34,15 +34,13 @@ def evaluations(request, user_id):
             if evaluation.course.lecturer_code == lecturer.staff_id:
                 existing_courses.append(evaluation.course)
 
-    context = {'evaluations': existing_courses, 'page_title': 'Evaluations', 'lecturers': lecturer_profiles}
+    context = {'evaluations': existing_courses,'user_id':user_id, 'page_title': 'Evaluations', 'lecturers': lecturer_profiles}
     return render(request, 'core/evaluations.html', context)
 
 
-@login_required(login_url='/accounts/login/student/')
-def evaluation_view_form(request, pk):
-    if request.user.is_student is False:  # if user is a student
-        return redirect('welcome')
-    student = Student.objects.filter(user=request.user.id).get()
+@only_student
+def evaluation_view_form(request, user_id, pk):
+    student = Student.objects.filter(user=user_id).get()
     evaluation_instance = Evaluation.objects.filter(pk=pk).get()
     evaluation_form = EvaluationForm(initial={'evaluationInfo': evaluation_instance})
 
