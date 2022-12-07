@@ -17,6 +17,7 @@ class CustomBackend(ModelBackend):
             if custom_user.user.check_password(password) is True:
                 return custom_user.user
         except CustomUser.DoesNotExist:
+            # messages.error(request, 'Invalid email or password')
             return None
             # return reverse('welcome')
 
