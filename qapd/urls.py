@@ -3,10 +3,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from qapd import settings
-from website.views import website
+from website.views import website, redirect_to_welcome
 
 urlpatterns = [
                   path('', website, name='welcome'),
+                  path('welcome/', redirect_to_welcome, name='redirect_to_welcome'),
                   path('admin/', admin.site.urls),
                   path('accounts/', include('accounts.urls')),
                   path('core/', include('core.urls')),
