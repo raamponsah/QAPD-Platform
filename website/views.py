@@ -7,4 +7,4 @@ def website(request):
 
 
 def redirect_to_welcome(request):
-    return redirect('welcome')
+    return render(request, 'website/index.html')
