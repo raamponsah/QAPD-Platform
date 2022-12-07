@@ -127,7 +127,7 @@ DATABASES = {
 # Just added this line
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # This is the default that allows us to log in via username
-    'accounts.Backends.CustomBackend',  # This is our custom backend that allows us to log in via email
+    'accounts.Backends.CustomBackend.CustomBackend',  # This is our custom backend that allows us to log in via email
 ]
 # DATABASES = {
 #     'default': {
