@@ -16,14 +16,3 @@ def lpm(get_response):
         return response
 
     return middleware
-
-
-# def check_authenticated_user(get_response):
-#     def middleware(request):
-#         response = get_response(request)
-#         if request.user.id is None:
-#             while request.path not in list([reverse('admin:login'), reverse('login'), reverse('register_user')]):
-#                 return utilityfunc(request.path)
-#         return response
-#
-#     return middleware

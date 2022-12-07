@@ -34,7 +34,7 @@ class RouterMiddleware:
         if rpath in self.exception_urls:
             return redirect(rpath)
         else:
-            return redirect('welcome')
+            return HttpResponse('401 Unauthorized: You are not authorised to view this page.', status=401)
 
     def utilityfunc_wl(self, rpath):
         return redirect(rpath)
