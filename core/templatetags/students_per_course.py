@@ -26,10 +26,3 @@ def number_of_evaluations(value):
     number_of_evaluated_submissions = EvaluationSubmission.objects.filter(evaluationInfo=course_evaluation,
                                                                           is_evaluated=True).count()
     return number_of_evaluated_submissions
-
-
-@register.simple_tag
-def get_lecturer_name(value):
-    value = int(value)
-    lecturer = LecturerProfile.objects.filter(staff_id=value).get()
-    return lecturer.user.first_name + ' ' + lecturer.user.last_name

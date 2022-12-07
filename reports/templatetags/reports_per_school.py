@@ -716,3 +716,10 @@ def lecturer_score_per_ay_sch(value):
                                      2)
 
     return total_score_cumulatively
+
+
+@register.simple_tag
+def get_lecturer_name(value):
+    value = int(value)
+    lecturer = LecturerProfile.objects.filter(staff_id=value).get()
+    return lecturer
