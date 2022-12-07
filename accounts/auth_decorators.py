@@ -10,7 +10,7 @@ def only_admins_and_lecturers(view_func):
             if request.user.is_qadmin or request.user.is_lecturer:
                 return view_func(request, *args, **kwargs)
         else:
-            return HttpResponse('401 Unauthorized: You are not authorised to view this page.', status=401)
+            return redirect('welcome')
 
     return wrapper_func
 
