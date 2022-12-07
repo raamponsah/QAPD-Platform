@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from accounts.auth_decorators import only_student, only_admins
 from accounts.models import Student, CustomUser, LecturerProfile
+from accounts.views import login_student
 from core.forms import EvaluationForm
 from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
@@ -12,9 +13,9 @@ from core.models import Evaluation, EvaluationSubmission, CourseInformation
 # SEMESTER_SWITCH = 1
 
 
-@login_required(login_url='/accounts/login/student/')
-def evaluations(request):
-    student = CustomUser.objects.filter(id=int(request.user.id)).get()
+@login_student
+def evaluations(request, user_id):
+    student = CustomUser.objects.filter(id=user_id).get()
     student_profile = Student.objects.filter(user=student).get()
     qualification_name = student_profile.program
     # campus_name = student_profile.campus, level = student_profile.level
