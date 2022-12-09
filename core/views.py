@@ -66,6 +66,7 @@ def evaluation_view_form(request, user_id, pk):
 def user_statistics(request):
     students_with_profiles = Student.objects.all().count()
     all_student_users = CustomUser.objects.filter(is_student=True).count()
+    all_student_users_active = CustomUser.objects.filter(is_student=True, is_active=True).count()
     all_non_active_students = CustomUser.objects.filter(is_student=True, is_active=False).count()
     students_who_have_evaluated = EvaluationSubmission.objects.all().distinct('submitter').count()
 
@@ -77,6 +78,7 @@ def user_statistics(request):
         'students_with_profiles': students_with_profiles,
         'all_non_active_students': all_non_active_students,
         'all_student_users': all_student_users,
+        'all_student_users_active': all_student_users_active,
         'students_who_have_evaluated': students_who_have_evaluated,
         'page_title': 'Student Statistics',
         'lecturers_with_profiles': lecturers_with_profiles,
