@@ -72,8 +72,10 @@ def user_statistics(request):
     students_who_have_evaluated = EvaluationSubmission.objects.all().distinct('submitter').count()
 
     lecturers_with_profiles = LecturerProfile.objects.all().count()
-    all_lecturer_users = CustomUser.objects.filter(is_lecturer=True, is_active=True).count()
+    all_lecturer_users = CustomUser.objects.filter(is_lecturer=True).count()
+    all_lecturer_users_active = CustomUser.objects.filter(is_lecturer=True, is_active=True).count()
     all_non_active_lecturers = CustomUser.objects.filter(is_lecturer=True, is_active=False).count()
+    lecturers_in_limbo = all_lecturer_users - lecturers_with_profiles
 
     context = {
         'students_with_profiles': students_with_profiles,
@@ -82,10 +84,12 @@ def user_statistics(request):
         'all_student_users_active': all_student_users_active,
         'student_in_limbo': student_in_limbo,
         'students_who_have_evaluated': students_who_have_evaluated,
-        'page_title': 'Student Statistics',
+        'page_title': 'User Statistics',
         'lecturers_with_profiles': lecturers_with_profiles,
+        'all_lecturer_users_active': all_lecturer_users_active,
         'all_non_active_lecturers': all_non_active_lecturers,
         'all_lecturer_users': all_lecturer_users,
+        'lecturers_in_limbo': lecturers_in_limbo,
 
     }
 

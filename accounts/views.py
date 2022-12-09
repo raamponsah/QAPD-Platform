@@ -176,7 +176,7 @@ def login_lecturer(request):
         found_user = authenticate(username=username, password=password)
         if found_user is not None and found_user.is_lecturer is True and found_user.is_active is True:
             login(request, found_user)
-            messages.success(request, f'Welcome {found_user}')
+            messages.success(request, f'Welcome, {found_user}')
             return redirect('lecturer_dashboard')
         else:
             context['login_error'] = 'Username or password is incorrect.'

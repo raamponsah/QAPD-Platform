@@ -121,12 +121,12 @@
                 <div class="ibox ">
                     <div class="ibox-title bg-safe">
 {#                        <span class="label label-success float-right">Evaluation</span>#}
-                        <h5>Registered</h5>
+                        <h5>Registered (TLS)</h5>
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins">{{ all_lecturer_users }}</h1>
 
-                        <small>Total Registered Students</small>
+                        <small>Total Lecturers in System</small>
                     </div>
                 </div>
             </div>
@@ -135,12 +135,12 @@
                 <div class="ibox ">
                     <div class="ibox-title bg-safe">
 {#                        <span class="label label-success float-right">Evaluation</span>#}
-                        <h5>Activated</h5>
+                        <h5>Non-Active Lecturers</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins">{{ lecturers_with_profiles }}</h1>
+                        <h1 class="no-margins">{{ all_non_active_lecturers }}</h1>
 
-                        <small>Total Active Students</small>
+                        <small>Total Active Lecturers</small>
                     </div>
                 </div>
             </div>
@@ -150,12 +150,26 @@
                 <div class="ibox ">
                     <div class="ibox-title bg-safe">
 {#                        <span class="label label-success float-right">Evaluation</span>#}
-                        <h5>Non-Activated</h5>
+                        <h5>Active Lecturers</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins">{{ all_non_active_lecturers }}</h1>
+                        <h1 class="no-margins">{{ all_lecturer_users_active }}</h1>
 
-                        <small>Total Non-Active Students</small>
+                        <small>Total Non-Active Lecturers</small>
+                    </div>
+                </div>
+            </div>
+
+        <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+{#                        <span class="label label-success float-right">Evaluation</span>#}
+                        <h5>Limbo Lecturers</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ lecturers_in_limbo }}</h1>
+
+                        <small>Total Limbo Lecturers</small>
                     </div>
                 </div>
             </div>
