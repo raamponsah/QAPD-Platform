@@ -22,19 +22,7 @@
                 </div>
             </div>
 
-        <div class="col">
-                <div class="ibox ">
-                    <div class="ibox-title bg-safe">
-{#                        <span class="label label-success float-right">Evaluation</span>#}
-                        <h5>Active Students</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">{{ all_student_users_active }}</h1>
 
-                        <small>Total Active Students</small>
-                    </div>
-                </div>
-            </div>
 
                 <div class="col">
                 <div class="ibox ">
@@ -51,16 +39,45 @@
             </div>
 
 
+                <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+{#                        <span class="label label-success float-right">Evaluation</span>#}
+                        <small>Active Students</small>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ all_student_users_active }}</h1>
+
+                        <small>Total Active Students</small>
+                    </div>
+                </div>
+            </div>
+
+
                         <div class="col">
                 <div class="ibox ">
                     <div class="ibox-title bg-safe">
 {#                        <span class="label label-success float-right">Evaluation</span>#}
-                        <h5>Limbo Students</h5>
+                        <small>Limbo Students</small>
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins">{{ student_in_limbo }}</h1>
 
                         <small>Total Limbo Students</small>
+                    </div>
+                </div>
+            </div>
+
+                  <div class="col">
+                <div class="ibox ">
+                    <div class="ibox-title bg-safe">
+{#                        <span class="label label-success float-right">Evaluation</span>#}
+                        <h5>Whitelisted</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ students_with_profiles }}</h1>
+
+                        <small>Students in Good Standing</small>
                     </div>
                 </div>
             </div>
