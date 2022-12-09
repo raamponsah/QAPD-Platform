@@ -65,7 +65,7 @@ def evaluation_view_form(request, user_id, pk):
 @only_admins
 def user_statistics(request):
     students_with_profiles = Student.objects.all().count()
-    all_student_users = CustomUser.objects.filter(is_student=True, is_active=True).count()
+    all_student_users = CustomUser.objects.filter(is_student=True).count()
     all_non_active_students = CustomUser.objects.filter(is_student=True, is_active=False).count()
     students_who_have_evaluated = EvaluationSubmission.objects.all().distinct('submitter').count()
 
