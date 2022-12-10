@@ -44,5 +44,5 @@ class LecturerProfileAdmin(admin.ModelAdmin):
 admin.site.register(LecturerProfile, LecturerProfileAdmin)
 
 class StudentProfileAdmin(admin.ModelAdmin):
-    search_fields = ('user.first_name','user.last_name')
+    search_fields = ("*")
 admin.site.register(Student, StudentProfileAdmin)

@@ -35,7 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*.apqad.up.railway.app', 'apqad.up.railway.app', 'www.apqad.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ["https://*.apqad.up.railway.app/", "https://apqad.up.railway.app/"]
