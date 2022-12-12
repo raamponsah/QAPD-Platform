@@ -1,11 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.auth_decorators import only_student, only_admins
 from accounts.models import Student, CustomUser, LecturerProfile
-from accounts.views import login_student
 from core.forms import EvaluationForm
 from core.models import Evaluation, EvaluationSubmission, CourseInformation
 
@@ -47,7 +45,7 @@ def evaluation_view_form(request, user_id, pk):
 
     if request.method == 'POST':
         evaluation_form = EvaluationForm(request.POST, initial={'evaluationInfo': evaluation_instance,
-                                                                'submitter': request.user.id})
+                                                                'submitter': student})
         if evaluation_form.is_valid():
             EvaluationSubmission(submitter=student, evaluationInfo=evaluation_instance,
                                  **evaluation_form.cleaned_data).save()
@@ -57,7 +55,7 @@ def evaluation_view_form(request, user_id, pk):
             print(evaluation_form.errors)
             messages.error(request, f"Some questions were not answered, please check.")
             evaluation_form = EvaluationForm(request.POST, initial={'evaluationInfo': evaluation_instance,
-                                                                    'submitter': request.user.id})
+                                                                    'submitter': student})
     context = {'evaluation': evaluation_instance, 'evaluation_form': evaluation_form}
     return render(request, 'core/evaluation_form.html', context)
 
@@ -90,7 +88,6 @@ def user_statistics(request):
         'all_non_active_lecturers': all_non_active_lecturers,
         'all_lecturer_users': all_lecturer_users,
         'lecturers_in_limbo': lecturers_in_limbo,
-
     }
 
     return render(request, 'core/user_statistics.html', context)
