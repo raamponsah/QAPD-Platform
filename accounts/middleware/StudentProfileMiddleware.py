@@ -1,7 +1,7 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect
 from django.urls import reverse
 
-from accounts.models import LecturerProfile, Student
+from accounts.models import Student
 
 
 def spm(get_response):
