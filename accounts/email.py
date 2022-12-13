@@ -52,15 +52,18 @@ def generate_confirmation_link_mail(to_email, to_name, link, extra=None):
     data = {
         'Messages': [
             {
+
                 "From": {
                     "Email": os.getenv('EMAIL_HOST_USER'),
                     "Name": os.getenv('EMAIL_HOST_USERNAME')
                 },
+
                 "To": [
                     {
                         "Email": to_email,
                         "Name": to_name
                     }
+
                 ],
                 "Subject": "Activate your GIMPA APQAD account!",
                 "TextPart": f"Activate your account by clicking on the following link: {link}",
@@ -74,7 +77,7 @@ def generate_confirmation_link_mail(to_email, to_name, link, extra=None):
                             f"<a href='{link}'>CLICK HERE</a>"
                             f"If you can't see the link, please copy and paste this link:{link} into your browser to"
                             f" activate your account"
-                            f"<p>If you have any queries please send it to <a "
+                            f"<p>If you have any queries/support please send it to <a "
                             f"href='mailto:lecturersevaluations@gimpa.edu.gh'>lecturersevaluations@gimpa.edu.gh</a"
                             f"></p> "
                             f"<br>"
