@@ -75,6 +75,8 @@ def user_statistics(request):
     all_non_active_lecturers = CustomUser.objects.filter(is_lecturer=True, is_active=False).count()
     lecturers_in_limbo = all_lecturer_users - lecturers_with_profiles
 
+    # lecturers_active_in_system = CustomUser.objects.filter(is_lecturer=True)
+
     context = {
         'students_with_profiles': students_with_profiles,
         'all_non_active_students': all_non_active_students,
