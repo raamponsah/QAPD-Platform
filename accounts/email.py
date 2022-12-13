@@ -47,7 +47,8 @@ def send_bulk_mail(bulk_contacts, subject, message):
 
     result = mailjet.send.create(data=data)
 
-def generate_confirmation_link_mail(to_email, to_name, link):
+
+def generate_confirmation_link_mail(to_email, to_name, link, extra=None):
     data = {
         'Messages': [
             {
@@ -68,10 +69,9 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                             f"<h4>Dear {to_name.capitalize()},</h4>"
                             f"<p>Thank you for registering with Academic Planning and Quality Assurance Department "
                             f"Portal. </p>"
-                            f"<p>We have moved our lecturer evaluation online!</p>"
-                            f"<p>To activate your account, please click on the following link:<br/> "
-                            f"<a href='{link}'>CLICK HERE"
-                            f"</a> </p>"
+                            f"<h4>Your password is <strong>{extra['password']}</strong><h4>"
+                            f"<p>Click on the link below to activate your account.</p>"
+                            f"<a href='{link}'>CLICK HERE</a>"
                             f"If you can't see the link, please copy and paste this link:{link} into your browser to"
                             f" activate your account"
                             f"<p>If you have any queries please send it to <a "
@@ -85,16 +85,15 @@ def generate_confirmation_link_mail(to_email, to_name, link):
                             f"<a href='https://www.gimpa.edu.gh'>GIMPA</a>"
                             f"</div>"
 
-
             }
         ]
     }
 
     result = mailjet.send.create(data=data)
     if result:
-        print(result.status_code,"email sent", result.json())
+        print(result.status_code, "email sent", result.json())
         return True
     else:
-        print(result.status_code,"email not sent", result.json())
+        print(result.status_code, "email not sent", result.json())
 
         return False

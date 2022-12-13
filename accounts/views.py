@@ -94,11 +94,10 @@ def register_student(request):
             user.refresh_from_db()
             token = generate_confirmation_token(user)
             link = f"{get_current_site(request)}/accounts/confirm-email/{token}"
-            generate_confirmation_link_mail(user.email, user.username, link)
+            generate_confirmation_link_mail(user.email, user.username, link, extra={'password': form.cleaned_data.get('password1')})
             messages.success(request, f'A confirmation email was sent to {user.email}.\n'
-                                      f'Please check your inbox or spam to continue with the registration.'
-                             f'Your password you registered with is: request.POST.get("password1")'
-                             f'Please login with the same password')
+                                      f'Please check your inbox or spam to continue with the registration.\n'
+                             )
             return redirect('login_student')
         else:
             form = StudentRegisterForm(request.POST)
