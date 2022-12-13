@@ -30,7 +30,7 @@ def evaluations(request, user_id):
     for lecturer in lecturer_profiles:
         for evaluation in evaluation_set:
             if evaluation.course.lecturer_code == lecturer.staff_id:
-                existing_courses.append(evaluation.course)
+                existing_courses.append(evaluation)
 
     context = {'evaluations': existing_courses, 'user_id': user_id, 'page_title': 'Evaluations',
                'lecturers': lecturer_profiles}
