@@ -18,7 +18,7 @@ def evaluations(request, user_id):
     school_data = CourseInformation.objects.filter(campus_name=student_profile.campus,
                                                    qualification_name=student_profile.program,
                                                    level=student_profile.level,
-                                                   course_group=student_profile.course_group
+                                                   # course_group=student_profile.course_group
                                                    )
 
     lecturer_profiles = LecturerProfile.objects.all()
