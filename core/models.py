@@ -40,7 +40,7 @@ class CourseInformation(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.subject_name} {self.lecturer_code} {self.campus_name}"
+        return f"{self.subject_name} {self.lecturer_code} {self.campus_name} {self.level} {self.course_group}"
 
     # @property
     # def staff_name(self):
