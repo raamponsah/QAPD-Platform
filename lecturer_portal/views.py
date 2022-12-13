@@ -250,6 +250,7 @@ def lecturer_archived_reports(request):
 def lecturer(request, pk):
     lecturer_profile = LecturerProfile.objects.get(id=pk)
     lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id)
+
     number_lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id).count()
     # find total number of students who take the specific course
     evaluations = Evaluation.objects.filter(course__in=lecturer_courses, archived=False).select_related('course')
@@ -257,6 +258,8 @@ def lecturer(request, pk):
                                                                           is_evaluated=True).count()
     # number_of_students_taught = Student.objects.filter(campus=lecturer_courses, program=program).count()
     _reports = Evaluation.objects.all().annotate(submitted=Count(F('evaluation_form')))
+
+
 
     context = {
         'active': 'levm',
