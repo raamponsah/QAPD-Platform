@@ -32,7 +32,7 @@ def evaluations(request, user_id):
             if evaluation.course.lecturer_code == lecturer.staff_id:
                 existing_courses.append(evaluation)
 
-    context = {'evaluations': existing_courses, 'user_id': user_id, 'page_title': 'Evaluations',
+    context = {'evaluations': existing_courses, 'user_id': user_id, 'student':student_profile, 'page_title': 'Evaluations',
                'lecturers': lecturer_profiles}
     return render(request, 'core/evaluations.html', context)
 
