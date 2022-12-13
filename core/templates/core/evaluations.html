@@ -21,7 +21,7 @@
 </svg>
     <a href="{% url 'evaluation_form' user_id evaluation.id %}">
         {% get_lecturer_name evaluation.course.lecturer_code %}
-        {{ evaluation }} {{ evaluation.course.subject_code }} {{ evaluation.course.lecturer_code }}
+        {{ evaluation }} {{ evaluation.course.subject_code }} {{ evaluation.course.lecturer_code }}{{ evaluation.course.course_group }}
     </a>
   </div>
 </div>
