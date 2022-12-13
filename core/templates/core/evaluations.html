@@ -10,7 +10,7 @@
      <p class="fs-4 fw-lighter text-muted">
      Please click on each of the following links to evaluation the respective course.
     </p>
-   <h5> You are an {{ student.course_group }} student.</h5>
+{#   <h5> You are an {{ student.course_group }} student.</h5>#}
     {% for evaluation in evaluations %}
 
     <div class="card  mb-1">
@@ -21,8 +21,8 @@
   <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
 </svg>
     <a href="{% url 'evaluation_form' user_id evaluation.id %}">
-        <strong>{% get_lecturer_name evaluation.course.lecturer_code %}</strong> •
-       {{ evaluation }} • {{ evaluation.course.lecturer_code }} • {{ evaluation.course.course_group }}
+        <h4>{% get_lecturer_name evaluation.course.lecturer_code %}</h4>
+       <h5>{{ evaluation }} • {{ evaluation.course.lecturer_code }} • {{ evaluation.course.course_group }}</h5>
     </a>
   </div>
 </div>
