@@ -37,9 +37,11 @@ def register_lecturer(request):
             user.refresh_from_db()
             token = generate_confirmation_token(user)
             link = f"{get_current_site(request)}/accounts/confirm-email/{token}"
-            generate_confirmation_link_mail(user.email, user.username, link)
-            messages.success(request, f'A confirmation email was sent {user.email}!')
-            return redirect('login_lecturer')
+            generate_confirmation_link_mail(user.email, user.username, link,
+                                            extra={'password': form.cleaned_data.get('password1')})
+            messages.success(request, f'A confirmation email was sent to {user.email}.\n'
+                                      f'Please check your inbox or spam to continue with the registration.\n'
+                             )
         else:
             form = LecturerRegistrationForm(request.POST)
     context = {"form": form, 'view_name': view_name, 'auth_page_url': auth_page_url,
