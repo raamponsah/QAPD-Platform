@@ -74,7 +74,7 @@ def generate_confirmation_link_mail(to_email, to_name, link, extra=None):
                             f"Portal. </p>"
                             f"<h4>Your password is {extra['password']}</h4>"
                             f"<p>Click on the link below to activate your account.</p>"
-                            f"<a href='{link}'>CLICK HERE</a>"
+                            f"<a href='{link}'><h3>CLICK HERE</h3></a> <br/>"
                             f"If you can't see the link, please copy and paste this link:{link} into your browser to"
                             f" activate your account."
                             f"<p>If you have any queries/support please send it to <a "
