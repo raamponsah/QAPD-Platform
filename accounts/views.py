@@ -142,7 +142,7 @@ def login_administrator(request):
                }
 
     if request.method == "POST":
-        username = request.POST['username']
+        username = request.POST['username'].strip()
         password = request.POST['password']
 
         # this would have to become a custom user (e.g. student)
@@ -173,7 +173,7 @@ def login_lecturer(request):
                }
 
     if request.method == "POST":
-        username = request.POST['username']
+        username = request.POST['username'].strip()
         password = request.POST['password']
 
         # this would have to become a custom user (e.g. student)
