@@ -42,6 +42,7 @@ def register_lecturer(request):
             messages.success(request, f'A confirmation email was sent to {user.email}.\n'
                                       f'Please check your inbox or spam to continue with the registration.\n'
                              )
+            return redirect('login_lecturer')
         else:
             form = LecturerRegistrationForm(request.POST)
     context = {"form": form, 'view_name': view_name, 'auth_page_url': auth_page_url,
