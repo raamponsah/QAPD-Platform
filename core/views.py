@@ -29,8 +29,7 @@ def evaluations(request, user_id):
     existing_courses = []
     for lecturer in lecturer_profiles:
         for evaluation in evaluation_set:
-            if evaluation.course.lecturer_code == lecturer.staff_id \
-                    and evaluation.course.course_group.lower() == student_profile.course_group.lower():
+            if evaluation.course.lecturer_code == lecturer.staff_id:
                 existing_courses.append(evaluation)
 
     context = {'evaluations': existing_courses, 'user_id': user_id, 'student': student_profile,
