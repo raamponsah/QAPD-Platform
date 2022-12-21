@@ -54,7 +54,7 @@ def evaluation_view_form(request, user_id, pk):
             return redirect('evaluations', user_id=user_id)
         else:
             print(evaluation_form.errors)
-            messages.error(request, f"Some questions were not answered, please check.")
+            messages.error(request, f"Some questions were not answered, Please check.")
             evaluation_form = EvaluationForm(request.POST, initial={'evaluationInfo': evaluation_instance,
                                                                     'submitter': student})
     context = {'evaluation': evaluation_instance, 'evaluation_form': evaluation_form}
