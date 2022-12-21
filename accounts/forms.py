@@ -125,3 +125,7 @@ class LecturerProfileForm(forms.ModelForm):
             # 'campus': forms.Select(attrs={'class': 'form-control'}),
             # 'user': forms.HiddenInput(),
         }
+
+
+class CustomPasswordResetForm(forms.Form):
+    email = forms.EmailField(attrs={'class':'form-control'})

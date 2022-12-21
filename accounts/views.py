@@ -18,7 +18,8 @@ from django.utils.http import urlsafe_base64_encode
 from .auth_decorators import only_lecturer, only_student
 from .auth_funcs import decode_token, generate_confirmation_token
 from .email import generate_confirmation_link_mail, send_mail
-from .forms import StudentRegisterForm, StudentProfileForm, LecturerProfileForm, LecturerRegistrationForm
+from .forms import StudentRegisterForm, StudentProfileForm, LecturerProfileForm, LecturerRegistrationForm, \
+    CustomPasswordResetForm
 from .models import LecturerProfile, ActivateUser, CustomUser
 
 # Register your models here.
@@ -97,7 +98,8 @@ def register_student(request):
             user.refresh_from_db()
             token = generate_confirmation_token(user)
             link = f"{get_current_site(request)}/accounts/confirm-email/{token}"
-            generate_confirmation_link_mail(user.email, user.username, link, extra={'password': form.cleaned_data.get('password1')})
+            generate_confirmation_link_mail(user.email, user.username, link,
+                                            extra={'password': form.cleaned_data.get('password1')})
             messages.success(request, f'A confirmation email was sent to {user.email}.\n'
                                       f'Please check your inbox or spam to continue with the registration.\n'
                              )
@@ -323,3 +325,21 @@ def password_reset_request(request):
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="main/password/password_reset.html",
                   context={"password_reset_form": password_reset_form})
+
+
+# Password Reset Form
+def password_reset_request(request):
+    form = CustomPasswordResetForm()
+    if request.method == "POST":
+        form = CustomPasswordResetForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data['email']
+            user = User.objects.filter(Q(email=data)).get()
+            if user is not None:
+                token = generate_confirmation_token(user)
+                link = f"{get_current_site(request)}/accounts/password-reset/{token}"
+                generate_confirmation_link_mail(user.email, user.username, link)
+                messages.success(request, f"Password reset link has been sent to your email")
+                return redirect('login_student')
+    context = {'form': form}
+    return render(request, 'accounts/resets/password_reset.html', context)
