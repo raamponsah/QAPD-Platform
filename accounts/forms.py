@@ -128,4 +128,5 @@ class LecturerProfileForm(forms.ModelForm):
 
 
 class CustomPasswordResetForm(forms.Form):
-    email = forms.EmailField(attrs={'class':'form-control'})
+    # email = forms.EmailField()
+    pass
