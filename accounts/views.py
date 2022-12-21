@@ -208,7 +208,7 @@ def login_student(request):
         student = authenticate(username=username, password=password)
         if student is not None and student.is_student is True and student.is_active is True:
             login(request, student)
-            messages.success(request, f'Welcome {student}')
+            messages.success(request, f'Welcome, {student}!')
             return redirect('evaluations', user_id=student.id)
         else:
             context['login_error'] = 'Username or password is incorrect.'

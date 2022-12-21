@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse, resolve, path
 import re
-from django.http import HttpResponse
+from django.http import HttpResponse, request
+
 
 # from dashboard.views import runurl
 
@@ -20,6 +21,12 @@ class RouterMiddleware:
             reverse('register_student'),
             reverse('welcome'),
             reverse('redirect_to_welcome'),
+            reverse('password_reset_request'),
+            reverse('password_reset_done'),
+            reverse('password_reset_complete'),
+            reverse('password_reset_confirm',
+                    kwargs={'uidb64': request.GET.get('uidb64', None),
+                            'token': request.GET.get('token', None)}),
         ])
         self.get_response = get_response
 
