@@ -17,7 +17,7 @@ def evaluations(request, user_id):
     student_profile = Student.objects.filter(user=student).get()
     school_data = CourseInformation.objects.filter(campus_name=student_profile.campus,
                                                    qualification_name=student_profile.program,
-                                                   level=student_profile.level
+                                                   level=student_profile.level,
                                                    # course_group=student_profile.course_group
                                                    )
 
@@ -34,7 +34,8 @@ def evaluations(request, user_id):
 
     context = {'evaluations': existing_courses, 'user_id': user_id, 'student': student_profile,
                'page_title': 'Evaluations',
-               'lecturers': lecturer_profiles}
+               'lecturers': lecturer_profiles
+               }
     return render(request, 'core/evaluations.html', context)
 
 
