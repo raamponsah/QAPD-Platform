@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'cloudinary',
     'whitenoise.runserver_nostatic',
+    'maintenance_mode', #remove this when ready
     'core.apps.CoreConfig',
     'import_export',
     'accounts',
@@ -92,7 +93,10 @@ MIDDLEWARE = [
     "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
     "accounts.middleware.LecturerProfileMiddleware.lpm",
     "accounts.middleware.StudentProfileMiddleware.spm",
+"maintenance_mode.middleware.MaintenanceModeMiddleware",
 ]
+
+MAINTENANCE_MODE = True
 
 ROOT_URLCONF = "qapd.urls"
 
@@ -120,27 +124,28 @@ WSGI_APPLICATION = "qapd.wsgi.application"
 # DATABASE_URL = os.getenv('DATABASE_URL')
 
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
-}
+# DATABASE_URL = os.getenv("DATABASE_URL")
+#
+# DATABASES = {
+#     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+# }
 
 # Just added this line
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # This is the default that allows us to log in via username
     'accounts.Backends.CustomBackend.CustomBackend',  # This is our custom backend that allows us to log in via email
 ]
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ["PGDATABASE"],
-#         'USER': os.environ["PGUSER"],
-#         'PASSWORD': os.environ["PGPASSWORD"],
-#         'HOST': os.environ["PGHOST"],
-#         'PORT': os.environ["PGPORT"],
-#     }
-# }
+DATABASES = {
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD':'1rIOBgjDRBvgX0EFM8nP',
+        'HOST': 'containers-us-west-92.railway.app',
+        'PORT': 7049,
+    }
+}
 
 
 # Password validation
