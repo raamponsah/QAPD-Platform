@@ -14,11 +14,11 @@
                 <a href="{% url 'lecturer_dashboard' %}">
                     <i class="fa fa-th-large"></i> <span class="nav-label text-uppercase ">Overview & Reports</span> </a>
             </li>
-                <li class="{% if active == 'levm' %}active{% endif %}">
-                <a href="{% url 'lecturer_archived_reports' %}">
-                    <i class="fa fa-table"></i>
-                    <span class="nav-label text-uppercase ">Archives</span></a>
-            </li>
+{#                <li class="{% if active == 'levm' %}active{% endif %}">#}
+{#                <a href="{% url 'lecturer_archived_reports' %}">#}
+{#                    <i class="fa fa-table"></i>#}
+{#                    <span class="nav-label text-uppercase ">Archives</span></a>#}
+{#            </li>#}
         {% endif %}
 
             {% if request.user.is_qadmin %}
