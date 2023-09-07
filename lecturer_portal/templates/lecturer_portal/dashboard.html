@@ -21,14 +21,14 @@
                         <thead>
                         <tr>
                             <th>Academic Year</th>
-                            <th>Program</th>
+{#                            <th>Program</th>#}
                             <th>Course Code</th>
                             <th>Course Name</th>
                             <th>Level</th>
-                            <th>Students Registered</th>
+{#                            <th>Students Registered</th>#}
                             <th>Students Submitted</th>
-                            <th>Campus</th>
-                            <th>Course Group</th>
+{#                            <th>Campus</th>#}
+{#                            <th>Course Group</th>#}
                         </tr>
                         </thead>
                         <tbody>
@@ -39,20 +39,20 @@
                                 <tr>
                                     <td>{{ evaluation.course.academic_year }}</td>
 
+{#                                    <td>#}
+{#                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.qualification_name }}</a>#}
+{#                                    </td>#}
                                     <td>
-                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.qualification_name }}</a>
+                                        <a href="{% url 'evaluation_report' staff_id evaluation.course.subject_name %}">{{ evaluation.course.subject_code }}</a>
                                     </td>
                                     <td>
-                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.subject_code }}</a>
-                                    </td>
-                                    <td>
-                                        <a href="{% url 'evaluation_report' evaluation.slug %}">{{ evaluation.course.subject_name }}</a>
+                                        <a href="{% url 'evaluation_report' staff_id evaluation.course.subject_name %}">{{ evaluation.course.subject_name }}</a>
                                     </td>
                                     <td>{{ evaluation.course.level }}</td>
-                                    <td>{{ evaluation.course.id | number_of_students_registered_per_this_course }}</td>
-                                    <td>{{ evaluation.course.id | number_of_evaluations }}</td>
-                                    <td>{{ evaluation.course.campus_name }}</td>
-                                    <td>{{ evaluation.course.course_group | title }}</td>
+{#                                    <td>{{ evaluation.course | number_of_students_registered_per_this_course }}</td>#}
+                                    <td>{{ evaluation.course | number_of_evaluations }}</td>
+{#                                    <td>{{ evaluation.course.campus_name }}</td>#}
+{#                                    <td>{{ evaluation.course.course_group | title }}</td>#}
 
 
                                 </tr>

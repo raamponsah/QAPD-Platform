@@ -7,9 +7,9 @@
             <div class="ibox ">
             <div class="ibox-title bg-brand">
                 {% if lecturer %}
-                <h5>Evaluation Report - {{ evaluation }} {{ lecturer }} ({{ lecturer.staff_id }})</h5>
+                <h5>Evaluation Report - {{ subject_name }} {{ lecturer }} ({{ lecturer.staff_id }})</h5>
                     {% else %}
-                     <h5>Evaluation Report - {{ evaluation }}) <small>Lecturer not registered</small></h5>
+                     <h5>Evaluation Report - {{ subject_name }}) <small>Lecturer not registered</small></h5>
                 {% endif %}
                 <div class="ibox-tools">
 

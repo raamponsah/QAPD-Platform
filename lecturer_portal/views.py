@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.db.models import Avg, F, Count
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.auth_decorators import only_lecturer, only_admins_and_lecturers, only_admins
@@ -16,15 +16,15 @@ def lecturer_dashboard(request):
         return redirect('welcome')
     lecturer_user = CustomUser.objects.filter(id=request.user.id).get()
     lecturer_profile = LecturerProfile.objects.get(user=lecturer_user)
-    lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id)
+    lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id).distinct('subject_name')
     number_lecturer_courses = CourseInformation.objects.filter(lecturer_code=lecturer_profile.staff_id).count()
-
     evaluations = Evaluation.objects.filter(course__in=lecturer_courses, archived=False).select_related('course')
     number_of_evaluated_submissions = EvaluationSubmission.objects.filter(evaluationInfo__in=evaluations,
                                                                           is_evaluated=True).count()
     _reports = Evaluation.objects.all().annotate(submitted=Count(F('evaluation_form')))
     evaluation_submitted = Evaluation.objects.filter(course__in=lecturer_courses).annotate(
         submitted=Count(F('evaluation_form')))
+    print(evaluation_submitted.count())
     # Statistical Averaging
     cumulative_avg_stats = EvaluationSubmission.objects.filter(evaluationInfo__in=evaluation_submitted) \
         .annotate(cumulative_avg_submission=(Avg(F('curriculum_feedback_beginning_answer')) +
@@ -113,6 +113,7 @@ def lecturer_dashboard(request):
             'grade': grade,
             'active': 'levm',
             'page_obj': evaluations,
+            'staff_id':lecturer_profile.staff_id,
             'number_of_courses': number_lecturer_courses,
             'number_of_submissions': number_of_evaluated_submissions,
         }

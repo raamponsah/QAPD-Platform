@@ -33,12 +33,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-
+# SECRET_KEY='x@8u5pf7d^l^47^ep6(*$-8_=vk^v2lvtqo_r42cy)o-4*x)sz' #remove
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*.apqad.up.railway.app', 'apqad.up.railway.app', 'www.apqad.up.railway.app','evaluation.gimpa.edu.gh']
-CSRF_TRUSTED_ORIGINS = ["https://*.apqad.up.railway.app/", "https://apqad.up.railway.app/",
+ALLOWED_HOSTS = ['*.apqad.up.railway.app',"127.0.0.1", 'apqad.up.railway.app', 'www.apqad.up.railway.app','evaluation.gimpa.edu.gh']
+CSRF_TRUSTED_ORIGINS = ["https://*.apqad.up.railway.app/", "https://apqad.up.railway.app/","http://127.0.0.1",
                         "http://evaluation.gimpa.edu.gh/", "https://evaluation.gimpa.edu.gh/"]
 # Application definition
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'cloudinary',
     'whitenoise.runserver_nostatic',
-    'maintenance_mode', #remove this when ready
+    # 'maintenance_mode', #remove this when ready
     'core.apps.CoreConfig',
     'import_export',
     'accounts',
@@ -93,7 +93,7 @@ MIDDLEWARE = [
     "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
     "accounts.middleware.LecturerProfileMiddleware.lpm",
     "accounts.middleware.StudentProfileMiddleware.spm",
-"maintenance_mode.middleware.MaintenanceModeMiddleware",
+# "maintenance_mode.middleware.MaintenanceModeMiddleware",
 ]
 
 MAINTENANCE_MODE = True
@@ -137,11 +137,20 @@ AUTHENTICATION_BACKENDS = [
 ]
 DATABASES = {
 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'railway',
+    #     'USER': 'postgres',
+    #     'PASSWORD':'1rIOBgjDRBvgX0EFM8nP',
+    #     'HOST': 'containers-us-west-92.railway.app',
+    #     'PORT': 7049,
+    # }
+
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD':'1rIOBgjDRBvgX0EFM8nP',
+        'PASSWORD': '1rIOBgjDRBvgX0EFM8nP',
         'HOST': 'containers-us-west-92.railway.app',
         'PORT': 7049,
     }

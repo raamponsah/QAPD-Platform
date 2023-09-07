@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('archived-reports/', evaluation_reports_generated_list_archived,
          name='evaluation_reports_generated_list_archived'),
-    path('reports/<slug:slug>', evaluation_report, name='evaluation_report'),
+    path('reports/<int:staff_id>/<str:subject_name>', evaluation_report, name='evaluation_report'),
 
 
 
