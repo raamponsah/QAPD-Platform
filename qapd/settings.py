@@ -93,10 +93,11 @@ MIDDLEWARE = [
     "accounts.middleware.RouterSafeGuardMiddleware.RouterMiddleware",
     "accounts.middleware.LecturerProfileMiddleware.lpm",
     "accounts.middleware.StudentProfileMiddleware.spm",
-# "maintenance_mode.middleware.MaintenanceModeMiddleware",
+    # "accounts.middleware.GuestMiddleware.gpm",
+
 ]
 
-MAINTENANCE_MODE = True
+# MAINTENANCE_MODE = True
 
 ROOT_URLCONF = "qapd.urls"
 

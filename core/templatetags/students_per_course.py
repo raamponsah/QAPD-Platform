@@ -13,7 +13,6 @@ def number_of_students_registered_per_this_course(value):
     course = CourseInformation.objects.filter(subject_name=value.subject_name)
     campus = CampusInformation.objects.filter(campus_name=course.campus_name).first()
     program = ProgramInformation.objects.filter(program_name=course.qualification_name).first()
-
     number_of_students_registered = Student.objects.filter(level=course.level, course_group=course.course_group,
                                                            campus=campus, program=program).count()
     return number_of_students_registered

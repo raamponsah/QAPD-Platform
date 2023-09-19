@@ -11,7 +11,7 @@ from helper_functions.helpers import statistics
 NUMBER_OF_CUMULATIVE_CHOICES = 6
 NUMBER_OF_ATTENDANCE_CHOICES = 3
 NUMBER_OF_DELIVERY_CHOICES = 9
-NUMBER_OF_ASSIGNMENTS_CHOICES = 9
+NUMBER_OF_ASSIGNMENTS_CHOICES = 4
 NUMBER_OF_INTERACTION_CHOICES = 3
 NUMBER_OF_ENVIRONMENT_CHOICES = 9
 
@@ -91,7 +91,7 @@ def evaluation_reports_generated_list_archived(request):
 @only_admins_and_lecturers
 def evaluation_report(request, staff_id, subject_name):
     courses = CourseInformation.objects.filter(subject_name=subject_name);
-    evaluations = Evaluation.objects.filter(course__in=courses)
+    evaluations = Evaluation.objects.filter(course__in=courses,archived=False).select_related('course')
     lecturer = None
     try:
         lecturer = LecturerProfile.objects.filter(staff_id=staff_id).get()

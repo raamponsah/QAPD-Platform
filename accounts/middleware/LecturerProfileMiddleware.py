@@ -14,5 +14,4 @@ def lpm(get_response):
             while not (request.path == reverse('setup-lecturer-profile', kwargs={'user_id': request.user.id})):
                 return redirect(reverse('setup-lecturer-profile', kwargs={'user_id': request.user.id}))
         return response
-
     return middleware

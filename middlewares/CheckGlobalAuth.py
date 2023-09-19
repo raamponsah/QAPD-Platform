@@ -8,7 +8,6 @@ from accounts.middleware.LecturerProfileMiddleware import exception_urls_
 class CheckGlobalAuth:
     def __init__(self, get_response):
         self.get_response = get_response
-
         self.exception_urls = list(exception_urls_)
 
     def __call__(self, request):
